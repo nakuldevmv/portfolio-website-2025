@@ -1,10 +1,12 @@
+import React from 'react'
+import Heading from './components/heading/heading'
 import './App.css'
 
 function App() {
 
   return (
     <>
-    <h1>My Portfolio test</h1>
+    <Heading/>
     </>
   )
 }
