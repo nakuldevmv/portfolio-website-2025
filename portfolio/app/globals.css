@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+
 @custom-variant dark (&:is(.dark *));
 
 html {
@@ -23,6 +24,12 @@ html {
   --background: #0a0a0a;
   --foreground: #ededed;
 }
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
 
 
 body {
@@ -42,5 +49,5 @@ body {
 
   scroll-behavior: smooth;
 
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease;
 }

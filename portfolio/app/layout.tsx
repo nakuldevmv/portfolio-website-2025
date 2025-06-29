@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import localFont from "next/font/local";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const degular = localFont({
   src: './fonts/DegularVariable.woff2',
@@ -25,7 +26,9 @@ export default function RootLayout({
       <body
         className={`${degular.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
