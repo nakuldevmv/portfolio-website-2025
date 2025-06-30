@@ -9,7 +9,7 @@ import useWindowWidth from '../helperFunction/getWidth';
 export default function Projects() {
     let width = useWindowWidth();
     console.log(width);
-     if (width === null) return null;
+    if (width === null) return null;
     return (
         <div className={style.projectContainer}>
 
@@ -28,7 +28,7 @@ export default function Projects() {
                     pauseOnHover={true}
                     skewAmount={7}
                     height={width < 480 ? 600 : 400}
-                    width={width < 768 ? width<480?800:600 : 500}
+                    width={width < 768 ? width < 480 ? 800 : 600 : 500}
                 >
                     <Card className={style.card}>
                         <div className={style.phead}>

@@ -8,6 +8,8 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+
 :root {
   --background: hsl(0, 0%, 90%);
   --foreground: hsl(0, 0%, 20%);
