@@ -2,8 +2,12 @@
 import CardSwap, { Card } from '@/components/Components/CardSwap/CardSwap';
 import style from "./projects.module.css";
 import Image from 'next/image';
+import  useWindowWidth  from '../helperFunction/getWidth';
+ 
 
 export default function Projects() {
+    let width = useWindowWidth();
+    // console.log(width);
     return (
         <div className={style.projectContainer}>
 
@@ -11,11 +15,17 @@ export default function Projects() {
                 <h1>Featured Work</h1>
                 <p>Selected builds that showcase clean architecture, smart logic, and real-world impact.</p>
             </div>
+            <div className={style.scaler}
+>
+
+
             <CardSwap
                 cardDistance={60}
                 verticalDistance={70}
                 delay={3000}
                 pauseOnHover={true}
+                height={width<480?600:400}
+                width={width<768?900:500}
             >
                 <Card className={style.card}>
                 <div className={style.phead}>
@@ -81,6 +91,7 @@ export default function Projects() {
                 </div>
             </Card>
             </CardSwap>
+            </div>
             
         </div>
     );

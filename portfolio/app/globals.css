@@ -11,7 +11,7 @@ html {
 :root {
   --background: hsl(0, 0%, 90%);
   --foreground: hsl(0, 0%, 20%);
-  --gradient: linear-gradient(330deg,
+  --gradient: linear-gradient(y330deg,
       hsl(262deg 40% 48%) 0%,
       hsl(262deg 38% 49%) -1%,
       hsl(262deg 37% 51%) -1%,
