@@ -24,10 +24,11 @@ export default function Projects() {
                 <CardSwap
                     cardDistance={60}
                     verticalDistance={70}
-                    delay={3000}
+                    delay={3500}
                     pauseOnHover={true}
+                    skewAmount={7}
                     height={width < 480 ? 600 : 400}
-                    width={width < 768 ? 900 : 500}
+                    width={width < 768 ? width<480?800:600 : 500}
                 >
                     <Card className={style.card}>
                         <div className={style.phead}>
