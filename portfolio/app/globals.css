@@ -9,21 +9,76 @@ html {
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: hsl(0, 0%, 90%);
+  --foreground: hsl(0, 0%, 20%);
+  --gradient: linear-gradient(330deg,
+      hsl(262deg 40% 48%) 0%,
+      hsl(262deg 38% 49%) -1%,
+      hsl(262deg 37% 51%) -1%,
+      hsl(262deg 35% 53%) -1%,
+      hsl(261deg 33% 55%) -1%,
+      hsl(262deg 31% 57%) 0%,
+      hsl(262deg 30% 58%) 0%,
+      hsl(262deg 28% 60%) 1%,
+      hsl(261deg 26% 62%) 2%,
+      hsl(262deg 25% 64%) 4%,
+      hsl(262deg 23% 66%) 5%,
+      hsl(262deg 22% 67%) 8%,
+      hsl(261deg 20% 69%) 10%,
+      hsl(262deg 18% 71%) 13%,
+      hsl(262deg 16% 73%) 16%,
+      hsl(262deg 15% 75%) 20%,
+      hsl(263deg 13% 76%) 25%,
+      hsl(263deg 12% 78%) 30%,
+      hsl(264deg 10% 80%) 36%,
+      hsl(262deg 9% 82%) 42%,
+      hsl(264deg 6% 84%) 50%,
+      hsl(270deg 5% 85%) 59%,
+      hsl(270deg 3% 87%) 70%,
+      hsl(240deg 2% 89%) 83%,
+      hsl(0deg 0% 91%) 100%);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --background: var(--background);
+  --foreground: var(--foreground);
   --font-degular: var(--font-degular);
+  --border-rad: 0.75rem;
+  --gradient: var(--gradient);
 }
 
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: hsl(0, 0%, 5%);
+  --foreground: hsl(0, 0%, 80%);
+  --gradient: linear-gradient(330deg,
+      hsl(262deg 40% 48%) 0%,
+      hsl(262deg 40% 46%) -1%,
+      hsl(262deg 40% 44%) -1%,
+      hsl(262deg 40% 42%) -1%,
+      hsl(261deg 40% 40%) -1%,
+      hsl(262deg 40% 38%) 0%,
+      hsl(262deg 40% 36%) 0%,
+      hsl(262deg 40% 34%) 1%,
+      hsl(262deg 40% 32%) 2%,
+      hsl(262deg 39% 30%) 4%,
+      hsl(261deg 39% 28%) 5%,
+      hsl(262deg 39% 26%) 8%,
+      hsl(261deg 39% 24%) 10%,
+      hsl(263deg 41% 22%) 13%,
+      hsl(262deg 41% 20%) 16%,
+      hsl(263deg 41% 18%) 20%,
+      hsl(262deg 41% 16%) 25%,
+      hsl(263deg 41% 14%) 30%,
+      hsl(262deg 41% 12%) 36%,
+      hsl(264deg 40% 10%) 42%,
+      hsl(263deg 40% 8%) 50%,
+      hsl(265deg 40% 6%) 59%,
+      hsl(263deg 40% 4%) 70%,
+      hsl(270deg 40% 2%) 83%,
+      hsl(0deg 0% 0%) 100%);
 }
+
 /* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

@@ -1,0 +1,94 @@
+@reference "tailwindcss";
+
+.projectContainer {
+
+    border: 1px solid var(--foreground);
+    border-radius: var(--border-rad);
+    width: 80%;
+    /* margin-top: 200px; */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    background-image: var(--gradient);
+
+
+
+}
+
+.mainHeading {
+    padding-top: 20px;
+    padding-left: 20px;
+    /* background-color: black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:flex-start;
+    height: 100%;
+    /* background-color: rgb(0, 77, 145); */
+    /* width: 80%; */
+}
+.mainHeading h1{
+    font-size: xx-large;
+    font-weight: bolder;
+    color: var(--foreground);
+}
+
+.mainHeading p {
+    font-size: large;
+    color: hsl(0, 0%, 50%);
+    margin-top: 10px;
+    /* width: 60%; */
+    /* background-color: aliceblue; */
+}
+.card {
+    height: fit-content;
+    overflow: hidden;
+}
+
+.phead {
+    border-bottom: 1px solid var(--foreground);
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(to top, hsl(262, 29%, 15%), hsl(0, 0%, 0%));
+
+}
+
+.pbody {
+    padding: 8px;
+    background-color: var(--background);
+    height: 100%;
+}
+
+.imgwrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.imgwrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgb(0, 0, 0), hsla(0, 0%, 0%, 0.299));
+    z-index: 1;
+}
+
+.overlayText {
+    position: absolute;
+    font-size: xx-large;
+    top: 80px;
+    left: 30px;
+    color: white;
+    font-weight: bolder;
+    z-index: 2;
+}
