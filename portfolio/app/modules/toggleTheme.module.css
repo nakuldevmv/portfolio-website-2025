@@ -1,0 +1,24 @@
+.btn {
+    background: var(--gradient1);
+    color: var(--text);
+    margin: 20px;
+    border-radius: var(--radius, 8px);
+    padding: 10px 24px;
+    border: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+        transition: all 0.3s ease;
+
+    outline: none;
+}
+
+.btn:hover {
+    background: var(--gradient3);
+    color: #9e9e9e;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+    transform: translateY(-2px) scale(1.03);
+    transition: all 0.3s ease;
+}
+

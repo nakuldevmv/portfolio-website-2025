@@ -1,9 +1,9 @@
 @reference "tailwindcss";
 
 .projectContainer {
-
-    border: 1px solid var(--foreground);
-    border-radius: var(--border-rad);
+    
+    border: 2px solid var(--border);
+    border-radius: var(--radious);
     width: 80%;
     /* margin-top: 200px; */
     margin-left: auto;
@@ -11,11 +11,10 @@
     display: flex;
     justify-content: space-between;
     align-items: start;
-
     position: relative;
     height: 500px;
     overflow: hidden;
-    background-image: var(--gradient);
+    background-image: var(--gradient1);
 
 
 
@@ -39,36 +38,40 @@
     font-size: xx-large;
     font-weight: bolder;
     line-height: 16px;
-    color: var(--foreground);
 }
 
 .mainHeading p {
     font-size: large;
-    color: hsl(0, 0%, 50%);
+    color: var(--text-muted);
     margin-top: 10px;
     /* width: 60%; */
-    /* background-color: aliceblue; */
 }
 
 .card {
     height: fit-content;
     overflow: hidden;
+    border: 1px solid var(--border);
+    
 }
 
 .phead {
-    border-bottom: 1px solid var(--foreground);
+    font-weight: 550;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
     padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
     display: flex;
     flex-direction: row;
-    background: linear-gradient(to top, hsl(262, 29%, 15%), hsl(0, 0%, 0%));
+    justify-content: flex-start;
+    align-items: center;
+    background: var(--gradient2);
 
 }
 
 .pbody {
     padding: 8px;
-    background-color: var(--background);
+    background: var(--gradient3);
     height: 100%;
 }
 
@@ -83,7 +86,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to right, rgb(0, 0, 0), hsla(0, 0%, 0%, 0.299));
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.578), hsla(0, 0%, 0%, 0));
     z-index: 1;
 }
 
