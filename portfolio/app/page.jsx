@@ -1,6 +1,7 @@
 "use client";
 import ToggleTheme from "./modules/theme/toggleTheme";
 import Projects from "./modules/userDefined/projects/projects";
+import Skills from "./modules/userDefined/skills/skills"
 
 export default function Home() {
   return (
@@ -13,8 +14,9 @@ export default function Home() {
       </p>
       
       <ToggleTheme /> */}
-      <ToggleTheme/>
-      <Projects />
+      {/* <ToggleTheme/> */}
+      {/* <Projects /> */}
+      {/* <Skills/> */}
     </div>
   );
 }
