@@ -123,8 +123,10 @@ export default function TiltedCard({
         <motion.img
           src={imageSrc}
           alt={altText}
-          className="absolute top-0 left-0 object-contain rounded-[15px] will-change-transform [transform:translateZ(0)] border-1 border-white bg-[var(--text)] p-6"
+          className="object-contain  border-t-[1.5]  border-[#450986] dark:border-[#b679f6] rounded-[var(--radious)] will-change-transform [transform:translateZ(0)] p-6"
           style={{
+            background:`var(--gradient4)`,
+            boxShadow:`rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px`,
             width: imageWidth,
             height: imageHeight,
           }}

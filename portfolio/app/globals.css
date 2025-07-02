@@ -26,7 +26,7 @@ html {
 :root {
   --text: oklch(18.249% 0.04562 305.419);
   --background: oklch(100% 0.00011 271.152);
-  --primary: oklab(34.03% 0.07816 -0.15899);
+  --primary: oklch(34.03% 0.17716 296.178);
   --secondary: oklch(69.80% 0.170 27.36);
   --accent: oklch(68.00% 0.142 66.43);
   --text-muted: oklch(23.714% 0.07028 303.982);
@@ -70,6 +70,22 @@ html {
   --gradient3:linear-gradient(
     180deg,
     hsl(267deg 63% 99%) 81%,
+    hsl(0deg 0% 100%) 100%
+  );
+  --gradient4:linear-gradient(
+    0deg,
+    hsl(269deg 87% 28%) 0%,
+    hsl(269deg 61% 35%) 10%,
+    hsl(269deg 47% 41%) 18%,
+    hsl(270deg 38% 47%) 26%,
+    hsl(271deg 33% 52%) 33%,
+    hsl(272deg 34% 58%) 40%,
+    hsl(272deg 34% 64%) 47%,
+    hsl(273deg 34% 70%) 54%,
+    hsl(273deg 34% 76%) 61%,
+    hsl(274deg 35% 82%) 69%,
+    hsl(274deg 35% 88%) 77%,
+    hsl(275deg 34% 94%) 87%,
     hsl(0deg 0% 100%) 100%
   );
 
@@ -168,6 +184,22 @@ html {
     hsl(266deg 41% 1%) 71%,
     hsl(266deg 41% 1%) 81%,
     hsl(0deg 0% 0%) 100%
+  );
+  --gradient4:linear-gradient(
+    0deg,
+    hsl(269deg 87% 72%) 0%,
+    hsl(269deg 80% 66%) 1%,
+    hsl(269deg 72% 60%) 2%,
+    hsl(269deg 66% 54%) 3%,
+    hsl(269deg 58% 49%) 6%,
+    hsl(269deg 51% 43%) 9%,
+    hsl(269deg 44% 37%) 14%,
+    hsl(269deg 37% 31%) 21%,
+    hsl(268deg 30% 25%) 31%,
+    hsl(270deg 22% 19%) 44%,
+    hsl(270deg 15% 13%) 62%,
+    hsl(270deg 5% 7%) 81%,
+    hsl(0deg 0% 2%) 100%
   );
 }
 

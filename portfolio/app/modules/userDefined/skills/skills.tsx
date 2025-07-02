@@ -16,12 +16,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/cpp.png"
                         altText="C++"
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
@@ -38,12 +38,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/python.png"
                         altText="Python"
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
@@ -60,12 +60,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/javascript.png"
                         altText="JavaScript"
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
@@ -82,12 +82,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/typescript.png"
                         altText="TypeScript"
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
@@ -104,12 +104,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/html5.png"
                         altText="html"
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
@@ -126,12 +126,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/css3.png"
                         altText="css"
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
@@ -148,12 +148,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/reactjs.png"
                         altText="ReactJS"
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
@@ -170,12 +170,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/nextjs.png"
                         altText="NextJS"
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
@@ -192,12 +192,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/nodejs.png"
                         altText="NodeJS "
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
@@ -214,12 +214,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/expressjs-dark.png"
                         altText="Express.js"
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
@@ -236,12 +236,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/mysql.png"
                         altText="MySQL  "
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
@@ -258,12 +258,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/mongodb.png"
                         altText="mongodb "
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
@@ -280,12 +280,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/git.png"
                         altText="git "
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
@@ -302,12 +302,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/github-dark.png"
                         altText="github "
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
@@ -324,12 +324,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/figma.png"
                         altText="Figma  "
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
@@ -346,12 +346,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/vercel-dark.png"
                         altText="Vercel"
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
@@ -368,12 +368,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/render.png"
                         altText="Render"
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
@@ -390,12 +390,12 @@ export default function Skills() {
 
                         imageSrc="/skill_icons/flutter.png"
                         altText="Flutter"
-                        containerHeight="150px"
-                        containerWidth="150px"
-                        imageHeight="150px"
-                        imageWidth="150px"
-                        rotateAmplitude={12}
-                        scaleOnHover={1.1}
+                        containerHeight="110px"
+                        containerWidth="110px"
+                        imageHeight="110px"
+                        imageWidth="110px"
+                        rotateAmplitude={18}
+                        scaleOnHover={1.15}
                         showMobileWarning={false}
                         showTooltip={false}
                         displayOverlayContent={true}
