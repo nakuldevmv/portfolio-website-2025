@@ -1,6 +1,6 @@
 "use client";
-import ToggleTheme from "./modules/toggleTheme";
-import Projects from "./modules/userDefined/projects";
+import ToggleTheme from "./modules/theme/toggleTheme";
+import Projects from "./modules/userDefined/projects/projects";
 
 export default function Home() {
   return (

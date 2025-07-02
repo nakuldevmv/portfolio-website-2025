@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import localFont from "next/font/local";
-import { ThemeProvider } from "@/app/modules/theme-provider";
+import { ThemeProvider } from "@/app/modules/theme/theme-provider";
 
 const degular = localFont({
   src: './fonts/DegularVariable.woff2',

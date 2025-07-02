@@ -24,8 +24,8 @@ html {
 }
 
 :root {
-  --text: oklch(18.25% 0.046 305.43);
-  --background: oklab(100% 0 -0.00011);
+  --text: oklch(18.249% 0.04562 305.419);
+  --background: oklch(100% 0.00011 271.152);
   --primary: oklab(34.03% 0.07816 -0.15899);
   --secondary: oklch(69.80% 0.170 27.36);
   --accent: oklch(68.00% 0.142 66.43);
@@ -78,8 +78,8 @@ html {
 .dark {
   --text: oklch(91.28% 0.032 308.07);
   --background: oklch(0% 0 0);
-  --primary: #b679f6;
-  --secondary: #9e160a;
+  --primary: oklch(69.117% 0.18414 304.564);
+  --secondary: oklch(44.876% 0.17083 30.022);
   --accent: oklch(72.63% 0.144 68.02);
   --text-muted: oklch(75% 0.035 303.982);
   --border: hsla(269, 48%, 80%, 0.3);
