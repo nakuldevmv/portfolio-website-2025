@@ -14,9 +14,9 @@ export default function Home() {
       </p>
       
       <ToggleTheme /> */}
-      {/* <ToggleTheme/> */}
-      {/* <Projects /> */}
-      {/* <Skills/> */}
+      {/* <Skills/>
+      <Projects /> */}
+      <ToggleTheme/>
     </div>
   );
 }
