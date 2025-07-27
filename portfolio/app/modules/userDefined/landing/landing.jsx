@@ -1,16 +1,20 @@
 
+'use client';
 import style from "./landing.module.css";
 import Threads from "@/components/Backgrounds/Threads/Threads";
+import useWindowWidth from '../../helperFunction/getWidth';
 
 
 
 export default function Landing() {
+    let width = useWindowWidth();
+        if (width === null) return null;
     return (
         <div className={style.landing}>
             <Threads
                 amplitude={1}
                 distance={0.25}
-                enableMouseInteraction={false}
+                enableMouseInteraction={width > 768 ? true : false}
             />
                 <div className={style.text}>
                     <h1>

@@ -8,7 +8,6 @@ import useWindowWidth from '../../helperFunction/getWidth';
 
 export default function Projects() {
     let width = useWindowWidth();
-    console.log(width);
     if (width === null) return null;
     return (
         <div className={style.projectContainer}>
