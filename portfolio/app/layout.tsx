@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/app/modules/theme/theme-provider";
@@ -32,6 +33,7 @@ export default function RootLayout({
         enableSystem 
         disableTransitionOnChange>
           {children}
+           <Analytics />
         </ThemeProvider>
       </body>
     </html>
