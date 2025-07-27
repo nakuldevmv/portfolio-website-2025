@@ -9,7 +9,7 @@ const degular = localFont({
   src: './fonts/DegularVariable.woff2',
   display: 'swap',
   variable: '--font-degular',
-  weight: '100 900', 
+  weight: '100 900',
 })
 
 export const metadata: Metadata = {
@@ -27,14 +27,14 @@ export default function RootLayout({
       <body
         className={`${degular.variable} antialiased`}
       >
-        <ThemeProvider 
-        attribute="class" 
-        defaultTheme="system" 
-        enableSystem 
-        disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange>
           {children}
-           <Analytics />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
