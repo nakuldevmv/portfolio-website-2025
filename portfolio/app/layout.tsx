@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
 
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/app/modules/theme/theme-provider";
+import { Analytics } from "@vercel/analytics/react";
+
 
 const degular = localFont({
   src: './fonts/DegularVariable.woff2',
