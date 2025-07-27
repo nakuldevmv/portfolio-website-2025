@@ -12,8 +12,8 @@ export default function Landing() {
     return (
         <div className={style.landing}>
             <Threads
-                amplitude={1}
-                distance={0.25}
+                amplitude={1.5}
+                distance={0.2}
                 enableMouseInteraction={width > 768 ? true : false}
             />
                 <div className={style.text}>
