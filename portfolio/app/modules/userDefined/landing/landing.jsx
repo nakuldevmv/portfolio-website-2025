@@ -10,7 +10,7 @@ export default function Landing() {
             <Threads
                 amplitude={1}
                 distance={0.25}
-                enableMouseInteraction={true}
+                enableMouseInteraction={false}
             />
                 <div className={style.text}>
                     <h1>
