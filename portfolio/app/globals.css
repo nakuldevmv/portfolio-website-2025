@@ -29,7 +29,7 @@ html {
   --primary: oklch(34.03% 0.17716 296.178);
   --secondary: oklch(69.80% 0.170 27.36);
   --accent: oklch(68.00% 0.142 66.43);
-  --text-muted: oklch(23.714% 0.07028 303.982);
+  --text-muted: hsl(0, 0%, 40%);
   --border: hsla(269, 48%, 15%, 0.6);
   --radious:12px;
   --gradient1:linear-gradient(
@@ -92,12 +92,12 @@ html {
 }
 
 .dark {
-  --text: oklch(91.28% 0.032 308.07);
+  --text: oklch(98.417% 0.01021 310.779);
   --background: oklch(0% 0 0);
   --primary: oklch(69.117% 0.18414 304.564);
   --secondary: oklch(44.876% 0.17083 30.022);
   --accent: oklch(72.63% 0.144 68.02);
-  --text-muted: oklch(75% 0.035 303.982);
+  --text-muted: oklch(79.03% 0.01037 305.09);
   --border: hsla(269, 48%, 80%, 0.3);
   --gradient1:linear-gradient(
     320deg,
