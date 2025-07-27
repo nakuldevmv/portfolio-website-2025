@@ -15,7 +15,8 @@
     color: var(--text);
     line-height: 0.9;
     font-weight: bolder;
-    font-size: 2.5rem;
+    font-size: 5rem;
+    letter-spacing: -0.5px;
     text-align: center;
     white-space: nowrap;
     width: 90%;
@@ -23,7 +24,13 @@
     transition: all 0.3s ease;
 
 }
-
+@media (max-width: 950px) {
+    .text {
+        transition: all 0.3s ease;
+        font-size: 4.5rem;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+}
 @media (max-width: 768px) {
     .text {
         transition: all 0.3s ease;
