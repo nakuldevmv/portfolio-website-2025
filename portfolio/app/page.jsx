@@ -11,8 +11,8 @@ export default function Home() {
     <>
       {/* <NavBar /> */}
       <Landing />
-      <AboutMe />
       <ToggleTheme />
+      <AboutMe />
       {/* <Skills />
       <Projects /> */}
     </>
