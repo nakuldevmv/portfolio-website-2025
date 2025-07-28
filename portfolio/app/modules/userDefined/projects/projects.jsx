@@ -3,7 +3,7 @@
 import CardSwap, { Card } from '@/components/Components/CardSwap/CardSwap';
 import style from "./projects.module.css";
 import Image from 'next/image';
-import useWindowWidth from '../../helperFunction/getWidth';
+import useWindowWidth from '../../helperFunction/getwidth/getWidth';
 
 
 export default function Projects() {

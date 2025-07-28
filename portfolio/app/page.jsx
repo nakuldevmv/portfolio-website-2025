@@ -13,8 +13,8 @@ export default function Home() {
       <Landing />
       <ToggleTheme />
       <AboutMe />
-      {/* <Skills />
-      <Projects /> */}
+      <Skills />
+      <Projects />
     </>
   );
 }

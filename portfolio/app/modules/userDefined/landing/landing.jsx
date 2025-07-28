@@ -2,7 +2,7 @@
 'use client';
 import style from "./landing.module.css";
 import Threads from "@/components/Backgrounds/Threads/Threads";
-import useWindowWidth from '../../helperFunction/getWidth';
+import useWindowWidth from '../../helperFunction/getwidth/getWidth';
 
 
 
