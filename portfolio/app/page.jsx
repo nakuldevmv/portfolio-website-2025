@@ -2,27 +2,35 @@
 import { useEffect, useState } from "react";
 import ToggleTheme from "./modules/theme/toggleTheme";
 import Projects from "./modules/userDefined/projects/projects";
-import Skills from "./modules/userDefined/skills/skills"
+import Skills from "./modules/userDefined/skills/skills";
 import NavBar from "./modules/userDefined/navbar/navbar";
 import Landing from "./modules/userDefined/landing/landing";
 import AboutMe from "./modules/userDefined/aboutme/aboutme";
 
 export default function Home() {
-  const [isMounted, setIsMounted] = useState(false);
+  const [showRest, setShowRest] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    const timeout = setTimeout(() => {
+      setShowRest(true);
+    }, 100); // Delay rendering of below-fold sections
+
+    return () => clearTimeout(timeout);
   }, []);
 
-  if (!isMounted) return null; // Avoid SSR mismatch
   return (
     <>
-      {/* <NavBar /> */}
-      <Landing />
-      {/* <ToggleTheme /> */}
-      <AboutMe />
-      <Skills />
-      <Projects />
+      <NavBar />
+      <div className="min-h-screen relative z-1">
+        <Landing />
+      </div>
+
+      {/* BELOW-FOLD COMPONENTS */}
+      {/* <div className={`transition-opacity duration-300 ease-in ${showRest ? 'opacity-100' : 'opacity-0'}`}> */}
+        <AboutMe />
+        <Skills />
+        <Projects />
+      {/* </div> */}
     </>
   );
 }
