@@ -1,0 +1,39 @@
+.navContainer {
+    position: fixed;
+    top: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 50;
+    pointer-events: none; /* optional, lets clicks through the container if needed */
+    padding: 0 10px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.button {
+    color: var(--text-color);
+    font-size: 20px;
+    font-weight: 600;
+    padding: 0.125rem 0.5625rem;
+    border-radius: var(--radious);
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    transition: all 0.3s ease;
+}
+
+.button:active {
+    transform: scale(0.5);
+}
+
+.button:focus {
+    text-decoration: underline;
+    font-style: italic;
+    transition: all 0.3s ease;
+}
