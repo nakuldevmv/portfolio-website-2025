@@ -3,7 +3,7 @@ import ToggleTheme from "../../theme/toggleTheme"
 
 export default function NavBar() {
     return (
-        <div className="sticky top-0 z-50">
+        <div className="sticky top-0 z-50 ">
             {/* // Basic usage */}
             <GlassSurface
                 width="100%"

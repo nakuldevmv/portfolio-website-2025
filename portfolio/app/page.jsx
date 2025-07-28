@@ -21,16 +21,15 @@ export default function Home() {
   return (
     <>
       {/* <NavBar /> */}
-      <div className="min-h-screen relative z-1">
         <Landing />
-      </div>
-
+      <ToggleTheme />
+ 
       {/* BELOW-FOLD COMPONENTS */}
-      {/* <div className={`transition-opacity duration-300 ease-in ${showRest ? 'opacity-100' : 'opacity-0'}`}> */}
+      <div className={`transition-opacity duration-300 ease-in ${showRest ? 'opacity-100' : 'opacity-0'}`}>
         <AboutMe />
-        <Skills />
-        <Projects />
-      {/* </div> */}
+        {/* <Skills /> */}
+        {/* <Projects /> */}
+      </div>
     </>
   );
 }
