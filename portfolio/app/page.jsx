@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
     <>
-      <NavBar />
+      {/* <NavBar /> */}
       <div className="min-h-screen relative z-1">
         <Landing />
       </div>
