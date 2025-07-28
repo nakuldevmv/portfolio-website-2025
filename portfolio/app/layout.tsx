@@ -4,6 +4,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/app/modules/theme/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
+import LenisProvider from "./modules/helperFunction/smoothScroll/scroll";
 
 
 const degular = localFont({
@@ -33,7 +34,9 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange>
-          {children}
+          <LenisProvider>
+            {children}
+          </LenisProvider>
         </ThemeProvider>
         <Analytics />
       </body>

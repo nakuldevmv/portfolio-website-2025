@@ -92,12 +92,12 @@ html {
 }
 
 .dark {
-  --text: oklch(98.417% 0.01021 310.779);
+  --text: hsl(0, 0%, 100%);
   --background: oklch(0% 0 0);
   --primary: oklch(69.117% 0.18414 304.564);
   --secondary: oklch(44.876% 0.17083 30.022);
   --accent: oklch(72.63% 0.144 68.02);
-  --text-muted: oklch(79.03% 0.01037 305.09);
+  --text-muted: oklch(56.926% 0.00006 271.152);
   --border: hsla(269, 48%, 80%, 0.3);
   --gradient1:linear-gradient(
     320deg,
@@ -219,7 +219,6 @@ body {
 
   line-height: 1.5;
   font-size: 1rem;
-  scroll-behavior: smooth;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -227,7 +226,9 @@ body {
 html, body {
   overflow: -moz-scrollbars-none;   
   -ms-overflow-style: none;         
-  scrollbar-width: none;            
+  scrollbar-width: none;        
+  scroll-behavior: auto !important; /* override default smooth */
+  overflow-x: hidden;    
 }
 
 ::-webkit-scrollbar {
