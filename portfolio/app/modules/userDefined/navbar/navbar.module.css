@@ -5,35 +5,28 @@
     display: flex;
     justify-content: center;
     z-index: 50;
-    pointer-events: none; /* optional, lets clicks through the container if needed */
+    pointer-events: none;
+    /* optional, lets clicks through the container if needed */
     padding: 0 10px;
 }
 
 .navbar {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 0px;
 }
+
 
 .button {
-    color: var(--text-color);
-    font-size: 20px;
-    font-weight: 600;
-    padding: 0.125rem 0.5625rem;
-    border-radius: var(--radious);
+    font-size: 1rem;
+    font-weight: bolder;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    /* background-color: burlywood; */
+    cursor: pointer;
+    position: relative;
+    isolation: isolate;
     transition: all 0.3s ease;
+
 }
 
-.button:hover {
-    transition: all 0.3s ease;
-}
-
-.button:active {
-    transform: scale(0.5);
-}
-
-.button:focus {
-    text-decoration: underline;
-    font-style: italic;
-    transition: all 0.3s ease;
-}

@@ -21,17 +21,24 @@ export default function Home() {
   return (
     <>
       <NavBar />
+      <div id="home">
+
+
       <Landing />
-      <ToggleTheme />
- 
+      </div>
+      {/* <ToggleTheme /> */}
+
       {/* BELOW-FOLD COMPONENTS */}
       <div className={`transition-opacity duration-300 ease-in ${showRest ? 'opacity-100' : 'opacity-0'}`}>
         <div id="About">
-
-        <AboutMe />
+          <AboutMe />
         </div>
-        <Skills />
-        <Projects />
+        <div id="skills">
+          <Skills />
+        </div>
+        <div id="projects">
+          <Projects />
+        </div>
       </div>
     </>
   );
