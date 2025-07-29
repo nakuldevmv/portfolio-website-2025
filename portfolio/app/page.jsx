@@ -6,7 +6,6 @@ import Skills from "./modules/userDefined/skills/skills";
 import NavBar from "./modules/userDefined/navbar/navbar";
 import Landing from "./modules/userDefined/landing/landing";
 import AboutMe from "./modules/userDefined/aboutme/aboutme";
-
 export default function Home() {
   const [showRest, setShowRest] = useState(false);
 
@@ -21,24 +20,12 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      <div id="home">
-
-
-      <Landing />
-      </div>
-      {/* <ToggleTheme /> */}
-
+      <div id="home"><Landing /></div>
       {/* BELOW-FOLD COMPONENTS */}
       <div className={`transition-opacity duration-300 ease-in ${showRest ? 'opacity-100' : 'opacity-0'}`}>
-        <div id="About">
-          <AboutMe />
-        </div>
-        <div id="skills">
-          <Skills />
-        </div>
-        <div id="projects">
-          <Projects />
-        </div>
+        <div id="about"><AboutMe /></div>
+        <div id="skill"><Skills /></div>
+        <div id="project"><Projects /></div>
       </div>
     </>
   );

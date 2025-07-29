@@ -12,21 +12,44 @@
 
 .navbar {
     display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
-    gap: 0px;
+    width: 100%;
 }
 
 
 .button {
+    /* color: var(--text-muted); */
     font-size: 1rem;
     font-weight: bolder;
-    padding: 0.5rem 1rem;
+    padding: 0.2rem 0.8rem;
     border-radius: 50px;
-    /* background-color: burlywood; */
     cursor: pointer;
     position: relative;
     isolation: isolate;
+    box-shadow: transparent;
+    transform: scale(1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     transition: all 0.3s ease;
+
 
 }
 
+
+.button:hover {
+    color: var(--secondary);
+    font-weight: bolder;
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: scale(1.2);
+    box-shadow: var(--navBtn-shadow);
+    transition: all 0.3s ease;
+}
+
+.button:active {
+    background-color: hsla(0, 0%, 50%, 0.5);
+    transform: scale(0.5);
+    transition: all 0.3s ease;
+}
