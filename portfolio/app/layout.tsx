@@ -4,6 +4,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/app/modules/theme/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import LenisProvider from "./modules/helperFunction/smoothScroll/scroll";
 
 
@@ -38,6 +39,7 @@ export default function RootLayout({
             {children}
           </LenisProvider>
         </ThemeProvider>
+        <SpeedInsights />
         <Analytics />
       </body>
     </html>
