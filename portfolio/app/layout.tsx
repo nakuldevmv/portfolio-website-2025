@@ -37,10 +37,11 @@ export default function RootLayout({
           disableTransitionOnChange>
           <LenisProvider>
             {children}
+            <SpeedInsights />
+            <Analytics />
           </LenisProvider>
         </ThemeProvider>
-        <SpeedInsights />
-        <Analytics />
+
       </body>
     </html>
   );
