@@ -1,29 +1,44 @@
-
 'use client';
-import style from "./projects.module.css";
-import useWindowWidth from '../../helperFunction/getwidth/getWidth';
-
-
+import styles from './projects.module.css'
+import { projects } from './data';
+import Card from './Card/card';
+import { useScroll } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import Lenis from '@studio-freight/lenis'
 
 export default function Projects() {
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ['start start', 'end end']
+  })
 
-    return (
-        <>
-            <div className={style.projectContainer}>
-                <video
-                    className="w-full h-full object-cover"
-                    src="/sr.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                />
+  useEffect( () => {
+    const lenis = new Lenis()
 
-            </div>
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
 
+    requestAnimationFrame(raf)
+  })
 
-        </>
+  return (
+    <>
+    
+    <main ref={container} className={styles.main}>
+      <div className={styles.projectHead}>
 
-
-    );
+      <h1>Projects</h1>
+    </div>
+      {
+        projects.map( (project, i) => {
+          const targetScale = 1 - ( (projects.length - i) * 0.05);
+          return <Card key={`p_${i}`} i={i} {...project} progress={scrollYProgress} range={[i * .25, 1]} targetScale={targetScale}/>
+        })
+      }
+    </main>
+    </>
+  )
 }
