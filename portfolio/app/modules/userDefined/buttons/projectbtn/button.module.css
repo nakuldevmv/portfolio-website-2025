@@ -31,6 +31,7 @@
 }
 
 .circle {
+    opacity: 0;
     z-index: 0;
     position: absolute;
     left: 8;
@@ -39,16 +40,17 @@
     background-color: var(--background);
     border-radius: 100%;
     margin: 5px;
-    transition: transform 0.5s ease-in-out, background-color 1s ease-in-out;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, background-color 1s ease-in-out;
 }
 
 
 .btn:hover .circle {
+    opacity: 1;
     background-color: var(--text);
 
 
     transform: scale(60);
-    transition: transform 0.5s ease-in-out, background-color 0.1s ease-in-out;
+    transition: opacity 0.1s ease-in-out, transform 0.5s ease-in-out, background-color 0.1s ease-in-out;
 }
 
 .btn:hover .txt {
