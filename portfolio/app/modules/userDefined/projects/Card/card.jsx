@@ -4,8 +4,9 @@ import styles from './card.module.css';
 import { useTransform, motion, useScroll, number } from 'framer-motion';
 import { useRef } from 'react';
 import Button from '../../buttons/projectbtn/button';
+import Label from '../../buttons/labels/label';
 
-const Card = ({ i, title, description, src, num, liveLink, github, color, progress, range, targetScale }) => {
+const Card = ({ i, title, description, ldesc, src, num, liveLink, github, tech1, tech2, tech3, tech4, tech5, itech1, itech2, itech3, itech4, itech5, color, progress, range, targetScale }) => {
 
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -70,7 +71,21 @@ const Card = ({ i, title, description, src, num, liveLink, github, color, progre
             <div className={styles.sideBox}>
 
               <div className={styles.box1}>
-                                <h3>{description}</h3>
+                <div className={styles.ldesc}>
+
+
+                {ldesc}
+                </div>
+                <div className='flex flex-wrap gap-1'>
+
+                  {/* <img src={itech1} alt="" /> */}
+                  <Label image={itech1} label={tech1} />
+                  <Label image={itech2} label={tech2} />
+                  <Label image={itech3} label={tech3} />
+                  <Label image={itech4} label={tech4} />
+                  <Label image={itech5} label={tech5} />
+
+                </div>
 
               </div>
               <div className={styles.box2}>

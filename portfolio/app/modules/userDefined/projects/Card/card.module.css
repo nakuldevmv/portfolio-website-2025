@@ -44,7 +44,8 @@
   line-height: 2.4rem;
   font-weight: bolder;
   font-size: 4rem;
-  margin-bottom: 10px;
+  /* background-color: antiquewhite; */
+  /* margin-bottom: 10px; */
 }
 
 .titleContainer {
@@ -54,7 +55,8 @@
   align-items: start;
   justify-content: start;
   flex-direction: column;
-  margin-bottom: 20px;
+  /* background-color: aliceblue; */
+  /* margin-bottom: 20px; */
 
 }
 
@@ -87,7 +89,7 @@
 .titlebtnContainer {
   width: 100%;
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 18px;
   /* background-color: aliceblue; */
   justify-content: space-between;
   flex-direction: row;
@@ -141,16 +143,30 @@
 
 
 .box1 {
+  padding: 10px;
   flex: 3.5;
   border-radius: 20px;
-  background-color: aquamarine;
+  min-height: fit-content;
+  background-color: hsla(0, 0%, 50%, 0.4);
 }
 
 .box2 {
   flex: 2;
   border-radius: 100px;
-  background-color: rgb(0, 68, 120);
+  height: fit-content;
+
+  background-color: hsla(0, 0%, 0%, 0.4);
+
 }
+
+.ldesc{
+  line-height: 1.1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+
 
 @media (max-width: 760px) {
   .cardBody h1 {
