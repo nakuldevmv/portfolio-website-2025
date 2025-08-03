@@ -1,27 +1,29 @@
 export const projects = [
   {
     title: "Spamurai",
-    description: "Originally hailing from Austria, Berlin-based photographer Matthias Leindinger is a young creative brimming with talent and ideas.",
+    description: "Headless automation tool to bulk-unsubscribe from promotional emails and clean inboxes.",
     src: "",
     num: "01",
-    link: "",
+    liveLink: "https://spamurai.vercel.app/",
+    github: "https://github.com/nakuldevmv/Spamurai",
     color: "#3D2C8D"
   },
   {
     title: "FindX",
-    description: "This is a story on the border between reality and imaginary, about the contradictory feelings that the insularity of a rocky, arid, and wild territory provokes”—so French photographer Clément Chapillon describes his latest highly captivating project Les rochers fauves (French for ‘The tawny rocks’).",
+    description: "Google Dork-based search engine for uncovering hidden web files with advanced filtering.",
     src: "",
     num: "02",
-    link: "",
+    liveLink: "https://findx24.vercel.app/",
+    github: "https://github.com/nakuldevmv/FindX",
     color: "#007A78"
   },
   {
     title: "Portfolio Website",
-    description: "Italian photographer Luca Tombolini’s latest series, titled ‘The Last Days of Summer’, is a nostalgic homage to the fleeting moments of summer.",
+    description: "Responsive portfolio with mobile-first design and interactive project showcases.",
     src: "",
     num: "03",
-    link: "",
+    liveLink: "https://nakuldevmv.github.io/2024/index.html",
+    github: "https://github.com/nakuldevmv/Portfolio-Website",
     color: "#675E7D"
-  },
-  
+  }
 ]

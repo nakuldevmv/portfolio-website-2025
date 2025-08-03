@@ -1,5 +1,6 @@
 'use client'
 import styles from './button.module.css'
+import {Arrow} from '@/app/customIcon/index'
 
 export default function Button({
     label = "Label",
@@ -17,6 +18,8 @@ export default function Button({
             </div>
             <div className={styles.txt}>
                 {label}
+                
+                <Arrow className={styles.arrow}/>
 
             </div>
 

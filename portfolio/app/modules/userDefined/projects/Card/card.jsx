@@ -5,7 +5,7 @@ import { useTransform, motion, useScroll, number } from 'framer-motion';
 import { useRef } from 'react';
 import Button from '../../buttons/projectbtn/button';
 
-const Card = ({ i, title, description, src, num, color, progress, range, targetScale }) => {
+const Card = ({ i, title, description, src, num, liveLink, github, color, progress, range, targetScale }) => {
 
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -23,16 +23,23 @@ const Card = ({ i, title, description, src, num, color, progress, range, targetS
         className={styles.card}
       >
         <div className={styles.cardBody}>
-          <h1>{num}</h1>
+
+
+
+
           <div className={styles.titlebtnContainer}>
-            <div className={styles.titleContainer}>
-              <h2>{title}</h2>
-              <h3>{description}</h3>
+            <div className='flex'>
+              <h1>{num}</h1>
+              <div className={styles.titleContainer}>
+                <h2>{title}</h2>
+                <h3>{description}</h3>
+              </div>
             </div>
+
             <div className={styles.btnContainer}>
-              <Button label='Github Repo'/>
-              <div style={{height:'5px'}}></div>
-              <Button label='Live Project'/>
+              <Button label='Github' onClick={() => { window.open(github, '_blank') }} />
+              <div style={{ height: '5px' }}></div>
+              <Button label='Live' onClick={() => { window.open(liveLink, '_blank') }} />
 
             </div>
 
@@ -40,16 +47,45 @@ const Card = ({ i, title, description, src, num, color, progress, range, targetS
 
 
 
-          <div className={styles.imageContainer}>
-            <motion.div
-              className={styles.inner}
-              style={{ scale: imageScale }}
-            >
-              {/* here there is a effect of zoom out in for images or video */}
-            </motion.div>
+
+          <div className={styles.outerBox}>
+            <div className={styles.VideoBox}>
+              <motion.div
+                className={styles.inner}
+                style={{ scale: imageScale }}
+              >
+                <video
+                  src="/src.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  className={styles.videoPlay}
+
+                />
+
+              </motion.div>
+            </div>
+            <div className={styles.sideBox}>
+
+              <div className={styles.box1}>
+                                <h3>{description}</h3>
+
+              </div>
+              <div className={styles.box2}>
+                {/* Video Card */}
+              </div>
+            </div>
           </div>
+
+
+
+
+
 
         </div>
+
       </motion.div>
     </div>
   )

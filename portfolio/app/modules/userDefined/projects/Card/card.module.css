@@ -10,32 +10,37 @@
 }
 
 .card {
-  color: white;
+
+  color: var(--background);
   display: flex;
   flex-direction: column;
   position: relative;
-  top: -25%;
   height: 500px;
   width: 95%;
   max-width: 1000px;
   border-radius: 25px;
   padding: 20px;
   transform-origin: top;
-  box-shadow: 0px -5px 40px 0px rgba(0, 0, 0, 0.500);
+  box-shadow: 0px -5px 40px 0px rgba(0, 0, 0, 0.5);
   border: 3px solid color-mix(in srgb, rgb(46, 46, 46) 20%, black 30%);
+  box-sizing: border-box;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .cardBody {
   display: flex;
+  flex-direction: column;
+  /* background-color: black; */
   justify-content: start;
-  align-items:start;
+  align-items: start;
   height: 100%;
   width: 100%;
 
 }
 
 .cardBody h1 {
-  
+
   line-height: 2.4rem;
   font-weight: bolder;
   font-size: 4rem;
@@ -54,6 +59,7 @@
 }
 
 .titleContainer h2 {
+  /* background-color: antiquewhite; */
   line-height: 1rem;
   font-size: 1.5rem;
   font-weight: bold;
@@ -61,26 +67,131 @@
 }
 
 .titleContainer h3 {
+  /* min-width: 200px; */
+  /* background-color: antiquewhite; */
+  font-weight: 600;
   font-size: 1rem;
-  color: hsl(0, 0%, 80%);
-  line-height:1.1rem;
+  color: var(--background);
+  line-height: 1.1rem;
 }
-.btnContainer{
-  display:flex;
-  flex-direction:column;
+
+.btnContainer {
+  display: flex;
+  flex-direction: column;
   justify-content: start;
   align-items: end;
   min-width: 150px;
   height: fit-content;
 }
-.titlebtnContainer{
+
+.titlebtnContainer {
   width: 100%;
   display: flex;
+  margin-bottom: 50px;
+  /* background-color: aliceblue; */
   justify-content: space-between;
   flex-direction: row;
 }
-/* @media (max-width: 768px) {
-  .card {
-    width: 100%;
+
+.outerBox {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+
+}
+
+.VideoBox,
+.box1,
+.box2 {
+  overflow: hidden;
+
+}
+
+.VideoBox {
+  background-color: aliceblue;
+  width: 60%;
+  border-radius: 20px;
+  height: 100%;
+  overflow: hidden;
+  color: black;
+}
+
+.inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.videoPlay {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.sideBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 40%;
+  height: 100%;
+}
+
+
+.box1 {
+  flex: 3.5;
+  border-radius: 20px;
+  background-color: aquamarine;
+}
+
+.box2 {
+  flex: 2;
+  border-radius: 100px;
+  background-color: rgb(0, 68, 120);
+}
+
+@media (max-width: 760px) {
+  .cardBody h1 {
+    visibility: hidden;
+    line-height: 0rem;
+    font-weight: 0;
+    font-size: 0rem;
+    margin-bottom: 0px;
   }
-} */
+  .titleContainer h3{
+    font-size: 0.9rem;
+    line-height: 1rem;
+  }
+
+  .card {
+
+    height: fit-content;
+  }
+
+  .outerBox {
+    flex-direction: column;
+  }
+
+  .VideoBox,
+  .sideBox {
+    width: 100%;
+    height: auto;
+  }
+
+  .sideBox {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .box1 {
+    flex: 2;
+    min-height: 90px;
+  }
+
+  .box2 {
+    flex: 3;
+    min-height: 90px;
+  }
+}
