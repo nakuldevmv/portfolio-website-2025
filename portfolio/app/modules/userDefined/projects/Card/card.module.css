@@ -161,31 +161,29 @@
   border-radius: 30px;
   height: fit-content;
 
-background: linear-gradient(
-  to right,
-  hsla(0, 0%, 100%, 0.2)
-,  hsla(0, 10%, 90%, 0.48),
-  hsla(0, 10%, 95%, 0.55),
-  hsla(0, 10%, 90%, 0.48),
-  hsla(0, 0%, 100%, 0.2)
-  );
+  background: linear-gradient(to right,
+      hsla(0, 0%, 100%, 0.2), hsla(0, 10%, 90%, 0.48),
+      hsla(0, 10%, 95%, 0.55),
+      hsla(0, 10%, 90%, 0.48),
+      hsla(0, 0%, 100%, 0.2));
 
 
 }
 
-.ldesc{
+.ldesc {
   line-height: 1.1rem;
   font-size: 1rem;
   font-weight: 500;
   margin-bottom: 10px;
-    /* background-color: hsla(208, 100%, 83%, 0.5); */
+  /* background-color: hsla(208, 100%, 83%, 0.5); */
 
 }
-.marquee{
+
+.marquee {
   /* background-color: hsla(208, 100%, 83%, 0.5); */
   font-weight: 600;
   line-height: 3rem;
-  font-size:2rem;
+  font-size: 2rem;
   word-spacing: 0.1rem;
 }
 
@@ -198,7 +196,8 @@ background: linear-gradient(
     font-size: 0rem;
     margin-bottom: 0px;
   }
-  .titleContainer h3{
+
+  .titleContainer h3 {
     font-size: 0.9rem;
     line-height: 1rem;
   }

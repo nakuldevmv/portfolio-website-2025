@@ -103,7 +103,9 @@ const Card = ({ i, title, description, ldesc, marquee1, marquee2, num, liveLink,
                     gradient={false}
                     loop={0}
                     delay={0}
-                  >{marquee1}</Marquee>
+                  >
+                    
+                    {marquee1}</Marquee>
 
                   <Marquee
                     className={styles.marquee}
