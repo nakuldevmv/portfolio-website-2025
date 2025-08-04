@@ -9,7 +9,7 @@
     border-radius: 100px;
     position: relative;
     overflow: hidden;
-    border: 2px solid var(--background);
+    border: 2px solid black;
     cursor: pointer;
     transition: border 1s ease-in-out;
 }
@@ -22,7 +22,7 @@
     line-height: 1rem;
     z-index: 10;
     position: relative;
-    color: var(--background);
+    color: black;
     /* add this if you want the text to be visible */
     font-weight: bold;
     transform: translateX(10px);
@@ -37,7 +37,7 @@
     left: 8;
     height: 8px;
     width: 8px;
-    background-color: var(--background);
+    background-color: black;
     border-radius: 100%;
     margin: 5px;
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, background-color 1s ease-in-out;
@@ -46,7 +46,7 @@
 
 .btn:hover .circle {
     opacity: 1;
-    background-color: var(--text);
+    background-color: white;
 
 
     transform: scale(60);

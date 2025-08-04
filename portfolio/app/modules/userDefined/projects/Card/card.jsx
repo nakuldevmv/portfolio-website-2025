@@ -5,9 +5,12 @@ import { useTransform, motion, useScroll, number } from 'framer-motion';
 import { useRef } from 'react';
 import Button from '../../buttons/projectbtn/button';
 import Label from '../../buttons/labels/label';
+import Marquee from "react-fast-marquee";
+import useWindowWidth from '../../../helperFunction/getwidth/getWidth';
 
-const Card = ({ i, title, description, ldesc, src, num, liveLink, github, tech1, tech2, tech3, tech4, tech5, itech1, itech2, itech3, itech4, itech5, color, progress, range, targetScale }) => {
 
+const Card = ({ i, title, description, ldesc, marquee1, marquee2, num, liveLink, github, tech1, tech2, tech3, tech4, tech5, itech1, itech2, itech3, itech4, itech5, color, progress, range, targetScale }) => {
+  const windowWidth = useWindowWidth();
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -74,7 +77,7 @@ const Card = ({ i, title, description, ldesc, src, num, liveLink, github, tech1,
                 <div className={styles.ldesc}>
 
 
-                {ldesc}
+                  {ldesc}
                 </div>
                 <div className='flex flex-wrap gap-1'>
 
@@ -88,9 +91,34 @@ const Card = ({ i, title, description, ldesc, src, num, liveLink, github, tech1,
                 </div>
 
               </div>
-              <div className={styles.box2}>
-                {/* Video Card */}
-              </div>
+              {windowWidth > 760 && (
+                <div className={styles.box2}>
+
+                  <Marquee
+                    className={styles.marquee}
+                    speed={60}
+                    direction="left"
+                    pauseOnHover={true}
+                    autoFill={true}
+                    gradient={false}
+                    loop={0}
+                    delay={0}
+                  >{marquee1}</Marquee>
+
+                  <Marquee
+                    className={styles.marquee}
+                    speed={55}
+                    direction="left"
+                    pauseOnHover={true}
+                    autoFill={true}
+                    gradient={false}
+                    loop={0}
+                    delay={0}
+                  >{marquee2}</Marquee>
+
+                </div>
+              )}
+
             </div>
           </div>
 

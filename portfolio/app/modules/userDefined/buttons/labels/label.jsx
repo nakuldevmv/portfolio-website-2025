@@ -12,7 +12,7 @@ export default function Label({
                 {image && (
                     <Image className={style.img} src={image} width={16} height={16} alt={label} />
                 )}
-                <span>{label}</span>
+                <div className={style.label}>{label}</div>
             </div>
         )}
         </>
