@@ -20,11 +20,7 @@ const Card = ({ i, title, description, video, ldesc, marquee1, marquee2, num, li
   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1])
   const scale = useTransform(progress, range, [1, targetScale]);
 
-  const [shouldLoad, setShouldLoad] = useState(false)
-
-  useEffect(() => {
-    setShouldLoad(true)
-  }, [])
+ 
 
   return (
     <div ref={container} className={styles.cardContainer}>
@@ -65,17 +61,16 @@ const Card = ({ i, title, description, video, ldesc, marquee1, marquee2, num, li
                 style={{ scale: imageScale }}
               >
                 <video
-                  
+                  src={video}
                   autoPlay
                   muted
                   loop
                   playsInline
-                  preload="none"
+                  preload="auto"
                   className={styles.videoPlay}
 
-                >
-                  {shouldLoad&&<source src={video} type='video/mp4'/>}
-                </video>
+                />
+                 
 
               </motion.div>
             </div>
