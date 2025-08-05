@@ -1,9 +1,9 @@
 .main{
+  /* background-color: aliceblue; */
   position: relative;
-  margin-top: 50vh;
+  /* margin-top: 50vh; */
 }
 .projectHead{
-  
  display: flex;
   justify-content: center;
   align-items: center;

@@ -1,11 +1,11 @@
 @reference "tailwindcss";
 
 .aboutMeBox {
-    background-color: rgb(102, 73, 37);
+    /* background-color: rgb(102, 73, 37); */
     padding: 30px;
     width: 80%;
-    min-height: 90vh;
-    min-height: 90svh;
+    min-height: 100vh;
+    min-height: 100svh;
     margin-left: auto;
     margin-right: auto;
 
