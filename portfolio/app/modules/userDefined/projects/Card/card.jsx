@@ -9,7 +9,7 @@ import Marquee from "react-fast-marquee";
 import useWindowWidth from '../../../helperFunction/getwidth/getWidth';
 
 
-const Card = ({ i, title, description, video,ldesc, marquee1, marquee2, num, liveLink, github, tech1, tech2, tech3, tech4, tech5, itech1, itech2, itech3, itech4, itech5, color, progress, range, targetScale }) => {
+const Card = ({ i, title, description, video, ldesc, marquee1, marquee2, num, liveLink, github, tech1, tech2, tech3, tech4, tech5, itech1, itech2, itech3, itech4, itech5, color, progress, range, targetScale }) => {
   const windowWidth = useWindowWidth();
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -103,10 +103,7 @@ const Card = ({ i, title, description, video,ldesc, marquee1, marquee2, num, liv
                     gradient={false}
                     loop={0}
                     delay={0}
-                  >
-                    
-                    {marquee1}</Marquee>
-
+                  >{marquee1}</Marquee>
                   <Marquee
                     className={styles.marquee}
                     speed={55}
@@ -117,20 +114,11 @@ const Card = ({ i, title, description, video,ldesc, marquee1, marquee2, num, liv
                     loop={0}
                     delay={0}
                   >{marquee2}</Marquee>
-
                 </div>
               )}
-
             </div>
           </div>
-
-
-
-
-
-
         </div>
-
       </motion.div>
     </div>
   )
