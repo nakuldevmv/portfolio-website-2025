@@ -6,7 +6,6 @@
     justify-content: center;
     z-index: 50;
     pointer-events: none;
-    /* optional, lets clicks through the container if needed */
     padding: 0 10px;
 }
 
@@ -30,8 +29,6 @@
     isolation: isolate;
     box-shadow: transparent;
     transform: scale(1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     transition: all 0.3s ease-in-out;
 
 
@@ -39,7 +36,7 @@
 
 
 .button:hover {
-    color: #445b8d;
+    color: #808080;
     font-weight: bolder;
     transform-box: fill-box;
     transform-origin: center;
@@ -49,7 +46,93 @@
 }
 
 .button:active {
-    /* background-color: hsla(0, 0%, 50%, 0.5); */
+    background-color: hsla(0, 0%, 50%, 0.5);
     transform: scale(0.5);
     transition: all 0.3s ease-in-out;
+}
+
+.mobileNav {
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 60px;
+    pointer-events: none;
+}
+
+.themeBtn,
+.menuBtn {
+    position: fixed;
+    top: 16px;
+    z-index: 1000;
+    pointer-events: auto;
+}
+
+.themeBtn {
+
+    right: 4.6rem;
+}
+
+.menuBtn {
+    right: 16px;
+}
+
+.menuBar {
+    overflow: hidden;
+    /* background-color: antiquewhite; */
+    border-radius: 30px;
+    position: fixed;
+    top: 10px;
+    right: 10;
+    z-index: 998;
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: center;
+    pointer-events: auto;
+}
+
+.navbarMob {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: start;
+    height: 100%;
+    width: 100%;
+    padding: 50px 5px 5px 5px;
+}
+
+.buttonMob button {
+    display: flex;
+}
+
+.circleAnimate {
+    color: var(--text);
+    rotate: 0deg;
+    transition: all 0.5s ease-in-out;
+}
+
+.buttonMob:hover .circleAnimate {
+    rotate: 405deg;
+    transition: all 0.5s ease-in-out;
+}
+
+.buttonMob {
+    /* background-color: blueviolet; */
+
+    font-size: 1.8rem;
+    font-weight: 500;
+    padding: 0.2rem 0.8rem;
+    border-radius: 100px;
+    cursor: pointer;
+    box-shadow: transparent;
+    transform: scale(1);
+    transition: all 0.5s ease-in-out;
+}
+
+.buttonMob:hover {
+    /* color: #808080; */
+    font-weight: bolder;
+    transform: scale(1.15);
+    font-weight: bold;
+    /* box-shadow: var(--navBtn-shadow); */
+    transition: all 0.5s ease-in-out;
 }
