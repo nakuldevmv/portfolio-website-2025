@@ -2,7 +2,7 @@ export const projects = [
   {
     title: "Spamurai",
     description: "Automated Email Unsubscription & Inbox Cleanup",
-            video:"/videos/findx.mp4",
+            video:"/videos/findxvideo.mp4",
 
     ldesc: "Spamurai is a headless automation tool that scans your inbox, detects unsubscribe links, and opts you out of unwanted emails. It intelligently filters promotional content, flags suspicious links, and helps maintain a clean, organized inbox with zero manual effort.",
     marquee1: "500+ inboxes cleaned ✦︎ 90%+ phishing links flagged ✦︎ 500+ unsub requests automated ✦︎",
@@ -28,7 +28,7 @@ export const projects = [
   {
     title: "FindX",
     description: "Google Dork Based File Discovery Tool",
-        video:"/videos/findx.mp4",
+        video:"/videos/findxvideo.mp4",
 
     ldesc: "FindX streamlines advanced web searches by generating custom Google Dork queries based on user input. With a simple interface and powerful filtering, it helps users uncover specific file types like documents, media, or archives across the web with speed and precision.",
     marquee1: "1K+ smart search queries ✦︎ 10K+ URLs scanned ✦︎ Precision file type filters ✦︎",
@@ -54,7 +54,7 @@ export const projects = [
   {
     title: "Portfolio Website",
     description: "Responsive Developer Portfolio with Interactive Project Showcases",
-    video:"/videos/portfolio.mp4",
+    video:"/videos/portfoliovideo.mp4",
     ldesc: "A fully responsive personal portfolio featuring a modern bento-style layout and glassmorphic design. It showcases projects with interactive previews, outlines my skills, education, and experience, and includes a built-in resume download option for recruiters. Clean, organized, and mobile-first by design.",
     marquee1: "1K+ users reached ✦︎ 1s resume downloads ✦︎ 15+ UI updates from reviews ✦︎",
     marquee2: "100% mobile-first design ✦︎ Bento UI layout ✦︎ Recruiter-friendly navigation ✦︎",
