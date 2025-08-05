@@ -1,5 +1,4 @@
 'use client'
-import Image from 'next/image';
 import styles from './card.module.css';
 import { useTransform, motion, useScroll, number } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';

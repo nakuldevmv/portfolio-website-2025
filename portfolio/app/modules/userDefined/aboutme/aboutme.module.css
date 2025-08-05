@@ -1,11 +1,11 @@
 @reference "tailwindcss";
 
 .aboutMeBox {
-    /* background-color: bisque; */
+    background-color: rgb(102, 73, 37);
     padding: 30px;
     width: 80%;
-    min-height: 100vh;
-    min-height: 100svh;
+    min-height: 90vh;
+    min-height: 90svh;
     margin-left: auto;
     margin-right: auto;
 
@@ -36,8 +36,11 @@
 }
 
 .sign {
+    /* background-color: rgb(126, 89, 40); */
     margin-top: 20px;
     margin-bottom: 20px;
+    height: 2.6875rem;
+    width: 62px;
 }
 
 .copyright {

@@ -10,7 +10,7 @@ export default function Label({
 
             <div className={style.box}>
                 {image && (
-                    <Image className={style.img} src={image} width={16} height={16} alt={label} />
+                    <Image className={style.img} src={image} width={16} height={16} alt={label} placeholder="empty"  />
                 )}
                 <div className={style.label}>{label}</div>
             </div>
