@@ -2,7 +2,7 @@ export const projects = [
   {
     title: "Spamurai",
     description: "Automated Email Unsubscription & Inbox Cleanup",
-            video:"/videos/findxvideo.mp4",
+            video:"/videos/spamuraivideo.mp4",
 
     ldesc: "Spamurai is a headless automation tool that scans your inbox, detects unsubscribe links, and opts you out of unwanted emails. It intelligently filters promotional content, flags suspicious links, and helps maintain a clean, organized inbox with zero manual effort.",
     marquee1: "500+ inboxes cleaned ✦︎ 90%+ phishing links flagged ✦︎ 500+ unsub requests automated ✦︎",
