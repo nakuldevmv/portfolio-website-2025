@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import styles from './card.module.css';
 import { useTransform, motion, useScroll, number } from 'framer-motion';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Button from '../../buttons/projectbtn/button';
 import Label from '../../buttons/labels/label';
 import Marquee from "react-fast-marquee";
@@ -19,6 +19,12 @@ const Card = ({ i, title, description, video, ldesc, marquee1, marquee2, num, li
 
   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1])
   const scale = useTransform(progress, range, [1, targetScale]);
+
+  const [shouldLoad, setShouldLoad] = useState(false)
+
+  useEffect(() => {
+    setShouldLoad(true)
+  }, [])
 
   return (
     <div ref={container} className={styles.cardContainer}>
@@ -59,15 +65,17 @@ const Card = ({ i, title, description, video, ldesc, marquee1, marquee2, num, li
                 style={{ scale: imageScale }}
               >
                 <video
-                  src={video}
+                  
                   autoPlay
                   muted
                   loop
                   playsInline
-                  preload="auto"
+                  preload="none"
                   className={styles.videoPlay}
 
-                />
+                >
+                  {shouldLoad&&<source src={video} type='video/mp4'/>}
+                </video>
 
               </motion.div>
             </div>
