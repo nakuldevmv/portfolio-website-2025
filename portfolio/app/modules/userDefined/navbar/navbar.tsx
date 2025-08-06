@@ -15,12 +15,12 @@ export default function NavBar() {
     function RotateBtn() {
         setIsRotate(!isRotate);
     }
-    const width = useWindowWidth();
+    const Width = useWindowWidth();
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
         e.preventDefault()
         smoothScrollTo(id, -50) // offset to account for sticky header or vibe adjustment
     }
-    if (width === null) { return null };
+    if (Width === null) { return null };
     function toggleMenu() {
         setIsOpen(!isOpen);
     }
@@ -33,7 +33,7 @@ export default function NavBar() {
 
     return (
         <>
-            {width < 760 ? (
+            {Width < 760 ? (
                 <div className={style.mobileNav}>
                     <AnimatedContent
                         direction="horizontal"
@@ -93,13 +93,13 @@ export default function NavBar() {
                             {isOpen && (
                                 <motion.div
                                     initial={{ width: 0, height: 0, scale: 0 }}
-                                    animate={{ width: width - 200, height: 320, scale: 1 }}
+                                    animate={{ width: Width<=375?Width-85:Width - 200, height: 320, scale: 1 }}
                                     exit={{ width: 0, height: 0, scale: 0 }}
                                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                                     className={style.menuBar}>
                                     <GlassSurface
                                         key="glass-nav"
-                                        width={width - 200}
+                                        width={Width<=375?Width-85:Width - 200}
                                         height={320}
                                         borderRadius={30}
                                         displace={5}
@@ -135,7 +135,7 @@ export default function NavBar() {
                         <div style={{ pointerEvents: "auto" }}>
                             <div className="flex gap-2">
                                 <GlassSurface
-                                    width={width > 450 ? 480 : (width - 100)}
+                                    width={Width > 450 ? 480 : (Width - 100)}
                                     height={50}
                                     borderRadius={24}
                                     displace={3}
