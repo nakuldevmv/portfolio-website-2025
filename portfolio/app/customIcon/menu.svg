@@ -1,37 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg width="800px" height="800px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Bento-Menu</title>
-    <g id="Bento-Menu" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Container" x="0" y="0" width="24" height="24">
-
-</rect>
-        <rect id="shape-1" fill="currentColor" x="16" y="4" width="4" height="4" rx="1">
-
-</rect>
-        <rect id="shape-2" fill="currentColor" x="10" y="4" width="4" height="4" rx="1">
-
-</rect>
-        <rect id="shape-3" fill="currentColor" x="16" y="10" width="4" height="4" rx="1">
-
-</rect>
-        <rect id="shape-4" fill="currentColor" x="10" y="10" width="4" height="4" rx="1">
-
-</rect>
-        <rect id="shape-5" fill="currentColor" x="16" y="16" width="4" height="4" rx="1">
-
-</rect>
-        <rect id="shape-6" fill="currentColor" x="10" y="16" width="4" height="4" rx="1">
-
-</rect>
-        <rect id="shape-7" fill="currentColor" x="4" y="4" width="4" height="4" rx="1">
-
-</rect>
-        <rect id="shape-8" fill="currentColor" x="4" y="10" width="4" height="4" rx="1">
-
-</rect>
-        <rect id="shape-9" fill="currentColor" x="4" y="16" width="4" height="4" rx="1">
-
-</rect>
-    </g>
+<svg  viewBox="0 0 106 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="32" height="32" rx="16" fill="currentColor"/>
+<rect y="40" width="32" height="26" rx="10" fill="currentColor"/>
+<rect y="74" width="32" height="32" rx="16" fill="currentColor"/>
+<rect x="40" width="26" height="32" rx="10" fill="currentColor"/>
+<rect x="37" y="37" width="32" height="32" rx="16" fill="currentColor"/>
+<rect x="40" y="74" width="26" height="32" rx="10" fill="currentColor"/>
+<rect x="74" width="32" height="32" rx="16" fill="currentColor"/>
+<rect x="74" y="40" width="32" height="26" rx="10" fill="currentColor"/>
+<rect x="74" y="74" width="32" height="32" rx="16" fill="currentColor"/>
 </svg>

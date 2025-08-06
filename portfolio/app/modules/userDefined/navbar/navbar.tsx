@@ -5,12 +5,16 @@ import style from "./navbar.module.css"
 import useWindowWidth from "../../helperFunction/getwidth/getWidth"
 import AnimatedContent from "@/components/Animations/AnimatedContent/AnimatedContent";
 import { smoothScrollTo } from "../../helperFunction/smoothScroll/butterSnap";
-import { MenuIcon } from "@/app/customIcon"
+import { CloseIcon, MenuIcon } from "@/app/customIcon"
 import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isRotate, setIsRotate] = useState(false);
+    function RotateBtn() {
+        setIsRotate(!isRotate);
+    }
     const width = useWindowWidth();
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
         e.preventDefault()
@@ -50,7 +54,15 @@ export default function NavBar() {
                                 borderRadius={24}
                                 displace={3}
                             >
-                                <ToggleTheme />
+                                <motion.div
+                                    onClick={RotateBtn}
+                                    animate={{ rotate: isRotate ? 180 : 0 }}
+                                    transition={{ duration: 0.4 }}
+                                >
+
+                                    <ToggleTheme />
+
+                                </motion.div>
 
                             </GlassSurface>
                         </div>
@@ -61,16 +73,28 @@ export default function NavBar() {
                                 borderRadius={24}
                                 displace={3}
                             >
-                                <MenuIcon />
+                                <motion.div
+                                    animate={{ rotate: isOpen ? 180 : 0 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    {isOpen ? (
+                                        <CloseIcon width={20} height={20} />
+                                    ) : (
+                                        <MenuIcon width={20} height={20} />
+                                    )}
+
+
+                                </motion.div>
+
 
                             </GlassSurface>
                         </div>
                         <AnimatePresence>
                             {isOpen && (
                                 <motion.div
-                                    initial={{  width: 0,height:0,scale:0 }}
-                                    animate={{  width: width - 200,height:300,scale:1 }}
-                                    exit={{  width: 0,height:0,scale:0 }}
+                                    initial={{ width: 0, height: 0, scale: 0 }}
+                                    animate={{ width: width - 200, height: 300, scale: 1 }}
+                                    exit={{ width: 0, height: 0, scale: 0 }}
                                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                                     className={style.menuBar}>
                                     <GlassSurface
@@ -133,7 +157,15 @@ export default function NavBar() {
                                     borderRadius={24}
                                     displace={3}
                                 >
-                                    <div className={style.darkLight}><ToggleTheme /></div>
+                                    <motion.div
+                                        onClick={RotateBtn}
+                                        animate={{ rotate: isRotate ? 180 : 0 }}
+                                        transition={{ duration: 0.4 }}
+                                    >
+
+                                        <ToggleTheme />
+
+                                    </motion.div>
 
                                 </GlassSurface>
                             </div>
@@ -141,6 +173,7 @@ export default function NavBar() {
                     </AnimatedContent>
                 </div>
             )}
+
 
         </>
     )
