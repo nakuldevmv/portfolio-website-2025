@@ -4,7 +4,7 @@ import { projects } from './data';
 import Card from './Card/card';
 import { useScroll } from 'framer-motion';
 import { useEffect, useRef } from 'react';
-import Lenis from '@studio-freight/lenis'
+import Lenis from 'lenis'
 
 export default function Projects() {
   const container = useRef(null);

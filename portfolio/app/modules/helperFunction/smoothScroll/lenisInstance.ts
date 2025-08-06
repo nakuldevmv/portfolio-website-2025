@@ -1,5 +1,5 @@
 // lib/lenisInstance.ts
-import Lenis from '@studio-freight/lenis'
+import Lenis from 'lenis'
 
 let lenis: Lenis | null = null
 
