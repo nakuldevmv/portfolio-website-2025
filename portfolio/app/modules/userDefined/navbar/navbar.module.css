@@ -20,6 +20,7 @@
 
 .button {
     /* color: var(--text-muted); */
+    display: flex;
     font-size: 1rem;
     font-weight: bolder;
     padding: 0.2rem 0.8rem;
@@ -33,22 +34,25 @@
 
 
 }
-
+.button:hover .circleAnimate {
+    rotate: 225deg;
+    transition: all 0.5s ease-in-out;
+}
 
 .button:hover {
-    color: #808080;
+    /* color: #808080; */
     font-weight: bolder;
     transform-box: fill-box;
     transform-origin: center;
     transform: scale(1.2);
-    box-shadow: var(--navBtn-shadow);
+    /* box-shadow: var(--navBtn-shadow); */
     transition: all 0.3s ease-in-out;
 }
 
 .button:active {
-    background-color: hsla(0, 0%, 50%, 0.5);
-    transform: scale(0.5);
-    transition: all 0.3s ease-in-out;
+    background-color: hsla(0, 0%, 43%, 0.5);
+    transform: scale(0.8);
+    transition: all 0.1s ease-in-out;
 }
 
 .mobileNav {
@@ -111,9 +115,11 @@
 }
 
 .buttonMob:hover .circleAnimate {
-    rotate: 405deg;
+   rotate: 225deg;
+;
     transition: all 0.5s ease-in-out;
 }
+
 
 .buttonMob {
     /* background-color: blueviolet; */
