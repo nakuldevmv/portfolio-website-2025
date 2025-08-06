@@ -108,8 +108,8 @@ export default function NavBar() {
                                         <nav className={style.navbarMob}>
                                             <a href="#home" className={style.buttonMob} onClick={(e) => handleClick(e, '#home')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;Home</button></a>
                                             <a href="#about" className={style.buttonMob} onClick={(e) => handleClick(e, '#about')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;About</button></a>
-                                            <a href="#skill" className={style.buttonMob} onClick={(e) => handleClick(e, '#skill')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;Skills</button></a>
                                             <a href="#project" className={style.buttonMob} onClick={(e) => handleClick(e, '#project')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;Project</button></a>
+                                            <a href="#skill" className={style.buttonMob} onClick={(e) => handleClick(e, '#blogs')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;Blogs</button></a>
                                         </nav>
                                     </GlassSurface>
                                 </motion.div>
@@ -134,7 +134,7 @@ export default function NavBar() {
                         <div style={{ pointerEvents: "auto" }}>
                             <div className="flex gap-2">
                                 <GlassSurface
-                                    width={width > 450 ? 330 : (width - 100)}
+                                    width={width > 450 ? 430 : (width - 100)}
                                     height={50}
                                     borderRadius={24}
                                     displace={3}
@@ -145,8 +145,9 @@ export default function NavBar() {
 
                                         <a href="#home" className={style.button} onClick={(e) => handleClick(e, '#home')}>Home</a>
                                         <a href="#about" className={style.button} onClick={(e) => handleClick(e, '#about')}>About</a>
-                                        <a href="#skill" className={style.button} onClick={(e) => handleClick(e, '#skill')}>Skills</a>
                                         <a href="#project" className={style.button} onClick={(e) => handleClick(e, '#project')}>Project</a>
+                                        <a href="#blogs" className={style.button} onClick={(e) => handleClick(e, '#blogs')}>Blogs</a>
+                                        <a href="#contact" className={style.button} onClick={(e) => handleClick(e, '#contact')}>Contact</a>
 
                                     </nav>
 
