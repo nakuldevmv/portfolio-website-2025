@@ -1,23 +1,15 @@
 
-// import { useTheme } from "next-themes";
-// import style from "./toggleTheme.module.css"
-import ThemeToggleButton from "@/components/ui/theme-toggle-button";
+import { MoonIcon, SunIcon } from "@/app/customIcon";
+import { useTheme } from "next-themes";
+import style from "./toggleTheme.module.css"
 
 export default function ToggleTheme() {
-    // const { theme, setTheme } = useTheme();
+    const { theme, setTheme } = useTheme();
 
     return (
-        <>
-        <ThemeToggleButton start="top-right"/>
-
-
-        {/* <button className={style.btn} onClick={() => { setTheme(theme == "light" ? "dark" : "light") }}>
-            {theme == "light" ? "Dark Mode" : "Light Mode"}
-        </button> */}
-        
-        </>
-
-        
+        <button onClick={() => { setTheme(theme == "light" ? "dark" : "light") }} className={style.btn}>
+            {theme == "light" ? <MoonIcon height="1.2rem" width="1.2rem"/> : <SunIcon height="1.2rem" width="1.2rem"/>}
+        </button>
     )
 
 }
