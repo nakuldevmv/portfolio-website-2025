@@ -56,8 +56,8 @@ export default function NavBar() {
                             >
                                 <motion.div
                                     onClick={RotateBtn}
-                                    animate={{ rotate: isRotate ? 180 : 0 }}
-                                    transition={{ duration: 0.4 }}
+                                    animate={{ rotate: isRotate ? -180 : 0 }}
+                                    transition={{ duration: 0.8 , ease:"easeInOut"}}
                                 >
 
                                     <ToggleTheme />
@@ -161,8 +161,8 @@ export default function NavBar() {
                                 >
                                     <motion.div
                                         onClick={RotateBtn}
-                                        animate={{ rotate: isRotate ? 180 : 0 }}
-                                        transition={{ duration: 0.4 }}
+                                        animate={{ rotate: isRotate ? -180 : 0 }}
+                                        transition={{ duration: 0.8 , ease:"easeInOut"}}
                                     >
 
                                         <ToggleTheme />
