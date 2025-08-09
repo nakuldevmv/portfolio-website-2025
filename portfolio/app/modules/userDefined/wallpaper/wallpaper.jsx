@@ -1,33 +1,27 @@
+// import Beams from "@/components/Backgrounds/Beams/Beams";
+import Threads from "@/components/Backgrounds/Threads/Threads";
+import useWindowWidth from '../../helperFunction/getwidth/getWidth';
+
+
 export default function Wallpaper() {
+    let width = useWindowWidth();
+    if (width === null) return null;
     return (
         <>
-            {/* <div className="fixed inset-0 -z-10">
-            <LightRays
-              raysOrigin="top-center"
-              raysColor="#00ffff"
-              raysSpeed={1.5}
-              lightSpread={0.8}
-              rayLength={1.2}
-              followMouse={true}
-              mouseInfluence={0.1}
-              noiseAmount={0.1}
-              distortion={0.05}
-            className="custom-rays"
+            <Threads
+                amplitude={1.5}
+                distance={0.2}
+                enableMouseInteraction={width > 768 ? true : false}
             />
-            <DarkVeil />
-          </div> */}
-            {/* <div style={{ position: 'relative', height: '500px', overflow: 'hidden' }}>
-                <RippleGrid
-                    enableRainbow={false}
-                    gridColor="#ffffff"
-                    rippleIntensity={0.05}
-                    gridSize={10}
-                    gridThickness={15}
-                    mouseInteraction={true}
-                    mouseInteractionRadius={1.2}
-                    opacity={0.8}
-                />
-            </div> */}
+
+            {/* <Aurora
+                colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+                blend={0.5}
+                amplitude={0.5}
+                speed={0.5}
+                
+            /> */}
+            
         </>
     );
 }
