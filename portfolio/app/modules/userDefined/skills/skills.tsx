@@ -1,412 +1,137 @@
 'use client';
-import TiltedCard from "@/components/Components/TiltedCard/TiltedCard";
+import {
+    CppIcon,
+    JavaScriptIcon,
+    TypeScriptIcon,
+    HtmlIcon,
+    CssIcon,
+    ReactJsIcon,
+    NextJsIcon,
+    NodeJsIcon,
+    ExpressJsIcon,
+    MySqlIcon,
+    MongoDbIcon,
+    GitIcon,
+    GithubIcon,
+    FigmaIcon,
+    VercelIcon,
+    RenderIcon,
+    FlutterIcon,
+    ArrowLine
+} from "@/app/customIcon";// import { MoonIcon } from "@/app/customIcon";
 import style from "./skills.module.css"
+import Marquee from "react-fast-marquee"
+
+// import Tooltip from "../toolTip/toolTip"
 export default function Skills() {
+
     return (
+        <>
 
-        <div className={style.skillBox}>
-            <div className={style.mainHeading}>
-                <h1>Tech I Use</h1>
-                <p> Languages and tools I’ve worked with across personal projects, team builds, and practical development.</p>
+
+            <div className={style.mq1}>
+                <Marquee
+                    speed={60}
+                    direction="left"
+                    pauseOnHover={true}
+                    autoFill={true}
+                    gradient={false}
+                    loop={0}
+                    delay={0}
+                >
+
+                    <div className={style.skilldata}>
+                        <div className={style.icon}><CppIcon height="2rem" /></div>
+                        <div className={style.text}>C++</div>
+                    </div>
+
+                    <div className={style.skilldata}>
+                        <div className={style.icon}><JavaScriptIcon height="2rem" /></div>
+                        <div className={style.text}>JavaScript</div>
+                    </div>
+
+                    <div className={style.skilldata}>
+                        <div className={style.icon}><TypeScriptIcon height="2rem" /></div>
+                        <div className={style.text}>TypeScript</div>
+                    </div>
+
+                    <div className={style.skilldata}>
+                        <div className={style.icon}><HtmlIcon height="2rem" /></div>
+                        <div className={style.text}>HTML</div>
+                    </div>
+
+                    <div className={style.skilldata}>
+                        <div className={style.icon}><CssIcon height="2rem" /></div>
+                        <div className={style.text}>CSS</div>
+                    </div>
+
+                    <div className={style.skilldata}>
+                        <div className={style.icon}><ReactJsIcon height="2rem" /></div>
+                        <div className={style.text}>ReactJS</div>
+                    </div>
+
+                    <div className={style.skilldata}>
+                        <div className={style.icon}><NextJsIcon height="2rem" /></div>
+                        <div className={style.text}>Next.js</div>
+                    </div>
+
+                    <div className={style.skilldata}>
+                        <div className={style.icon}><NodeJsIcon height="2rem" /></div>
+                        <div className={style.text}>Node.JS</div>
+                    </div>
+
+                    <div className={style.skilldata}>
+                        <div className={style.icon}><ExpressJsIcon height="2rem" className="text-black dark:text-white" /></div>
+                        <div className={style.text}>Express.js</div>
+                    </div>
+
+                    <div className={style.skilldata}>
+                        <div className={style.icon}><MySqlIcon height="2rem" /></div>
+                        <div className={style.text}>MySQL</div>
+                    </div>
+
+                    <div className={style.skilldata}>
+                        <div className={style.icon}><MongoDbIcon height="2rem" /></div>
+                        <div className={style.text}>MongoDB</div>
+                    </div>
+
+                    <div className={style.skilldata}>
+                        <div className={style.icon}><GitIcon height="2rem" /></div>
+                        <div className={style.text}>Git</div>
+                    </div>
+
+                    <div className={style.skilldata}>
+                        <div className={style.icon}><GithubIcon height="2rem" className="text-black dark:text-white" /></div>
+                        <div className={style.text}>Github</div>
+                    </div>
+
+                    <div className={style.skilldata}>
+                        <div className={style.icon}><FigmaIcon height="2rem" /></div>
+                        <div className={style.text}>Figma</div>
+                    </div>
+
+                    <div className={style.skilldata}>
+                        <div className={style.icon}><VercelIcon height="2rem" className="text-black dark:text-white" /></div>
+                        <div className={style.text}>Vercel</div>
+                    </div>
+
+                    <div className={style.skilldata}>
+                        <div className={style.icon}><RenderIcon height="2rem" className="text-black dark:text-white" /></div>
+                        <div className={style.text}>Render</div>
+                    </div>
+
+                    <div className={style.skilldata}>
+                        <div className={style.icon}><FlutterIcon height="2rem" /></div>
+                        <div className={style.text}>Flutter</div>
+                    </div>
+                </Marquee>
             </div>
-            <div className={style.skillCards}>
-                {/* c++ */}
-                <a href="https://isocpp.org/" target="_blank">
-                    <TiltedCard
+            <div className={style.techStack}>
 
-                        imageSrc="/skill_icons/cpp.png"
-                        altText="C++"
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                C++
-                            </p>
-                        }
-                    />
-                </a>
-                {/* python */}
-                <a href="https://www.python.org/" target="_blank">
-                    <TiltedCard
-
-                        imageSrc="/skill_icons/python.png"
-                        altText="Python"
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                Python
-                            </p>
-                        }
-                    />
-                </a>
-                {/* javascript */}
-                <a href="https://www.javascript.com/" target="_blank">
-                    <TiltedCard
-
-                        imageSrc="/skill_icons/javascript.png"
-                        altText="JavaScript"
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                JavaScript
-                            </p>
-                        }
-                    />
-                </a>
-                {/* typescript */}
-                <a href="https://www.typescriptlang.org/" target="_blank">
-                    <TiltedCard
-
-                        imageSrc="/skill_icons/typescript.png"
-                        altText="TypeScript"
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                TypeScript
-                            </p>
-                        }
-                    />
-                </a>
-                {/* html */}
-                <a href="https://html.com/" target="_blank">
-                    <TiltedCard
-
-                        imageSrc="/skill_icons/html5.png"
-                        altText="html"
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                HTML
-                            </p>
-                        }
-                    />
-                </a>
-                {/* css */}
-                <a href="https://devdocs.io/css/" target="_blank">
-                    <TiltedCard
-
-                        imageSrc="/skill_icons/css3.png"
-                        altText="css"
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                CSS
-                            </p>
-                        }
-                    />
-                </a>
-                {/* ReactJS  */}
-                <a href="https://react.dev/" target="_blank">
-                    <TiltedCard
-
-                        imageSrc="/skill_icons/reactjs.png"
-                        altText="ReactJS"
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                ReactJS
-                            </p>
-                        }
-                    />
-                </a>
-                {/* nextjs */}
-                <a href="https://nextjs.org" target="_blank">
-                    <TiltedCard
-
-                        imageSrc="/skill_icons/nextjs.png"
-                        altText="NextJS"
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                Next.js
-                            </p>
-                        }
-                    />
-                </a>
-                {/* Node.js */}
-                <a href="https://nodejs.org/en" target="_blank">
-                    <TiltedCard
-
-                        imageSrc="/skill_icons/nodejs.png"
-                        altText="NodeJS "
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                Node.JS
-                            </p>
-                        }
-                    />
-                </a>
-                {/* expressjs  */}
-                <a href="https://expressjs.com/" target="_blank">
-                    <TiltedCard
-
-                        imageSrc="/skill_icons/expressjs-dark.png"
-                        altText="Express.js"
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                Express.js
-                            </p>
-                        }
-                    />
-                </a>
-                {/* mysql */}
-                <a href="https://dev.mysql.com/" target="_blank">
-                    <TiltedCard
-
-                        imageSrc="/skill_icons/mysql.png"
-                        altText="MySQL  "
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                MySQL
-                            </p>
-                        }
-                    />
-                </a>
-                {/* mongodb */}
-                <a href="https://www.mongodb.com/docs/" target="_blank">
-                    <TiltedCard
-
-                        imageSrc="/skill_icons/mongodb.png"
-                        altText="mongodb "
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                MongoDB
-                            </p>
-                        }
-                    />
-                </a>
-                {/* Git  */}
-                <a href="https://git-scm.com/doc" target="_blank">
-                    <TiltedCard
-
-                        imageSrc="/skill_icons/git.png"
-                        altText="git "
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                Git
-                            </p>
-                        }
-                    />
-                </a>
-                {/* Github */}
-                <a href="https://docs.github.com/en" target="_blank">
-                    <TiltedCard
-
-                        imageSrc="/skill_icons/github-dark.png"
-                        altText="github "
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                Github
-                            </p>
-                        }
-                    />
-                </a>
-                {/* Figma  */}
-                <a href="https://help.figma.com/hc/en-us" target="_blank">
-                    <TiltedCard
-
-                        imageSrc="/skill_icons/figma.png"
-                        altText="Figma  "
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                Figma
-                            </p>
-                        }
-                    />
-                </a>
-                {/* Vercel  */}
-                <a href="https://vercel.com/docs" target="_blank">
-                    <TiltedCard
-
-                        imageSrc="/skill_icons/vercel-dark.png"
-                        altText="Vercel"
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                Vercel
-                            </p>
-                        }
-                    />
-                </a>
-                {/* Render */}
-                <a href="https://render.com/docs" target="_blank">
-                    <TiltedCard
-
-                        imageSrc="/skill_icons/render.png"
-                        altText="Render"
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                Render
-                            </p>
-                        }
-                    />
-                </a>
-                {/* Flutter  */}
-                <a href="https://docs.flutter.dev/" target="_blank">
-                    <TiltedCard
-
-                        imageSrc="/skill_icons/flutter.png"
-                        altText="Flutter"
-                        containerHeight="110px"
-                        containerWidth="110px"
-                        imageHeight="110px"
-                        imageWidth="110px"
-                        rotateAmplitude={18}
-                        scaleOnHover={1.15}
-                        showMobileWarning={false}
-                        showTooltip={false}
-                        displayOverlayContent={true}
-                        overlayContent={
-                            <p className={style.skillText}>
-                                Flutter
-                            </p>
-                        }
-                    />
-                </a>
+                <h1>My Dev Toolkit</h1> <ArrowLine  width="5rem"  />
             </div>
-        </div>
+        </>
+
+
     );
 }
