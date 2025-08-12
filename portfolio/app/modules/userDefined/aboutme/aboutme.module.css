@@ -1,6 +1,10 @@
 @reference "tailwindcss";
 
 .aboutMeBox {
+    display: flex;
+    justify-content: space-between;
+    /* left item to left, right item to right */
+    align-items: flex-start;
     /* background-color: rgb(102, 73, 37); */
     padding-top: 30px;
     width: 95%;
