@@ -110,7 +110,7 @@ export default function NavBar() {
                                             <a href="#about" className={style.buttonMob} onClick={(e) => handleClick(e, '#about')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;About</button></a>
                                             <a href="#project" className={style.buttonMob} onClick={(e) => handleClick(e, '#project')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;Project</button></a>
                                             <a href="#blogs" className={style.buttonMob} onClick={(e) => handleClick(e, '#blogs')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;Blogs</button></a>
-                                            <a href="#contact" className={style.buttonMob} onClick={(e) => handleClick(e, '#blogs')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;Contact</button></a>
+                                            <a href="#contact" className={style.buttonMob} onClick={(e) => handleClick(e, '#contact')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;Contact</button></a>
                                         </nav>
                                     </GlassSurface>
                                 </motion.div>

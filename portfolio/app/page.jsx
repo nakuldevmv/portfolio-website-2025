@@ -7,6 +7,7 @@ import NavBar from "./modules/userDefined/navbar/navbar";
 import Landing from "./modules/userDefined/landing/landing";
 import AboutMe from "./modules/userDefined/aboutme/aboutme";
 import Tooltip from "./modules/userDefined/toolTip/toolTip";
+import ContactMe from "./modules/userDefined/contactme/contactMe";
 
 export default function Home() {
   const [showRest, setShowRest] = useState(false);
@@ -35,6 +36,7 @@ export default function Home() {
         <div id="skill"><Skills /></div>
         {/* </div> */}
         <div id="project"><Projects /></div>
+        <div id="contact"><ContactMe/></div>
       </div>
       
     </>
