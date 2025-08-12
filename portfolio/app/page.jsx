@@ -35,7 +35,6 @@ export default function Home() {
         <div id="skill"><Skills /></div>
         {/* </div> */}
         <div id="project"><Projects /></div>
-        <div id="project"><Projects /></div>
       </div>
       
     </>

@@ -16,37 +16,39 @@
     font-size: 32px;
     font-weight: bolder;
     color: var(--text);
-    line-height: 0px;
+    line-height: 32px;
 }
 
 .title2 {
     font-size: 32px;
+    line-height: 16px;
     font-weight: bolder;
     color: var(--text-muted);
 }
 
 .para {
-    font-size: 18px;
-    max-width: 300px;
+    /* background-color: antiquewhite; */
+    font-size: 16px;
+    max-width: 280px;
     min-height: 5px;
     color: var(--text-muted);
-    margin-top: 20px;
-    line-height: 20px;
+    margin-top: 0.75rem;
+    line-height: 1.5rem;
 
 }
 
 .sign {
     /* background-color: rgb(126, 89, 40); */
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
     height: 2.6875rem;
-    width: 62px;
+    width: 3.875rem;
 }
 
 .copyright {
-
+    font-size: 1rem;
     font-weight: bold;
     color: color-mix(in srgb, var(--text-muted) 50%, black);
-    line-height: 20px;
+    line-height: 1.5rem;
 
 }
