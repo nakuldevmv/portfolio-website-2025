@@ -109,6 +109,7 @@
 }
 
 .circleAnimate {
+
     color: var(--text);
     rotate: 0deg;
     transition: all 0.5s ease-in-out;

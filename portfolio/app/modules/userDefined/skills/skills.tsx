@@ -26,7 +26,7 @@ import Marquee from "react-fast-marquee"
 export default function Skills() {
 
     return (
-        <>
+        <div className={style.skills}>
 
 
             <div className={style.mq1}>
@@ -125,12 +125,14 @@ export default function Skills() {
                         <div className={style.text}>Flutter</div>
                     </div>
                 </Marquee>
+                <div className={style.maskLeft}></div>
+                <div className={style.maskRight}></div>
             </div>
             <div className={style.techStack}>
 
-                <h1>My Dev Toolkit</h1> <ArrowLine  width="5rem"  />
+                <h1>My Dev Stack</h1> <ArrowLine  width="5.5rem"s  />
             </div>
-        </>
+        </div>
 
 
     );

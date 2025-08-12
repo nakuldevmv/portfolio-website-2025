@@ -5,6 +5,8 @@ import Card from './Card/card';
 import { useScroll } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import Lenis from 'lenis'
+import Button from '../buttons/projectbtn/button2';
+
 
 export default function Projects() {
   const container = useRef(null);
@@ -13,7 +15,7 @@ export default function Projects() {
     offset: ['start start', 'end end']
   })
 
-  useEffect( () => {
+  useEffect(() => {
     const lenis = new Lenis()
 
     function raf(time) {
@@ -26,19 +28,24 @@ export default function Projects() {
 
   return (
     <>
-    
-    <main ref={container} className={styles.main}>
-      <div className={styles.projectHead}>
 
-      <h1>Projects</h1>
-    </div>
-      {
-        projects.map( (project, i) => {
-          const targetScale = 1 - ( (projects.length - i) * 0.05);
-          return <Card key={`p_${i}`} i={i} {...project} progress={scrollYProgress} range={[i * .25, 1]} targetScale={targetScale}/>
-        })
-      }
-    </main>
+      <main ref={container} className={styles.main}>
+        <div className={styles.projectHead}>
+
+          <h1>Projects</h1>
+        </div>
+        {
+          projects.map((project, i) => {
+            const targetScale = 1 - ((projects.length - i) * 0.05);
+            return <Card key={`p_${i}`} i={i} {...project} progress={scrollYProgress} range={[i * .25, 1]} targetScale={targetScale} />
+          })
+        }
+        <div className={styles.moreProject}>
+         
+
+          <Button label='More on Github' onClick={() => { window.open("https://github.com/nakuldevmv?tab=repositories", '_blank') }} />
+        </div>
+      </main>
     </>
   )
 }

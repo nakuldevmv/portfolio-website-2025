@@ -95,7 +95,6 @@ const Card = ({ i, title, description, video, ldesc, marquee1, marquee2, num, li
               </div>
               {windowWidth > 760 && (
                 <div className={styles.box2}>
-
                   <Marquee
                     className={styles.marquee}
                     speed={60}

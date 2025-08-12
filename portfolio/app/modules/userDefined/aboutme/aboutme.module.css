@@ -2,12 +2,12 @@
 
 .aboutMeBox {
     /* background-color: rgb(102, 73, 37); */
-    padding: 30px;
-    width: 80%;
+    padding-top: 30px;
+    width: 95%;
+    max-width: 1000px;
     min-height: 100vh;
     min-height: 100svh;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 
 
 }

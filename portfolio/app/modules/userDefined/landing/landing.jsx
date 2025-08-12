@@ -11,7 +11,7 @@ export default function Landing() {
         if (width === null) return null;
     return (
         <div className={style.landing}>
-           <Wallpaper/>
+           {/* <Wallpaper/> */}
                 <div className={style.text}>
                     <h1>
                         In a world of digital noise, <br />
