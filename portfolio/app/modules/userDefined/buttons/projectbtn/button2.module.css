@@ -13,7 +13,7 @@
     cursor: pointer;
     transition: border 1s ease-in-out;
     box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--moreProjectBtn) 12%, transparent);
-    animation: heartbeatGlow 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation: heartbeatGlow 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 @keyframes heartbeatGlow {
