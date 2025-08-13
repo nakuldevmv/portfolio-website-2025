@@ -1,15 +1,17 @@
 .contact {
   /* background-color: rgb(22, 36, 37); */
-
   width: 95%;
   max-width: 1000px;
   margin: 0 auto;
+  padding-top: 250px;
   padding-bottom: 300px;
 }
 
 .head {
+  /* background-color: aqua; */
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  align-items: end;
   justify-content: space-between;
 }
 
@@ -44,7 +46,7 @@
 
 
 .line svg path {
-  stroke: var(--text-muted);
+  stroke: var(--text);
   stroke-width: 2px;
   fill: none;
 }
@@ -62,4 +64,13 @@
 .line .box:hover {
   height: 500px;
   top: -250px;
+}
+
+@media (max-width: 760px) {
+  .head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+
+  }
 }
