@@ -116,7 +116,7 @@ export default function ContactMe() {
                     <p>Got a project in mind?</p>
                     <h1>Let's Talk</h1>
                 </div>
-                <div className="flex gap-10">
+                <div className={style.socialFlex}>
 
                 <div className="flex flex-col">
                     <ContactBtn label='Github' onClick={() => { window.open("https://github.com/nakuldevmv", '_blank') }} />

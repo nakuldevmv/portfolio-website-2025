@@ -4,7 +4,7 @@
   max-width: 1000px;
   margin: 0 auto;
   padding-top: 250px;
-  padding-bottom: 300px;
+  padding-bottom: 50px;
 }
 
 .head {
@@ -65,6 +65,12 @@
   height: 500px;
   top: -250px;
 }
+.socialFlex{
+  display: flex ;
+  justify-content: space-between;
+  /* background-color: aquamarine; */
+  width: 50%;
+}
 
 @media (max-width: 760px) {
   .head {
@@ -73,4 +79,7 @@
     gap: 10px;
 
   }
+  .socialFlex{
+  width: 100%;
+}
 }
