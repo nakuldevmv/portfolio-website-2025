@@ -37,11 +37,11 @@ export default function NavBar() {
                 <div className={style.mobileNav}>
                     <AnimatedContent
                         direction="horizontal"
-                        ease={"elastic.out(1, 0.3)"}
+                        ease={"power3.out"}
                         reverse={false}
                         animateOpacity={true}
                         distance={20}
-                        duration={3}
+                        duration={1}
                         delay={1}
                         initialOpacity={0}
                         threshold={0.1}
@@ -122,11 +122,11 @@ export default function NavBar() {
                 <div className={style.navContainer}>
                     <AnimatedContent
                         direction="vertical"
-                        ease={"elastic.out(1, 0.3)"}
+                        ease={"power3.out"}
                         reverse={true}
                         animateOpacity={true}
                         distance={20}
-                        duration={3}
+                        duration={1}
                         delay={1}
                         initialOpacity={0}
                         threshold={0.1}
