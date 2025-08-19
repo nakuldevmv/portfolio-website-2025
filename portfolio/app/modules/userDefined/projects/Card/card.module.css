@@ -6,11 +6,13 @@
   position: sticky;
   /* margin-top: -10px; */
   top: 10px;
+  /* background-color: aqua; */
 
 
 }
 
 .card {
+  
   color: black;
   display: flex;
   flex-direction: column;

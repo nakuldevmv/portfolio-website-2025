@@ -1,0 +1,149 @@
+.educationSection {
+    /* background-color: rgba(31, 17, 0, 0.34); */
+    margin: 0 auto;
+    margin-top: 150px;
+    max-width: 1000px;
+    width: 95%;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    line-height: 5rem;
+    font-weight: 800;
+    /* background-color: antiquewhite; */
+    margin-bottom: 100px;
+}
+
+.details {
+    /* background-color: rgb(0, 67, 45); */
+}
+
+.ed1 {
+    /* background-color: aliceblue; */
+    margin-bottom: 40px;
+}
+
+.duration {
+    line-height: 14.4px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.degree {
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 1.5rem;
+
+}
+
+.college {
+    line-height: 16px;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+}
+
+.cgpa {
+    line-height: 16px;
+    /* font-weight: 400; */
+    font-size: 1rem;
+}
+
+.cgpa span {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.timeline {
+    display: flex;
+    position: relative;
+}
+
+.line {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg,
+            rgb(25, 251, 25) 0%,
+            var(--text) 20%,
+            /* var(--background) 80%, */
+            var(--background) 100%);
+}
+
+.ed1 {
+    position: relative;
+    margin-left: 40px;
+    /* push content away from line */
+    margin-bottom: 40px;
+}
+
+.ed1::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    /* aligns with line */
+    top: 0px;
+    /* adjust to align with duration */
+    width: 14px;
+    height: 14px;
+    border-radius: 20%;
+    transform: rotate(45deg);
+    background: var(--text-muted);
+    /* border: 2px solid white; */
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    
+    background: var(--text-muted);
+}
+
+.ed1:first-child::before {
+    background-color: rgb(25, 251, 25);
+    animation: heartbeat 3s infinite ease-in-out;
+    
+    transform-origin: center;
+}
+
+@keyframes heartbeat {
+    0% {
+            border-radius: 60%;
+
+        transform: scale(1) rotate(0deg);
+        background-color: rgba(25, 251, 25, 1);
+        box-shadow: 0 0 0 0 rgba(25, 251, 25, 0.6);
+    }
+
+    40% {
+            border-radius: 10%;
+
+        transform: scale(1.15) rotate(90deg);
+        background-color: rgba(25, 251, 25, 1);
+        box-shadow: 0 0 10px 6px rgba(25, 251, 25, 0.4);
+    }
+
+    70% {
+            border-radius: 20%;
+
+        transform: scale(1.05) rotate(180deg);
+        box-shadow: 0 0 6px 3px rgba(25, 251, 25, 0.3);
+    }
+
+    100% {
+            border-radius: 60%;
+
+        transform: scale(1) rotate(270deg);
+        box-shadow: 0 0 0 0 rgba(25, 251, 25, 0);
+    }
+}
