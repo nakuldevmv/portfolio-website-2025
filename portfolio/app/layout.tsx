@@ -18,6 +18,14 @@ const degular = localFont({
 export const metadata: Metadata = {
   title: "Nakul Dev",
   description: "Hey, Nakul here!",
+  icons: {
+    icon: [
+      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/favicon.png",
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
