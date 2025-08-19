@@ -1,5 +1,4 @@
 .btn {
-
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -12,11 +11,61 @@
     border: 2px solid var(--moreProjectBtn);
     cursor: pointer;
     transition: border 1s ease-in-out;
+    -webkit-transition: border 1s ease-in-out;
+    -moz-transition: border 1s ease-in-out;
+    
     box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--moreProjectBtn) 12%, transparent);
+    
     animation: heartbeatGlow 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    -webkit-animation: heartbeatGlow 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    -moz-animation: heartbeatGlow 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 @keyframes heartbeatGlow {
+    0% {
+        box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--moreProjectBtn) 12%, transparent);
+    }
+
+    25% {
+        box-shadow: inset 0 0 7px 3px color-mix(in srgb, var(--moreProjectBtn) 50%, transparent);
+    }
+
+    50% {
+        box-shadow: inset 0 0 5px 1px color-mix(in srgb, var(--moreProjectBtn) 15%, transparent);
+    }
+
+    75% {
+        box-shadow: inset 0 0 7px 3px color-mix(in srgb, var(--moreProjectBtn) 40%, transparent);
+    }
+
+    100% {
+        box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--moreProjectBtn) 12%, transparent);
+    }
+}
+
+@-webkit-keyframes heartbeatGlow {
+    0% {
+        box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--moreProjectBtn) 12%, transparent);
+    }
+
+    25% {
+        box-shadow: inset 0 0 7px 3px color-mix(in srgb, var(--moreProjectBtn) 50%, transparent);
+    }
+
+    50% {
+        box-shadow: inset 0 0 5px 1px color-mix(in srgb, var(--moreProjectBtn) 15%, transparent);
+    }
+
+    75% {
+        box-shadow: inset 0 0 7px 3px color-mix(in srgb, var(--moreProjectBtn) 40%, transparent);
+    }
+
+    100% {
+        box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--moreProjectBtn) 12%, transparent);
+    }
+}
+
+@-moz-keyframes heartbeatGlow {
     0% {
         box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--moreProjectBtn) 12%, transparent);
     }
@@ -47,60 +96,93 @@
     z-index: 10;
     position: relative;
     color: var(--text);
-    /* add this if you want the text to be visible */
     font-weight: bold;
     transform: translateX(10px);
-
-    transition: all 0.5s ease-in-out;
+    -webkit-transform: translateX(10px);
+    -moz-transform: translateX(10px);
+    
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
 }
 
 .circle {
     opacity: 0;
     z-index: 0;
     position: absolute;
-    left: 8;
+    left: 8px; /* Fixed: was 'left: 8' without unit */
     height: 8px;
     width: 8px;
     background-color: var(--background);
     border-radius: 100%;
     margin: 5px;
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, background-color 1s ease-in-out;
+    
+    /* Add transform origin for better scaling */
+    transform-origin: center;
+    -webkit-transform-origin: center;
+    -moz-transform-origin: center;
+    
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 1s ease-in-out;
+    -webkit-transition: opacity 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out, background-color 1s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out, -moz-transform 0.3s ease-in-out, background-color 1s ease-in-out;
+    
+    /* Add will-change for better performance */
+    will-change: transform, opacity, background-color;
 }
-
 
 .btn:hover .circle {
     opacity: 1;
     background-color: var(--moreProjectBtn);
-
-
     transform: scale(60);
-    transition: opacity 0.1s ease-in-out, transform 0.5s ease-in-out, background-color 0.1s ease-in-out;
+    -webkit-transform: scale(60);
+    -moz-transform: scale(60);
+    
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    -webkit-transition: opacity 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    -moz-transition: opacity 0.3s ease-in-out, -moz-transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .btn:hover .txt {
-
     transform: translateX(-1px);
+    -webkit-transform: translateX(-1px);
+    -moz-transform: translateX(-1px);
+    
     color: var(--background);
     transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
 }
-
 
 .arrow {
     height: 1.3rem;
     opacity: 0;
-    transform: translate3d(-20px, 30px, 0px);
-    rotate: 12deg;
-    transition: all 0.5s ease-in-out;
+    
+    /* Combine transform and rotate into single transform property */
+    transform: translate3d(-20px, 30px, 0px) rotate(12deg);
+    -webkit-transform: translate3d(-20px, 30px, 0px) rotate(12deg);
+    -moz-transform: translate3d(-20px, 30px, 0px) rotate(12deg);
+    
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    
+    /* Add will-change for better performance */
+    will-change: transform, opacity;
 }
 
 .btn:hover .arrow {
-    transform: translate3d(0px, 0px, 0px);
-
+    /* Combine transform and rotate into single transform property */
+    transform: translate3d(0px, 0px, 0px) rotate(45deg);
+    -webkit-transform: translate3d(0px, 0px, 0px) rotate(45deg);
+    -moz-transform: translate3d(0px, 0px, 0px) rotate(45deg);
+    
     height: 1.3rem;
     line-height: 0rem;
     margin-left: 5px;
     padding: 0;
-    rotate: 45deg;
     opacity: 1;
-    transition: all 0.3s ease-in-out;
+    
+    transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
 }
