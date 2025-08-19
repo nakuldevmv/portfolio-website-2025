@@ -47,7 +47,7 @@ export const metadata: Metadata = {
         alt: "Preview of Nakul Dev Portfolio",
       },
     ],
-    locale: "en_US",
+    locale: "en",
     type: "website",
   },
   icons: {
