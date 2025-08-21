@@ -1,0 +1,27 @@
+.blogSection {
+    background-color: rgba(31, 17, 0, 0.34);
+    margin: 0 auto;
+    margin-top: 150px;
+    max-width: 1000px;
+    width: 95%;
+    
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    line-height: 3rem;
+    font-weight: 800;
+    margin-bottom: 50px;
+}
+.blogbanner{
+    display: flex;
+    
+}
+.blog{
+    background-color: red;
+    height: 300px;
+    width: 50%;
+}

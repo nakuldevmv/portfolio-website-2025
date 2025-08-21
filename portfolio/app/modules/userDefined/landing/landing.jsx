@@ -15,7 +15,7 @@ export default function Landing() {
                     <h1>
                         {/* In a world of digital noise, <br />
                         clarity is a story worth telling. */}
-                        I suppose, in the end,<br /> the whole of life becomes <br /> an act of letting go. <br /> But what always hurts the most is <br />not taking a moment to say goodbye.
+                        Work in progress <br /> (In search of good design)
                     </h1>
                 </div>
         </div>

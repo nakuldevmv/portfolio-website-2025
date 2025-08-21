@@ -37,10 +37,11 @@
 .button:hover .circleAnimate {
     rotate: 225deg;
     transition: all 0.5s ease-in-out;
+    color: var(--accent);
 }
 
 .button:hover {
-    /* color: #808080; */
+    color: var(--accent);
     font-weight: bolder;
     transform-box: fill-box;
     transform-origin: center;
@@ -116,6 +117,8 @@
 }
 
 .buttonMob:hover .circleAnimate {
+        color: var(--accent);
+
    rotate: 225deg;
 ;
     transition: all 0.5s ease-in-out;
@@ -137,6 +140,8 @@
 
 .buttonMob:hover {
     /* color: #808080; */
+        color: var(--accent);
+
     font-weight: bolder;
     transform: scale(1.15);
     font-weight: bold;

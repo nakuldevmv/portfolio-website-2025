@@ -106,7 +106,7 @@ export default function NavBar() {
 
                                     >
                                         <nav className={style.navbarMob}>
-                                            <a href="#home" className={style.buttonMob} onClick={(e) => handleClick(e, '#home')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;Home</button></a>
+                                            {/* <a href="#home" className={style.buttonMob} onClick={(e) => handleClick(e, '#home')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;Home</button></a> */}
                                             <a href="#about" className={style.buttonMob} onClick={(e) => handleClick(e, '#about')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;About</button></a>
                                             <a href="#project" className={style.buttonMob} onClick={(e) => handleClick(e, '#project')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;Project</button></a>
                                             <a href="#blogs" className={style.buttonMob} onClick={(e) => handleClick(e, '#blogs')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;Blogs</button></a>
@@ -144,7 +144,7 @@ export default function NavBar() {
 
                                     <nav className={style.navbar}>
 
-                                        <a href="#home" className={style.button} onClick={(e) => handleClick(e, '#home')}><div className={style.circleAnimate}>✦︎</div> &nbsp;Home</a>
+                                        {/* <a href="#home" className={style.button} onClick={(e) => handleClick(e, '#home')}><div className={style.circleAnimate}>✦︎</div> &nbsp;Home</a> */}
                                         <a href="#about" className={style.button} onClick={(e) => handleClick(e, '#about')}><div className={style.circleAnimate}>✦︎</div> &nbsp;About</a>
                                         <a href="#project" className={style.button} onClick={(e) => handleClick(e, '#project')}><div className={style.circleAnimate}>✦︎</div> &nbsp;Project</a>
                                         <a href="#blogs" className={style.button} onClick={(e) => handleClick(e, '#blogs')}><div className={style.circleAnimate}>✦︎</div> &nbsp;Blogs</a>
