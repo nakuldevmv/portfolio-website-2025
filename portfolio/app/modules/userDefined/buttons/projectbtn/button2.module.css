@@ -132,6 +132,7 @@
 
 .btn:hover .circle {
     opacity: 1;
+    /* border: 2px solid var(--text); */
     background-color: var(--moreProjectBtn);
     transform: scale(60);
     -webkit-transform: scale(60);

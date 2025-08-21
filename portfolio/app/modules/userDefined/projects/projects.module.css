@@ -1,20 +1,41 @@
-.main{
+.main {
   /* background-color: aliceblue; */
   position: relative;
   /* margin-top: 50vh; */
 }
-.projectHead{
- display: flex;
+
+.projectHead {
+  display: flex;
   justify-content: center;
+  /* height:3rem; */
+  /* background-color: aliceblue; */
   align-items: center;
-  font-size: 5rem;
+  font-size: 3.5rem;
+  line-height: 3rem;
+  position: relative;
+  /* background-color: aquamarine; */
+  
+
   font-weight: 800;
+  /* color: var(--text-muted); */
 
 }
-.moreProject{
-  /* background-color: aqua; */
+.projectHead h1{
+  /* background-color: aquamarine; */
+  position: absolute;
+  bottom: -100;
+}
+
+.moreProject {
+  background-color: aqua;
   display: flex;
   justify-content: center;
   align-items: center;
-  
+position: relative;
+/* height: 3rem; */
+
+}
+.moreProject button{
+  position: absolute;
+  top: -150;
 }

@@ -4,6 +4,7 @@
     margin-top: 150px;
     max-width: 1000px;
     width: 95%;
+    
 }
 
 .title {
@@ -11,10 +12,11 @@
     justify-content: center;
     align-items: center;
     font-size: 3rem;
-    line-height: 5rem;
+    line-height: 3rem;
     font-weight: 800;
     /* background-color: antiquewhite; */
-    margin-bottom: 100px;
+    margin-bottom: 50px;
+    /* color: var(--text-muted); */
 }
 
 .details {
@@ -27,10 +29,12 @@
 }
 
 .duration {
+    margin-bottom: 5px;
     line-height: 14.4px;
     font-size: 0.9rem;
     color: var(--text-muted);
     font-style: italic;
+    /* font-weight: 600; */
 }
 
 .degree {
@@ -69,11 +73,14 @@
     top: 0;
     bottom: 0;
     width: 2px;
+    /* color: greenyellow; */
     background: linear-gradient(180deg,
-            rgb(25, 251, 25) 0%,
-            var(--text) 20%,
+            var(--accent) 0%,
+            var(--text) 40%,
+            var(--text) 60%,
+            
             /* var(--background) 80%, */
-            var(--background) 100%);
+            var(--background) 99%);
 }
 
 .ed1 {
@@ -94,7 +101,7 @@
     height: 14px;
     border-radius: 20%;
     transform: rotate(45deg);
-    background: var(--text-muted);
+    background: var(--text);
     /* border: 2px solid white; */
 }
 
@@ -105,45 +112,28 @@
     top: 0;
     bottom: 0;
     width: 2px;
-    
+
     background: var(--text-muted);
 }
 
 .ed1:first-child::before {
-    background-color: rgb(25, 251, 25);
-    animation: heartbeat 3s infinite ease-in-out;
-    
+    background-color: var(--accent);
+    animation: smoothPulse 2.5s infinite ease;
+
     transform-origin: center;
 }
 
-@keyframes heartbeat {
+@keyframes smoothPulse {
     0% {
-            border-radius: 60%;
-
-        transform: scale(1) rotate(0deg);
-        background-color: rgba(25, 251, 25, 1);
-        box-shadow: 0 0 0 0 rgba(25, 251, 25, 0.6);
+        transform: scale(1);
+        box-shadow: 0 0 5px 1px var(--accent);
     }
-
-    40% {
-            border-radius: 10%;
-
-        transform: scale(1.15) rotate(90deg);
-        background-color: rgba(25, 251, 25, 1);
-        box-shadow: 0 0 10px 6px rgba(25, 251, 25, 0.4);
+    50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 10px 2px rgba(172, 255, 47, 0.4);
     }
-
-    70% {
-            border-radius: 20%;
-
-        transform: scale(1.05) rotate(180deg);
-        box-shadow: 0 0 6px 3px rgba(25, 251, 25, 0.3);
-    }
-
     100% {
-            border-radius: 60%;
-
-        transform: scale(1) rotate(270deg);
-        box-shadow: 0 0 0 0 rgba(25, 251, 25, 0);
+        transform: scale(1);
+        box-shadow: 0 0 5px 1px var(--accent);
     }
 }

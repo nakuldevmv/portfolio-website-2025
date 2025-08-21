@@ -25,7 +25,7 @@
   --background: #e0e0e0;
   --primary: oklch(34.03% 0.17716 296.178);
   --secondary: hsl(302, 10%, 50%);
-  --accent: rgb(210, 132, 30);
+  --accent: hsl(84, 100%, 34%);
   --text-muted: hsl(0, 0%, 40%);
   --border: hsla(269, 48%, 15%, 0.6);
   --radious: 12px;
@@ -33,6 +33,9 @@
   --moreProjectBtn:#533193;
 
 
+
+
+  
   --gradient1: linear-gradient(320deg,
       hsl(269deg 87% 28%) 0%,
       hsl(269deg 87% 31%) -1%,
@@ -89,7 +92,7 @@
   --background: #121212;
   --primary: oklch(69.117% 0.18414 304.564);
   --secondary: hsl(287, 88%, 90%);
-  --accent: oklch(72.63% 0.144 68.02);
+  --accent: hsl(84, 100%, 59%);
   --text-muted: oklch(56.926% 0.00006 271.152);
   --border: hsla(269, 48%, 80%, 0.3);
   --navBtn-shadow: rgba(255, 255, 255, 0.137) 0px 15px 30px -12px inset, rgba(255, 255, 255, 0.05) 0px 5px 30px -18px inset;

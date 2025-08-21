@@ -23,15 +23,15 @@ export default function Home() {
 
   return (
     <>
-      {/* <NavBar /> */}
+      <NavBar />
       <div id="home"><Landing /></div>
       {/* BELOW-FOLD COMPONENTS */}
       <div className={`transition-opacity duration-300 ease-in ${showRest ? 'opacity-100' : 'opacity-0'}`}>
-        {/* <div id="about"><AboutMe /></div> */}
+        <div id="about"><AboutMe /></div>
         {/* <div id="skill"><Skills /></div> */}
-        {/* <div id="project"><Projects /></div> */}
-        {/* <div id="education"><Education/></div> */}
-        {/* <div id="contact"><ContactMe/></div> */}
+        <div id="project"><Projects /></div>
+        <div id="education"><Education/></div>
+        <div id="contact"><ContactMe/></div>
       </div>
       
     </>

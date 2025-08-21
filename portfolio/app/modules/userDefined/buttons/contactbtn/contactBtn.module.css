@@ -51,7 +51,7 @@
 }
 
 .btn:hover .dash {
-    background-color: var(--text);
+    background-color: var(--accent);
     height: 2px;
     width: 100%;
     transition: all 0.25s ease-in-out;
@@ -60,7 +60,7 @@
 }
 
 .btn:hover .txt {
-    color: var(--text);
+    color: var(--accent);
     font-weight: bolder;
     transition: all 0.25s ease-in-out;
     -webkit-transition: all 0.25s ease-in-out;

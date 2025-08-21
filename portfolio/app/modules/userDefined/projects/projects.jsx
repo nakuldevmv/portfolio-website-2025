@@ -32,7 +32,7 @@ export default function Projects() {
       <main ref={container} className={styles.main}>
         <div className={styles.projectHead}>
 
-          <h1>Projects</h1>
+          <h1>Selected Works</h1>
         </div>
         {
           projects.map((project, i) => {

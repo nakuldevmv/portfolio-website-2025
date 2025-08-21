@@ -12,7 +12,7 @@ export default function Education() {
                         <p className={style.duration}>2023 - 2026</p>
                         <h2 className={style.degree}>B.E Computer Science and Engineering</h2>
                         <p className={style.college}>JCT College of Engineering and Technology</p>
-                        <p className={style.cgpa}>CGPA: <span>8.53/10</span> ✦︎ Honours Student</p>
+                        <p className={style.cgpa}>CGPA: <span>8.65/10</span> ✦︎ Honours Student</p>
                     </div>
 
                     <div className={style.ed1}>
@@ -26,7 +26,7 @@ export default function Education() {
                         <p className={style.duration}>2018 - 2020</p>
                         <h2 className={style.degree}>Higher Secondary (Computer Science)</h2>
                         <p className={style.college}>Palora Higher Secondary School</p>
-                        <p className={style.cgpa}>Percentage: <span>74%</span></p>
+                        <p className={style.cgpa}>Percentage: <span>73.4%</span></p>
                     </div>
 
                 </div>
