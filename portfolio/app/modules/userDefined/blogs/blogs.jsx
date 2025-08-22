@@ -1,6 +1,9 @@
 "use client"
 import { useEffect, useState } from "react";
 import style from "./blogs.module.css";
+import Link from 'next/link'; // 1. Import the Link component
+import LinkButton from "../buttons/MoreBlogs/moreBlogs"
+
 
 
 export default function Blogs() {
@@ -18,16 +21,7 @@ export default function Blogs() {
                     cache: "no-store"
                 }
             );
-            const blogs = await response.json();
-            const detailedBolgPromise = blogs.map(async (article) => {
-                const response = await fetch(`https://dev.to/api/articles/${article.id}`);
-                if (!response.ok) {
-                    throw new Error(`Could not fetch details for post ID: ${article.id}`);
-                }
-                return await response.json();
-
-            })
-            const result = await Promise.all(detailedBolgPromise);
+            const result = await response.json();
 
             if (!response.ok) {
                 throw new Error("Failed to fetch blogs");
@@ -51,40 +45,62 @@ export default function Blogs() {
 
     }, []);
 
-    if (loading) return <div className={style.loading}>Loading blogs...</div>;
-    if (error) return <div className={style.error}>Error: {error}</div>;
-    if (!posts.length) return <div className={style.empty}>No blogs found</div>;
+
     return (
         <div className={style.blogSection}>
             <div className={style.title}>
                 <h1>Blogs</h1>
             </div>
-            <div className={style.blogbanner}>
-                {posts.map((post, index) => (
+            {(() => {
+                if (loading) return <>
+                    <div className={style.blogbanner}>
+                        {[1, 2].map((_, index) => (
 
-                    <div
-                        className={style.blog}
-                        key={index}
-                    >
-                        <img src={post.cover_image} alt={post.title} />
-                        <div className={style.blogTitle}>{post.title}</div>
-                        <div className={style.date}>
-                            <div>{post.readable_publish_date}</div>✦︎
-                            <div>{post.reading_time_minutes} min read</div>
-                        </div>
-                        <div className={style.description}>{post.description}</div>
+                            <div className={style.blogSkeleton} key={index}>
+                                <div className={style.imgSkeleton}></div>
+                                <div className={style.titleSkeleton}></div>
+                                <div className={style.dateSkeleton}></div>
+                                <div className={style.descSkeleton}></div>
+                            </div>
+                        ))}
                     </div>
-                ))}
+                </>
+
+                if (error) return <div className={style.error}>⚠️Error: Something went sideways… Nakul’s debugging 🛠️</div>
+
+                if (!posts.length) return <div className={style.empty}>No blogs yet… Nakul’s cooking ideas 🥲💡</div>
+
+
+                return <>
+                    <div className={style.blogbanner}>
+                        {posts.map((post, index) => (
+
+                            <Link
+                                href={`/blog#${post.slug}`}
+                                className={style.blog}
+                                key={index}
+                            >
+                                <img src={post.cover_image} alt={post.title} />
+                                <div className={style.blogTitle}>{post.title}</div>
+                                <div className={style.date}>
+                                    <div>{post.readable_publish_date}</div>✦︎
+                                    <div>{post.reading_time_minutes} min read</div>
+                                </div>
+                                <div className={style.description}>{post.description}</div>
+                            </Link>
+
+                        ))}
 
 
 
-            </div>
-            <a href="/blog">More Blogs</a>
-            {/* <div className={style.moreBlogs}>More Blogs</div> */}
+                    </div>
+                    <div className={style.moreBlogs}>
 
-
+                    <LinkButton href="/blog" label="More Blogs"/>
+                    </div>
+                </>
+            })()}
         </div>
     );
 }
-
 

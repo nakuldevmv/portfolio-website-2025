@@ -12,7 +12,7 @@
   align-items: center;
   font-size: 3.5rem;
   line-height: 3rem;
-  position: relative;
+  /* position: relative; */
   /* background-color: aquamarine; */
   
 
@@ -21,21 +21,14 @@
 
 }
 .projectHead h1{
+    margin-bottom: 55px;
   /* background-color: aquamarine; */
-  position: absolute;
-  bottom: -100;
+  /* position: absolute;
+  bottom: 0px; */
 }
 
 .moreProject {
-  background-color: aqua;
   display: flex;
   justify-content: center;
   align-items: center;
-position: relative;
-/* height: 3rem; */
-
-}
-.moreProject button{
-  position: absolute;
-  top: -150;
 }

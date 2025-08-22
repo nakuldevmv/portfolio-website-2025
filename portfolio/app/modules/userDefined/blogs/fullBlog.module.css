@@ -1,44 +1,65 @@
 .blogSection {
-    /* background-color: rgba(31, 17, 0, 0.34); */
-    margin: 0 auto;
-    margin-top: 150px;
-    margin-bottom: 150px;
-    max-width: 1000px;
-    width: 95%;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+  /* background-color: rgba(31, 17, 0, 0.34); */
+  margin: 0 auto;
+  margin-top: 150px;
+  margin-bottom: 150px;
+  max-width: 1000px;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 
 }
 
 .title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
-    line-height: 3rem;
-    font-weight: 800;
-    margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  line-height: 3rem;
+  font-weight: 800;
+  margin-bottom: 50px;
 }
 
+.error,
+.empty {
+  background-color: var(--accent);
+  padding: 20px;
+  max-width: fit-content;
+  color: var(--background);
+  font-weight: bold;
+  font-size: 2rem;
+  border-radius: 100px;
+  display: flex;
+    text-align: center;
 
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  margin: 0 auto;
+  margin-top: 40%;
+}
+.error{
+  text-align: center;
+  background-color: red;
+}
 
 .date {
-    display: flex;
-    gap: 5px;
-    color: var(--text-muted);
+  display: flex;
+  gap: 5px;
+  color: var(--text-muted);
 }
 
 .blog {
-    background-color: var(--blogbg);
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
-    height: fit-content;
-    width: 100%;
-    border-radius: 30px;
-    padding: 10px 10px 10px 10px;
-    overflow: hidden;
-    transform: scale(1);
-    transition: all 0.3s ease-in-out;
+  background-color: var(--blogbg);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  height: fit-content;
+  width: 100%;
+  border-radius: 30px;
+  padding: 10px 10px 10px 10px;
+  overflow: hidden;
+  transform: scale(1);
+  transition: all 0.3s ease-in-out;
 
 
 }
@@ -46,18 +67,18 @@
 
 
 .blogimg {
-    border-radius: 20px;
+  border-radius: 20px;
 }
 
 
 
 .blogTitle {
-    font-weight: bold;
-font-size: clamp(2rem, 1.5rem + 2.5vw, 3rem);
+  font-weight: bold;
+  font-size: clamp(2rem, 1.5rem + 2.5vw, 3rem);
 }
 
-.blogBox{
-  padding:20px
+.blogBox {
+  padding: 20px
 }
 
 
@@ -65,7 +86,7 @@ font-size: clamp(2rem, 1.5rem + 2.5vw, 3rem);
   /* Base text color and line height for readability */
   color: var(--text);
   line-height: 1.7;
-  
+
   /* Fluid font size: scales from 16px to 18px based on viewport width */
   font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
 }
@@ -82,25 +103,29 @@ font-size: clamp(2rem, 1.5rem + 2.5vw, 3rem);
   font-weight: 700;
   line-height: 1.3;
   color: var(--text);
-  margin-bottom: 0.75em; /* Use 'em' for spacing relative to font size */
+  margin-bottom: 0.75em;
+  /* Use 'em' for spacing relative to font size */
   margin-top: 1.5em;
 }
 
 /* Fluid font sizes for headings */
 .markdownContent h1 {
-  font-size: clamp(2rem, 1.5rem + 2.5vw, 3rem); /* Scales from 32px to 48px */
+  font-size: clamp(2rem, 1.5rem + 2.5vw, 3rem);
+  /* Scales from 32px to 48px */
   border-bottom: 1px solid var(--text-muted);
   padding-bottom: 0.4em;
 }
 
 .markdownContent h2 {
-  font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2.25rem); /* Scales from 24px to 36px */
+  font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2.25rem);
+  /* Scales from 24px to 36px */
   border-bottom: 1px solid var(--text-muted);
   padding-bottom: 0.4em;
 }
 
 .markdownContent h3 {
-  font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.75rem); /* Scales from 20px to 28px */
+  font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.75rem);
+  /* Scales from 20px to 28px */
 }
 
 .markdownContent p {
@@ -144,7 +169,8 @@ font-size: clamp(2rem, 1.5rem + 2.5vw, 3rem);
   background-color: transparent;
   color: inherit;
   padding: 0;
-  font-size: 1em; /* Inherit pre's font size */
+  font-size: 1em;
+  /* Inherit pre's font size */
 }
 
 /* --- LISTS --- */
@@ -161,8 +187,8 @@ font-size: clamp(2rem, 1.5rem + 2.5vw, 3rem);
 }
 
 /* Indent nested lists for clarity */
-.markdownContent li > ul,
-.markdownContent li > ol {
+.markdownContent li>ul,
+.markdownContent li>ol {
   margin-top: 0.5em;
 }
 
@@ -227,10 +253,10 @@ font-size: clamp(2rem, 1.5rem + 2.5vw, 3rem);
 }
 
 @media (max-width: 760px) {
-    
 
-    .blogBox {
-        padding: 5px;
-    }
 
+  .blogBox {
+    padding: 5px;
   }
+
+}
