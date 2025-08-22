@@ -10,10 +10,9 @@ export default function Blogs() {
     async function fetchBlog() {
         const username = "nakuldevmv";
         const response = await fetch(
-            `https://dev.to/api/articles?username=${username}`,
+            `https://dev.to/api/articles?username=${username}&per_page=30&timestamp=${Date.now()}`,
             {
-                cache: "no-store",
-                next: { revalidate: 0 },
+                cache: "no-store"
             }
         );
 
@@ -32,7 +31,7 @@ export default function Blogs() {
         fetchBlog(); // fixed name
 
 
-    },[]);
+    }, []);
     if (loading) return <div>Loading..</div>;
 
     if (!posts.length) return <div>No blogs found</div>;
