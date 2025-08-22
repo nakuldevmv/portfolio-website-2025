@@ -9,6 +9,7 @@ import AboutMe from "./modules/userDefined/aboutme/aboutme";
 import Tooltip from "./modules/userDefined/toolTip/toolTip";
 import ContactMe from "./modules/userDefined/contactme/contactMe";
 import Education from "./modules/userDefined/education/education";
+import BlogPage from "./modules/userDefined/blogs/bolgsgpt";
 import Blogs from "./modules/userDefined/blogs/blogs";
 
 export default function Home() {
@@ -24,16 +25,17 @@ export default function Home() {
 
   return (
     <>
-      {/* <NavBar /> */}
-      {/* <div id="home"><Landing /></div> */}
+      <NavBar />
+      <div id="home"><Landing /></div>
       {/* BELOW-FOLD COMPONENTS */}
       <div className={`transition-opacity duration-300 ease-in ${showRest ? 'opacity-100' : 'opacity-0'}`}>
-        {/* <div id="about"><AboutMe /></div> */}
-        {/* <div id="skill" style={{overflow:"hidden"}}><Skills /></div> */}
-        {/* <div id="project"><Projects /></div> */}
-        {/* <div id="education"><Education/></div> */}
-        {/* <div id="blogs"><Blogs/></div> */}
-        {/* <div id="contact"><ContactMe/></div> */}
+        <div id="about"><AboutMe /></div>
+        <div id="skill" style={{overflow:"hidden"}}><Skills /></div>
+        <div id="project"><Projects /></div>
+        <div id="education"><Education/></div>
+        <div id="blogs"><Blogs/></div>
+        {/* <div id="blogs"><BlogPage/></div> */}
+        <div id="contact"><ContactMe/></div>
       </div>
       
     </>

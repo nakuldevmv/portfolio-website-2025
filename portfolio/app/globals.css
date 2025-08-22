@@ -18,6 +18,7 @@
   --gradient2: var(--gradient2);
   --gradient3: var(--gradient3);
   --moreProjectBtn:var(--moreProjectBtn);
+  --blogbg:var(--blogbg);
 }
 
 :root {
@@ -31,6 +32,7 @@
   --radious: 12px;
   --navBtn-shadow: rgba(50, 50, 93, 0.25) 0px 15px 30px -12px inset, rgba(0, 0, 0, 0.3) 0px 5px 30px -18px inset;
   --moreProjectBtn:#533193;
+  --blogbg:hsla(0, 0%, 100%, 0.5);
 
 
 
@@ -97,6 +99,8 @@
   --border: hsla(269, 48%, 80%, 0.3);
   --navBtn-shadow: rgba(255, 255, 255, 0.137) 0px 15px 30px -12px inset, rgba(255, 255, 255, 0.05) 0px 5px 30px -18px inset;
   --moreProjectBtn:#AA97CE;
+  --blogbg:rgba(0, 0, 0, 0.5);
+
 
 
   --gradient1: linear-gradient(320deg,
