@@ -52,12 +52,13 @@
 }
 
 .blog img {
-    filter: blur(15);
-    border-radius: 20px;
+-webkit-filter: blur(15px); /* For Safari and older Chrome */
+  filter: blur(15px);    border-radius: 20px;
     transition: all 0.3s ease-in-out;
 }
 .blog:hover img{
-    filter: blur(0);
+    -webkit-filter: blur(0px); /* For Safari and older Chrome */
+  filter: blur(0px);
         transition: all 0.3s ease-in-out;
 
 }
@@ -66,3 +67,18 @@
     font-weight: bold;
     font-size: 1.5rem;
 }
+
+/* @media (max-width: 768px) {
+    .blogbanner {
+        flex-direction: column;
+    }
+
+    .blog {
+        width: 100%;
+    }
+    .blog img {
+    filter: blur(0);
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+}
+} */
