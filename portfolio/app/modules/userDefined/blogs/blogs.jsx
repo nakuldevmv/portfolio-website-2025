@@ -10,7 +10,7 @@ export default function Blogs() {
     async function fetchBlog() {
         const username = "nakuldevmv";
         const response = await fetch(
-            `https://dev.to/api/articles?username=${username}&per_page=30&timestamp=${Date.now()}`,
+            `https://dev.to/api/articles?username=${username}&per_page=2&timestamp=${Date.now()}`,
             {
                 cache: "no-store"
             }
