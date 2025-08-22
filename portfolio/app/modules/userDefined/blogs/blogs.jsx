@@ -2,39 +2,58 @@
 import { useEffect, useState } from "react";
 import style from "./blogs.module.css";
 
+
 export default function Blogs() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
 
     async function fetchBlog() {
-        const username = "nakuldevmv";
-        const response = await fetch(
-            `https://dev.to/api/articles?username=${username}&per_page=2&timestamp=${Date.now()}`,
-            {
-                cache: "no-store"
-            }
-        );
+        try {
+            const username = "nakuldevmv";
+            const response = await fetch(
+                `https://dev.to/api/articles?username=${username}&per_page=2&state=all`,
+                {
+                    cache: "no-store"
+                }
+            );
+            const blogs = await response.json();
+            const detailedBolgPromise = blogs.map(async (article) => {
+                const response = await fetch(`https://dev.to/api/articles/${article.id}`);
+                if (!response.ok) {
+                    throw new Error(`Could not fetch details for post ID: ${article.id}`);
+                }
+                return await response.json();
 
-        if (!response.ok) {
-            throw new Error("Failed to fetch blogs");
+            })
+            const result = await Promise.all(detailedBolgPromise);
+
+            if (!response.ok) {
+                throw new Error("Failed to fetch blogs");
+            }
+            console.log("API Response:", result);
+            setPosts(result);
+
+        } catch (err) {
+            console.error("Error fetching blogs:", err);
+            setError(err.message);
+        } finally {
+            setLoading(false);
         }
-        const result = await response.json();
-        console.log(result);
-        setPosts(result);
-        setLoading(false);
     }
 
 
 
     useEffect(() => {
-        fetchBlog(); // fixed name
+        fetchBlog();
 
 
     }, []);
-    if (loading) return <div>Loading..</div>;
 
-    if (!posts.length) return <div>No blogs found</div>;
+    if (loading) return <div className={style.loading}>Loading blogs...</div>;
+    if (error) return <div className={style.error}>Error: {error}</div>;
+    if (!posts.length) return <div className={style.empty}>No blogs found</div>;
     return (
         <div className={style.blogSection}>
             <div className={style.title}>
@@ -53,16 +72,18 @@ export default function Blogs() {
                             <div>{post.readable_publish_date}</div>✦︎
                             <div>{post.reading_time_minutes} min read</div>
                         </div>
-                        {/* <div className={style.description}>{post.description}</div> */}
+                        <div className={style.description}>{post.description}</div>
                     </div>
                 ))}
 
 
 
             </div>
-            <div className={style.moreBlogs}></div>
+            <div className={style.moreBlogs}>More Blogs</div>
 
 
         </div>
     );
 }
+
+

@@ -22,7 +22,7 @@ export default function BlogPage() {
                 const username = "nakuldevmv";
 
                 // Step 1: Fetch the list of articles
-                const response = await fetch(`https://dev.to/api/articles?username=${username}&timestamp=${Date.now()}`,
+                const response = await fetch(`https://dev.to/api/articles?username=${username}&state=all`,
                     {
                         cache: "no-store"
                     }
