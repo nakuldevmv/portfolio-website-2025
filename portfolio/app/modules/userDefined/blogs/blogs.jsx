@@ -53,7 +53,7 @@ export default function Blogs() {
                             <div>{post.readable_publish_date}</div>✦︎
                             <div>{post.reading_time_minutes} min read</div>
                         </div>
-                        <div className={style.description}>{post.description}</div>
+                        {/* <div className={style.description}>{post.description}</div> */}
                     </div>
                 ))}
 

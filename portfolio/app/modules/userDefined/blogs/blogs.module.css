@@ -37,11 +37,29 @@
     border-radius: 30px;
     padding: 10px 10px 20px 10px;
     overflow: hidden;
+    transform: scale(1);
+    
+    transition: all 0.3s ease-in-out;
+
+
+}
+.blog:hover{
+    box-shadow: none;
+    transform: scale(0.98);
+
+    transition: all 0.3s ease-in-out;
 
 }
 
 .blog img {
+    filter: blur(15);
     border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+}
+.blog:hover img{
+    filter: blur(0);
+        transition: all 0.3s ease-in-out;
+
 }
 
 .blogTitle {
