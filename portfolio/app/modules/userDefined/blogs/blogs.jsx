@@ -79,7 +79,7 @@ export default function Blogs() {
 
 
             </div>
-            <div className={style.moreBlogs}>More Blogs</div>
+            {/* <div className={style.moreBlogs}>More Blogs</div> */}
 
 
         </div>
