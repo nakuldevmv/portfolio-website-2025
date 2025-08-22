@@ -79,6 +79,7 @@ export default function Blogs() {
 
 
             </div>
+            <a href="/blog">More Blogs</a>
             {/* <div className={style.moreBlogs}>More Blogs</div> */}
 
 
