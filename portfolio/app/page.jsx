@@ -34,7 +34,7 @@ export default function Home() {
         <div id="project"><Projects /></div>
         <div id="education"><Education/></div>
         <div id="blogs"><Blogs/></div>
-        <div id="blogs"><BlogPage/></div>
+        {/* <div id="blogs"><BlogPage/></div> */}
         <div id="contact"><ContactMe/></div>
       </div>
       
