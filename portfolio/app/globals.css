@@ -18,11 +18,13 @@
   --gradient3: var(--gradient3);
   --moreProjectBtn:var(--moreProjectBtn);
   --blogbg:var(--blogbg);
+  --rpv-core__bg-color:var(--rpv-core__bg-color);
 }
 
 :root {
   --text: rgb(18, 18, 18);
   --background: #e0e0e0;
+  --rpv-core__bg-color:var(--background);
   --primary: oklch(34.03% 0.17716 296.178);
   --secondary: hsl(302, 10%, 50%);
   --accent: #68ad00;
@@ -87,6 +89,7 @@
 .dark {
   --text: rgb(224, 224, 224);
   --background: #121212;
+  --rpv-core__bg-color:var(--background);
   --primary: oklch(69.117% 0.18414 304.564);
   --secondary: hsl(287, 88%, 90%);
   --accent: #abff2e;
