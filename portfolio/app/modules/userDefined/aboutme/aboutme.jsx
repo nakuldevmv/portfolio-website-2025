@@ -2,6 +2,7 @@
 import style from "./aboutme.module.css";
 import { Sign } from "../../../customIcon/index"
 import useWindowWidth from "../../helperFunction/getwidth/getWidth";
+import ResumeBtn from "../buttons/resumebtn/resumebtn"
 
 export default function AboutMe() {
     const Width = useWindowWidth();
@@ -15,12 +16,10 @@ export default function AboutMe() {
                 <p className={style.para}>With a strong foundation in modern web technologies, I specialize in building fast, responsive, and elegant web apps.</p>
                 <p className={style.para}>Beyond code, I'm inspired by art, music, and everything that sparks creativity in digital spaces.</p>
                 <div className={style.sign}>
-                    <Sign />
+                    {/* <Sign /> */}
+                <ResumeBtn />
                 </div>
-                <div className={style.copyright}>
-                    <p>© 2022-2025 <br />
-                        All Rights Reserved</p>
-                </div>
+                
             </div>
         </div>
     );

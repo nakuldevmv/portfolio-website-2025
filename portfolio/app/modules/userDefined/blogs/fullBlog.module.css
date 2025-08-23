@@ -60,6 +60,7 @@
   overflow: hidden;
   transform: scale(1);
   transition: all 0.3s ease-in-out;
+  border: 1px solid color-mix(in srgb, transparent 80%, var(--text) 20%) ;
 
 
 }

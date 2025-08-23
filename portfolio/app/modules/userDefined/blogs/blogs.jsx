@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import style from "./blogs.module.css";
 import Link from 'next/link'; // 1. Import the Link component
-import LinkButton from "../buttons/MoreBlogs/moreBlogs"
+import LinkButton from "../buttons/moreBlogs/moreBlogs"
 
 
 
@@ -81,12 +81,15 @@ export default function Blogs() {
                                 key={index}
                             >
                                 <img src={post.cover_image} alt={post.title} />
-                                <div className={style.blogTitle}>{post.title}</div>
+                                <div className={style.blogBox}>
+                                    <div className={style.blogTitle}>{post.title}</div>
                                 <div className={style.date}>
                                     <div>{post.readable_publish_date}</div>✦︎
                                     <div>{post.reading_time_minutes} min read</div>
                                 </div>
                                 <div className={style.description}>{post.description}</div>
+                                </div>
+                                
                             </Link>
 
                         ))}

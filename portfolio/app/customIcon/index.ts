@@ -25,4 +25,5 @@ export { default as RenderIcon } from './render.svg'
 export { default as FlutterIcon } from './flutter.svg'
 
 export { default as ArrowLine } from './arrowLine.svg'
+export { default as EyeIcon } from './eye.svg'
 

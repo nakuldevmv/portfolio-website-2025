@@ -5,6 +5,7 @@
   margin: 0 auto;
   padding-top: 250px;
   padding-bottom: 50px;
+
 }
 
 .head {
@@ -71,6 +72,9 @@
   /* background-color: aquamarine; */
   width: 50%;
 }
+
+
+
 
 @media (max-width: 760px) {
   .head {

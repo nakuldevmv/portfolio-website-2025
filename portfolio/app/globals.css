@@ -25,8 +25,8 @@
   --background: #e0e0e0;
   --primary: oklch(34.03% 0.17716 296.178);
   --secondary: hsl(302, 10%, 50%);
-  --accent: hsl(84, 100%, 34%);
-  --text-muted: hsl(0, 0%, 40%);
+  --accent: #68ad00;
+  --text-muted: #666666;
   --border: hsla(269, 48%, 15%, 0.6);
   --radious: 12px;
   --navBtn-shadow: rgba(50, 50, 93, 0.25) 0px 15px 30px -12px inset, rgba(0, 0, 0, 0.3) 0px 5px 30px -18px inset;
@@ -89,8 +89,8 @@
   --background: #121212;
   --primary: oklch(69.117% 0.18414 304.564);
   --secondary: hsl(287, 88%, 90%);
-  --accent: hsl(84, 100%, 59%);
-  --text-muted: oklch(56.926% 0.00006 271.152);
+  --accent: #abff2e;
+  --text-muted: #777777;
   --border: hsla(269, 48%, 80%, 0.3);
   --navBtn-shadow: rgba(255, 255, 255, 0.137) 0px 15px 30px -12px inset, rgba(255, 255, 255, 0.05) 0px 5px 30px -18px inset;
   --moreProjectBtn:#AA97CE;

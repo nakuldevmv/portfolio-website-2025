@@ -1,4 +1,6 @@
 .btn {
+        background-color: var(--background);
+
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -8,13 +10,15 @@
     border-radius: 100px;
     position: relative;
     overflow: hidden;
-    border: 2px solid var(--moreProjectBtn);
+    border: 2px solid var(--accent);
     cursor: pointer;
     transition: border 1s ease-in-out;
+    
     -webkit-transition: border 1s ease-in-out;
     -moz-transition: border 1s ease-in-out;
+    transition: all 0.3s ease-in-out;
     
-    box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--moreProjectBtn) 12%, transparent);
+    box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--accent) 12%, transparent);
     
     animation: heartbeatGlow 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     -webkit-animation: heartbeatGlow 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
@@ -23,67 +27,67 @@
 
 @keyframes heartbeatGlow {
     0% {
-        box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--moreProjectBtn) 12%, transparent);
+        box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--accent) 12%, transparent);
     }
 
     25% {
-        box-shadow: inset 0 0 7px 3px color-mix(in srgb, var(--moreProjectBtn) 50%, transparent);
+        box-shadow: inset 0 0 7px 3px color-mix(in srgb, var(--accent) 50%, transparent);
     }
 
     50% {
-        box-shadow: inset 0 0 5px 1px color-mix(in srgb, var(--moreProjectBtn) 15%, transparent);
+        box-shadow: inset 0 0 5px 1px color-mix(in srgb, var(--accent) 15%, transparent);
     }
 
     75% {
-        box-shadow: inset 0 0 7px 3px color-mix(in srgb, var(--moreProjectBtn) 40%, transparent);
+        box-shadow: inset 0 0 7px 3px color-mix(in srgb, var(--accent) 40%, transparent);
     }
 
     100% {
-        box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--moreProjectBtn) 12%, transparent);
+        box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--accent) 12%, transparent);
     }
 }
 
 @-webkit-keyframes heartbeatGlow {
     0% {
-        box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--moreProjectBtn) 12%, transparent);
+        box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--accent) 12%, transparent);
     }
 
     25% {
-        box-shadow: inset 0 0 7px 3px color-mix(in srgb, var(--moreProjectBtn) 50%, transparent);
+        box-shadow: inset 0 0 7px 3px color-mix(in srgb, var(--accent) 50%, transparent);
     }
 
     50% {
-        box-shadow: inset 0 0 5px 1px color-mix(in srgb, var(--moreProjectBtn) 15%, transparent);
+        box-shadow: inset 0 0 5px 1px color-mix(in srgb, var(--accent) 15%, transparent);
     }
 
     75% {
-        box-shadow: inset 0 0 7px 3px color-mix(in srgb, var(--moreProjectBtn) 40%, transparent);
+        box-shadow: inset 0 0 7px 3px color-mix(in srgb, var(--accent) 40%, transparent);
     }
 
     100% {
-        box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--moreProjectBtn) 12%, transparent);
+        box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--accent) 12%, transparent);
     }
 }
 
 @-moz-keyframes heartbeatGlow {
     0% {
-        box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--moreProjectBtn) 12%, transparent);
+        box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--accent) 12%, transparent);
     }
 
     25% {
-        box-shadow: inset 0 0 7px 3px color-mix(in srgb, var(--moreProjectBtn) 50%, transparent);
+        box-shadow: inset 0 0 7px 3px color-mix(in srgb, var(--accent) 50%, transparent);
     }
 
     50% {
-        box-shadow: inset 0 0 5px 1px color-mix(in srgb, var(--moreProjectBtn) 15%, transparent);
+        box-shadow: inset 0 0 5px 1px color-mix(in srgb, var(--accent) 15%, transparent);
     }
 
     75% {
-        box-shadow: inset 0 0 7px 3px color-mix(in srgb, var(--moreProjectBtn) 40%, transparent);
+        box-shadow: inset 0 0 7px 3px color-mix(in srgb, var(--accent) 40%, transparent);
     }
 
     100% {
-        box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--moreProjectBtn) 12%, transparent);
+        box-shadow: inset 0 0 4px 0 color-mix(in srgb, var(--accent) 12%, transparent);
     }
 }
 
@@ -133,7 +137,7 @@
 .btn:hover .circle {
     opacity: 1;
     /* border: 2px solid var(--text); */
-    background-color: var(--moreProjectBtn);
+    background-color: var(--accent);
     transform: scale(60);
     -webkit-transform: scale(60);
     -moz-transform: scale(60);
@@ -186,4 +190,11 @@
     transition: all 0.35s ease-in-out;
     -webkit-transition: all 0.35s ease-in-out;
     -moz-transition: all 0.35s ease-in-out;
+}
+
+.btn:active {
+    transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    transition: all 0.3s ease-in-out;
 }
