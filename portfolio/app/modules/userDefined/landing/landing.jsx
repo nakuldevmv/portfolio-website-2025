@@ -13,9 +13,8 @@ export default function Landing() {
            <Wallpaper/>
                 <div className={style.text}>
                     <h1>
-                        {/* In a world of digital noise, <br />
-                        clarity is a story worth telling. */}
-                        Work in progress <br /> (In search of good design)
+                        In a world of digital noise, <br />
+                        clarity is a story worth telling.
                     </h1>
                 </div>
         </div>
