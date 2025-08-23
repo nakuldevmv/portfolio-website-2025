@@ -1,20 +1,19 @@
 'use client'
-
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './popUp.module.css';
-import { Viewer, Worker, SpecialZoomLevel } from '@react-pdf-viewer/core'; 
+import { Viewer, Worker, SpecialZoomLevel } from '@react-pdf-viewer/core';
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
-import Resume from '../../userDefined/resumeMd/resume';
 import { useTheme } from 'next-themes';
+import { CrossIcon,ArrowCurved } from '@/app/customIcon';
 
 
 
 export default function Popup({ isOpen, onClose }) {
     const defaultLayoutPluginInstance = defaultLayoutPlugin();
-    
-const { resolvedTheme } = useTheme();
+
+    const { resolvedTheme } = useTheme();
     return (
         <AnimatePresence>
             {isOpen && (
@@ -32,23 +31,25 @@ const { resolvedTheme } = useTheme();
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
 
+                        <div className={styles.Btnsheader}>
 
-                        <button className={styles.closeBtn} onClick={onClose}>
-                            Close
-                        </button>
-                        {/* <iframe
-                            src="/resume.pdf#toolbar=0&navpanes=0&scrollbar=0"
-                            width="100%"
-                            height="100%"
-                            style={{ border: 'none' }}
-                        ></iframe> */}
-                        {/* <Resume /> */}
+                            <a className={styles.downloadBtn} href='https://raw.githubusercontent.com/nakuldevmv/Resume/main/resume.pdf'>
+                                <div className={styles.arr1}><ArrowCurved/></div>
+                                <div className={styles.arr2}><ArrowCurved /></div>
 
-                        <div style={{ flex: 1, width: '100%' ,padding: '10px 20px'}}>
+                            </a>
+                            <button className={styles.closeBtn} onClick={onClose}>
+                                <CrossIcon />
+                            </button>
+                        </div>
+
+
+
+                        <div className={styles.pdfViewer}>
                             <Worker  workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.js">
                                 <Viewer
                                     fileUrl='/resume.pdf'
-                                    plugins={[defaultLayoutPluginInstance]}
+                                    // plugins={[defaultLayoutPluginInstance]}
                                     defaultScale={SpecialZoomLevel.PageFit}
                                     theme={resolvedTheme}
                                 />

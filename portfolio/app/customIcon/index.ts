@@ -26,4 +26,6 @@ export { default as FlutterIcon } from './flutter.svg'
 
 export { default as ArrowLine } from './arrowLine.svg'
 export { default as EyeIcon } from './eye.svg'
+export { default as CrossIcon } from './cross.svg'
+export { default as DownloadIcon } from './download.svg'
 

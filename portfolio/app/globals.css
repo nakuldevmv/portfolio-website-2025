@@ -18,10 +18,12 @@
   --gradient3: var(--gradient3);
   --moreProjectBtn:var(--moreProjectBtn);
   --blogbg:var(--blogbg);
-  --rpv-core__bg-color:var(--rpv-core__bg-color);
+  --popupPdfbg:var(--popupPdfbg);
+  
 }
 
 :root {
+  --popupPdfbg:#FFFFFF;
   --text: rgb(18, 18, 18);
   --background: #e0e0e0;
   --primary: oklch(34.03% 0.17716 296.178);
@@ -86,6 +88,7 @@
 }
 
 .dark {
+  --popupPdfbg:#1A1A1A;
   --text: rgb(224, 224, 224);
   --background: #121212;
   --primary: oklch(69.117% 0.18414 304.564);
@@ -193,14 +196,6 @@
       hsl(0deg 0% 2%) 100%);
 }
 
-:root .rpv-core__viewer {
-  --rpv-core__bg-color: var(--background);
-}
-
-/* For dark mode */
-.dark .rpv-core__viewer {
-  --rpv-core__bg-color: var(--background);
-}
 
 html {
   -webkit-font-smoothing: antialiased;
