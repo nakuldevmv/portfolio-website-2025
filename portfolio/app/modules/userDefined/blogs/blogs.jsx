@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
 import style from "./blogs.module.css";
-import Link from 'next/link'; // 1. Import the Link component
+import Link from 'next/link'; 
 import LinkButton from "../buttons/moreBlogs/moreBlogs"
 
 
