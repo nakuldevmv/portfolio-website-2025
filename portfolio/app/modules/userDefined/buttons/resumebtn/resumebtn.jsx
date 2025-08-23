@@ -1,9 +1,9 @@
 import { EyeIcon } from '@/app/customIcon';
 import style from './resumebtn.module.css'
-export default function ResumeBtn(){
+export default function ResumeBtn({ onClick }){
     return (
-       <div className={style.ResumeBtn}>
-        <button className={style.button}>
+       <div className={style.ResumeBtn} onClick={onClick}>
+        <button className={style.button} >
           Resume
         </button>
         <div className={style.EyeIcon}>

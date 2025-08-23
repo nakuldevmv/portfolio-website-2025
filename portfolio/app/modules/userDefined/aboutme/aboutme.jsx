@@ -1,11 +1,15 @@
 "use client";
+import { useState } from "react";
 import style from "./aboutme.module.css";
 import { Sign } from "../../../customIcon/index"
 import useWindowWidth from "../../helperFunction/getwidth/getWidth";
 import ResumeBtn from "../buttons/resumebtn/resumebtn"
+import Popup from "../../userDefined/popup/popUp";
 
 export default function AboutMe() {
-    const Width = useWindowWidth();
+      const [isOpen, setIsOpen] = useState(false);
+
+    // const Width = useWindowWidth();
 
     return (
         <div className={style.aboutMeBox}>
@@ -17,7 +21,8 @@ export default function AboutMe() {
                 <p className={style.para}>Beyond code, I'm inspired by art, music, and everything that sparks creativity in digital spaces.</p>
                 <div className={style.sign}>
                     {/* <Sign /> */}
-                <ResumeBtn />
+                <ResumeBtn onClick={() => setIsOpen(true)} />
+                <Popup isOpen={isOpen} onClose={() => setIsOpen(false)} />
                 </div>
                 
             </div>
