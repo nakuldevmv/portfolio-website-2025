@@ -3,6 +3,7 @@
 
 import Threads from "@/components/Backgrounds/Threads/Threads";
 import useWindowWidth from '../../helperFunction/getwidth/getWidth';
+import BeamsBackground from '@/components/kokonutui/beams-background';
 
 
 export default function Wallpaper() {
@@ -15,7 +16,7 @@ export default function Wallpaper() {
                 distance={0.2}
                 enableMouseInteraction={width > 768 ? true : false}
             /> */}
-            
+            <BeamsBackground/>
 
 
         </>

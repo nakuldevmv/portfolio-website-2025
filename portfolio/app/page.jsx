@@ -10,6 +10,7 @@ import Tooltip from "./modules/userDefined/toolTip/toolTip";
 import ContactMe from "./modules/userDefined/contactme/contactMe";
 import Education from "./modules/userDefined/education/education";
 import Blogs from "./modules/userDefined/blogs/blogs";
+import FadeOverlay from "./modules/helperFunction/fadeoverlay/fadeOverlay";
 
 export default function Home() {
   const [showRest, setShowRest] = useState(false);
@@ -26,8 +27,10 @@ export default function Home() {
     <>
       <NavBar />
       <div id="home"><Landing /></div>
+        <FadeOverlay/>
       {/* BELOW-FOLD COMPONENTS */}
       <div className={`transition-opacity duration-300 ease-in ${showRest ? 'opacity-100' : 'opacity-0'}`}>
+       
         <div id="about"><AboutMe /></div>
         <div id="skill" style={{ overflow: "hidden" }}><Skills /></div>
         <div id="project"><Projects /></div>
