@@ -24,7 +24,6 @@
 :root {
   --text: rgb(18, 18, 18);
   --background: #e0e0e0;
-  --rpv-core__bg-color:var(--background);
   --primary: oklch(34.03% 0.17716 296.178);
   --secondary: hsl(302, 10%, 50%);
   --accent: #68ad00;
@@ -89,7 +88,6 @@
 .dark {
   --text: rgb(224, 224, 224);
   --background: #121212;
-  --rpv-core__bg-color:var(--background);
   --primary: oklch(69.117% 0.18414 304.564);
   --secondary: hsl(287, 88%, 90%);
   --accent: #abff2e;
@@ -193,6 +191,15 @@
       hsl(270deg 15% 13%) 62%,
       hsl(270deg 5% 7%) 81%,
       hsl(0deg 0% 2%) 100%);
+}
+
+:root .rpv-core__viewer {
+  --rpv-core__bg-color: var(--background);
+}
+
+/* For dark mode */
+.dark .rpv-core__viewer {
+  --rpv-core__bg-color: var(--background);
 }
 
 html {

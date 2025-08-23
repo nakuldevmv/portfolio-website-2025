@@ -13,6 +13,7 @@ import { useTheme } from 'next-themes';
 
 export default function Popup({ isOpen, onClose }) {
     const defaultLayoutPluginInstance = defaultLayoutPlugin();
+    
 const { resolvedTheme } = useTheme();
     return (
         <AnimatePresence>
@@ -41,10 +42,10 @@ const { resolvedTheme } = useTheme();
                             height="100%"
                             style={{ border: 'none' }}
                         ></iframe> */}
-                        <Resume />
+                        {/* <Resume /> */}
 
-                        <div style={{ flex: 1, width: '100%' }}>
-                            <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.js">
+                        <div style={{ flex: 1, width: '100%' ,padding: '10px 20px'}}>
+                            <Worker  workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.js">
                                 <Viewer
                                     fileUrl='/resume.pdf'
                                     plugins={[defaultLayoutPluginInstance]}

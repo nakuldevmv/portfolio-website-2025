@@ -17,9 +17,9 @@
     border: 1px solid color-mix(in srgb, transparent 80%, var(--text) 20%);
     background-color: var(--background);
     border-radius: 12px;
-    width: 90%;
-    max-width: 800px;    /* optional, keeps it A4-ish */
-    height: 80vh;         /* ensures real height for the PDF viewer */
+    width: 100%;
+    max-width: 700px;    /* optional, keeps it A4-ish */
+    height: 90vh;         /* ensures real height for the PDF viewer */
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-direction: column;
