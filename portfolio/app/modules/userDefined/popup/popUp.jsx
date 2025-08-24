@@ -33,7 +33,7 @@ export default function Popup({ isOpen, onClose }) {
 
                         <div className={styles.Btnsheader}>
 
-                            <a className={styles.downloadBtn} href='https://raw.githubusercontent.com/nakuldevmv/Resume/main/resume.pdf'>
+                            <a className={styles.downloadBtn} href='/Nakul_Dev_M_V_Resume.pdf' download>
                                 <div className={styles.arr1}><ArrowCurved/></div>
                                 <div className={styles.arr2}><ArrowCurved /></div>
 
@@ -48,7 +48,7 @@ export default function Popup({ isOpen, onClose }) {
                         <div className={styles.pdfViewer}>
                             <Worker  workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.js">
                                 <Viewer
-                                    fileUrl='/resume.pdf'
+                                    fileUrl='/Nakul_Dev_M_V_Resume.pdf'
                                     // plugins={[defaultLayoutPluginInstance]}
                                     defaultScale={SpecialZoomLevel.PageFit}
                                     theme={resolvedTheme}
