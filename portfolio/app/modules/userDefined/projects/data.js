@@ -52,7 +52,7 @@ export const projects = [
     // color: "#007A78"
   },
   {
-    title: "Portfolio Website",
+    title: "Portfolio Website (2024)",
     description: "Responsive Developer Portfolio with Interactive Project Showcases",
     video:"/videos/portfoliovideo.mp4",
     ldesc: "A fully responsive personal portfolio featuring a modern bento-style layout and glassmorphic design. It showcases projects with interactive previews, outlines my skills, education, and experience, and includes a built-in resume download option for recruiters. Clean, organized, and mobile-first by design.",
