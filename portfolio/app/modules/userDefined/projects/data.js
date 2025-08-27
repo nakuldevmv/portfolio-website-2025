@@ -59,7 +59,7 @@ export const projects = [
     marquee1: "1K+ users reached ✦︎ 1s resume downloads ✦︎ 15+ UI updates from reviews ✦︎",
     marquee2: "100% mobile-first design ✦︎ Bento UI layout ✦︎ Recruiter-friendly navigation ✦︎",
     num: "03",
-    liveLink: "https://nakuldevmv.github.io/2024/index.html",
+    liveLink: "https://nakuldevmv.github.io/Archive/portfolioWebsite_2024/index.html",
     github: "https://github.com/nakuldevmv/Portfolio-Website",
     tech1: "Flutter",
     tech2: "Dart",
