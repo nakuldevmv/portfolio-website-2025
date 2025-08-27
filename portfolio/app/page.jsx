@@ -27,7 +27,7 @@ export default function Home() {
     <>
       <NavBar />
       <div id="home"><Landing /></div>
-        <FadeOverlay/>
+        
       {/* BELOW-FOLD COMPONENTS */}
       <div className={`transition-opacity duration-300 ease-in ${showRest ? 'opacity-100' : 'opacity-0'}`}>
        
