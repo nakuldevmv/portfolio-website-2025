@@ -1,6 +1,4 @@
 'use client'
-import useWindowWidth from '../../helperFunction/getwidth/getWidth';
-import AuroraBackground from "@/components/ui/aurora-background"
 import { MeshGradient } from '@paper-design/shaders-react';
 import { useTheme } from "next-themes";
 
