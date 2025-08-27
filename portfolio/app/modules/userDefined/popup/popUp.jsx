@@ -6,7 +6,9 @@ import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import { useTheme } from 'next-themes';
-import { CrossIcon,ArrowCurved } from '@/app/customIcon';
+import { CrossIcon, ArrowCurved } from '@/app/customIcon';
+import Image from 'next/image';
+
 
 
 
@@ -34,7 +36,7 @@ export default function Popup({ isOpen, onClose }) {
                         <div className={styles.Btnsheader}>
 
                             <a className={styles.downloadBtn} href='/Nakul_Dev_M_V_Resume.pdf' download>
-                                <div className={styles.arr1}><ArrowCurved/></div>
+                                <div className={styles.arr1}><ArrowCurved /></div>
                                 <div className={styles.arr2}><ArrowCurved /></div>
 
                             </a>
@@ -46,14 +48,18 @@ export default function Popup({ isOpen, onClose }) {
 
 
                         <div className={styles.pdfViewer}>
-                            <Worker  workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.js">
+                            {/* <Worker  workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.js">
                                 <Viewer
                                     fileUrl='/Nakul_Dev_M_V_Resume.pdf'
                                     // plugins={[defaultLayoutPluginInstance]}
                                     defaultScale={SpecialZoomLevel.PageFit}
                                     theme={resolvedTheme}
                                 />
-                            </Worker>
+                            </Worker> */}
+                            <img
+                                src="/Nakul_Dev_M_V_Resume.jpg"
+                                alt="Resume"
+                            />
                         </div>
 
 

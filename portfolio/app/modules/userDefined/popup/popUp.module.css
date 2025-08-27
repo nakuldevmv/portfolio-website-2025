@@ -17,10 +17,9 @@
     border: 1px solid color-mix(in srgb, transparent 80%, var(--text) 20%);
     background-color: var(--background);
     border-radius: 30px;
-    width: 100%;
-    max-width: 700px;
-    /* optional, keeps it A4-ish */
-    height: 90vh;
+    width: fit-content;
+    height: fit-content;
+    max-height: 95vh;
     /* ensures real height for the PDF viewer */
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
@@ -28,6 +27,9 @@
     justify-content: end;
     align-items: flex-end;
     overflow: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
     /* inner PDF handles scrolling */
 }
 
@@ -109,7 +111,7 @@
     transition: all 0.2s ease-in-out;
 }
 
-.pdfViewer {
+/* .pdfViewer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -122,5 +124,25 @@
     padding-top: 16px;
     border-radius: 30px;
     overflow: hidden;
-    /* background-color: #ef4444; */
+} */
+
+.pdfViewer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--popupPdfbg);
+    width: 100%;
+    /* padding: 16px; */
+    border-radius: 25px;
+
+    overflow: auto; /* allow scrolling if screen is too small */
+}
+
+.pdfViewer img {
+    max-width: 100%;
+    max-height: 95vh; /* never exceed viewport height */
+    width: auto;
+    height: auto;
+    object-fit: contain; /* maintain aspect ratio, no cropping */
+
 }
