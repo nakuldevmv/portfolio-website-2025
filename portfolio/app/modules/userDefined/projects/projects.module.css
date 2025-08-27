@@ -1,34 +1,28 @@
 .main {
-  /* background-color: aliceblue; */
-  position: relative;
-  /* margin-top: 50vh; */
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  align-items: center; /* center items horizontally */
+  gap: 3rem; /* space between elements, adjust as needed */
+  /* padding: 4rem 1rem; top-bottom padding so head & bottom button don't touch edges */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .projectHead {
-  display: flex;
-  justify-content: center;
-  /* height:3rem; */
-  /* background-color: aliceblue; */
-  align-items: center;
-  font-size: 3.5rem;
-  line-height: 3rem;
-  /* position: relative; */
-  /* background-color: aquamarine; */
-  
-
+  font-size: clamp(2.5rem, 5vw, 3.5rem); /* responsive font size */
+  line-height: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 800;
-  /* color: var(--text-muted); */
-
+  text-align: center;
 }
-.projectHead h1{
-    margin-bottom: 55px;
-  /* background-color: aquamarine; */
-  /* position: absolute;
-  bottom: 0px; */
+
+.projectHead h1 {
+  margin: 0; /* no extra bottom margin since we use gap in flex */
 }
 
 .moreProject {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* margin-top: 2rem; extra spacing from last card if needed */
+  width: 100%;
 }

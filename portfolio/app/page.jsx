@@ -39,7 +39,7 @@ export default function Home() {
         <div id="contact"><ContactMe /></div>
         <div className="text-center text-[0.8rem] font-bold leading-[1.2rem] text-[#818181] dark:text-[#4f4f4f]">
           <p>
-            &copy; 2025 | Made with ❤︎ by{' '}<span className="font-extrabold  text-[#68ad00] dark:text-[#abff2e]">Nakul</span>
+            &copy; 2025 | Made with ❤︎ by{' '}<span className="font-extrabold [color:#68ad00]">Nakul</span>
           </p>
         </div>
       </div>

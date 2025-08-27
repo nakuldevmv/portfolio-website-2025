@@ -10,31 +10,25 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    /* Initial scale */
+    transform: translate(-50%, -50%);
     color: var(--text);
-    line-height: 0.9;
+    line-height: 1; /* better for scaling big text */
     font-weight: bolder;
-    font-size: 5rem;
+    font-size: clamp(1.5rem, 8vw, 5rem);
     letter-spacing: -0.5px;
     text-align: center;
     white-space: nowrap;
-    width: 90%;
+    width: 92%;
     max-width: 1200px;
     transition: all 0.3s ease;
+}
 
-}
-@media (max-width: 950px) {
+/* Optional smaller tweaks for very tiny screens */
+@media (max-width: 480px) {
     .text {
-        transition: all 0.3s ease;
-        font-size: 4.5rem;
-        transform: translate(-50%, -50%) scale(0.8);
-    }
-}
-@media (max-width: 768px) {
-    .text {
-        transition: all 0.3s ease;
-        font-size: 2rem;
-        transform: translate(-50%, -50%) scale(0.8);
+            white-space: wrap;
+
+        line-height: 1.1;
+        letter-spacing: -0.3px;
     }
 }

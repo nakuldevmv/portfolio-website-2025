@@ -68,8 +68,8 @@
 
 .techStack h1 {
 
-  font-size: 2rem;
-  line-height: 1.6rem;
+  font-size: clamp(1.5rem, 4vw, 2rem); /* min 1.5rem, scales with viewport, max 2rem */
+  line-height: clamp(1.5rem, 4vw, 2rem);
   font-weight: 700;
   margin-right: 8px;
   /* background-color: rgb(51, 87, 87); */

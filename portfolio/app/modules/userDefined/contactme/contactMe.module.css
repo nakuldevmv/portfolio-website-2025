@@ -23,8 +23,8 @@
 }
 
 .head h1 {
-  font-size: 5rem;
-  line-height: 5rem;
+font-size: clamp(3.2rem, 8vw, 5rem);
+  line-height: clamp(3.2rem, 8vw, 5rem);
   font-weight: 600;
 }
 
