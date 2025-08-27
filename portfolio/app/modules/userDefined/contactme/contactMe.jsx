@@ -121,12 +121,10 @@ export default function ContactMe() {
                 <div className="flex flex-col">
                     <ContactBtn label='Github' onClick={() => { window.open("https://github.com/nakuldevmv", '_blank') }} />
                     <ContactBtn label='nakuldevmv@gmail.com' onClick={() => { window.open("mailto:nakuldevmv@gmail.com", '_blank') }} />
-                    <div className="h-1"></div>
                 </div>
                 <div className="flex flex-col">
                     <ContactBtn label='linkedIn' onClick={() => { window.open("https://www.linkedin.com/in/nakuldevmv/", '_blank') }} />
                     <ContactBtn label='Instagram' onClick={() => { window.open("https://www.instagram.com/nakuled/", '_blank') }} />
-                    <div className="h-1"></div>
 
                 </div>
                 </div>
