@@ -93,13 +93,13 @@ export default function NavBar() {
                             {isOpen && (
                                 <motion.div
                                     initial={{ width: 0, height: 0, scale: 0 }}
-                                    animate={{ width: Width<=375?Width-85:Width - 200, height: 320, scale: 1 }}
+                                    animate={{ width: 200, height: 320, scale: 1 }}
                                     exit={{ width: 0, height: 0, scale: 0 }}
                                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                                     className={style.menuBar}>
                                     <GlassSurface
                                         key="glass-nav"
-                                        width={Width<=375?Width-85:Width - 200}
+                                        width={200}
                                         height={320}
                                         borderRadius={30}
                                         displace={5}
