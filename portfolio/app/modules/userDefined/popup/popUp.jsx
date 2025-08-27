@@ -1,21 +1,21 @@
 'use client'
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './popUp.module.css';
-import { Viewer, Worker, SpecialZoomLevel } from '@react-pdf-viewer/core';
-import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
+// import { Viewer, Worker, SpecialZoomLevel } from '@react-pdf-viewer/core';
+// import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
-import { useTheme } from 'next-themes';
+// import { useTheme } from 'next-themes';
 import { CrossIcon, ArrowCurved } from '@/app/customIcon';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 
 
 
 export default function Popup({ isOpen, onClose }) {
-    const defaultLayoutPluginInstance = defaultLayoutPlugin();
+    // const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
-    const { resolvedTheme } = useTheme();
+    // const { resolvedTheme } = useTheme();
     return (
         <AnimatePresence>
             {isOpen && (
