@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
 import style from "./blogs.module.css";
-import Link from 'next/link'; 
+import Link from 'next/link';
 import LinkButton from "../buttons/MoreBlogs/moreBlogs"
 
 
@@ -16,18 +16,21 @@ export default function Blogs() {
         try {
             const username = "nakuldevmv";
             const response = await fetch(
-                `https://dev.to/api/articles?username=${username}&per_page=2&state=all`,
+                `https://dev.to/api/articles?username=${username}&state=all`,
                 {
                     cache: "no-store"
                 }
             );
             const result = await response.json();
+            const sortedPosts = result.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+
+            const latestTwoPosts = sortedPosts.slice(0, 2);
 
             if (!response.ok) {
                 throw new Error("Failed to fetch blogs");
             }
             console.log("API Response:", result);
-            setPosts(result);
+            setPosts(latestTwoPosts);
 
         } catch (err) {
             console.error("Error fetching blogs:", err);
@@ -78,18 +81,18 @@ export default function Blogs() {
                             <Link
                                 href={`/blog#${post.slug}`}
                                 className={style.blog}
-                                key={index}
+                                key={post.id}
                             >
                                 <img src={post.cover_image} alt={post.title} />
                                 <div className={style.blogBox}>
                                     <div className={style.blogTitle}>{post.title}</div>
-                                <div className={style.date}>
-                                    <div>{post.readable_publish_date}</div>✦︎
-                                    <div>{post.reading_time_minutes} min read</div>
+                                    <div className={style.date}>
+                                        <div>{post.readable_publish_date}</div>✦︎
+                                        <div>{post.reading_time_minutes} min read</div>
+                                    </div>
+                                    <div className={style.description}>{post.description}</div>
                                 </div>
-                                <div className={style.description}>{post.description}</div>
-                                </div>
-                                
+
                             </Link>
 
                         ))}
@@ -99,7 +102,7 @@ export default function Blogs() {
                     </div>
                     <div className={style.moreBlogs}>
 
-                    <LinkButton href="/blog" label="More Blogs"/>
+                        <LinkButton href="/blog" label="More Blogs" />
                     </div>
                 </>
             })()}

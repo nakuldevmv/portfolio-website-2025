@@ -143,7 +143,7 @@ export default async function FullBlog() {
         try {
             const username = "nakuldevmv";
             const response = await fetch(
-                `https://dev.to/api/articles?username=${username}&per_page=2&state=all`,
+                `https://dev.to/api/articles?username=${username}&per_page=100&state=all`,
                 {
                     cache: "no-store"
                 }
@@ -181,6 +181,9 @@ export default async function FullBlog() {
 
     return (
         <div className={style.blogSection}>
+            <div className={style.Btitle}>
+                <h1>Blogs</h1>
+            </div>
 
             {posts.map((post, index) => (
 
