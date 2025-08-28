@@ -7,6 +7,7 @@ import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 // import { useTheme } from 'next-themes';
 import { CrossIcon, ArrowCurved } from '@/app/customIcon';
+import { useState } from 'react';
 // import Image from 'next/image';
 
 
@@ -16,6 +17,7 @@ export default function Popup({ isOpen, onClose }) {
     // const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
     // const { resolvedTheme } = useTheme();
+    const [isLoading, setIsLoading]=useState(true);
     return (
         <AnimatePresence>
             {isOpen && (
@@ -48,6 +50,7 @@ export default function Popup({ isOpen, onClose }) {
 
 
                         <div className={styles.pdfViewer}>
+                            {isLoading && <div className={styles.loader}></div>}
                             {/* <Worker  workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.js">
                                 <Viewer
                                     fileUrl='/Nakul_Dev_M_V_Resume.pdf'
@@ -56,10 +59,11 @@ export default function Popup({ isOpen, onClose }) {
                                     theme={resolvedTheme}
                                 />
                             </Worker> */}
-                            <img
+                            {/* <img
                                 src="/Nakul_Dev_M_V_Resume.jpg"
                                 alt="Resume"
-                            />
+                                onLoad={()=>setIsLoading(false)}
+                            /> */}
                         </div>
 
 
