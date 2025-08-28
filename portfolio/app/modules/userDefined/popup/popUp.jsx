@@ -59,11 +59,11 @@ export default function Popup({ isOpen, onClose }) {
                                     theme={resolvedTheme}
                                 />
                             </Worker> */}
-                            {/* <img
+                            <img
                                 src="/Nakul_Dev_M_V_Resume.jpg"
                                 alt="Resume"
                                 onLoad={()=>setIsLoading(false)}
-                            /> */}
+                            />
                         </div>
 
 
