@@ -10,7 +10,8 @@ import Tooltip from "./modules/userDefined/toolTip/toolTip";
 import ContactMe from "./modules/userDefined/contactme/contactMe";
 import Education from "./modules/userDefined/education/education";
 import Blogs from "./modules/userDefined/blogs/blogs";
-import FadeOverlay from "./modules/helperFunction/fadeoverlay/fadeOverlay";
+
+
 
 export default function Home() {
   const [showRest, setShowRest] = useState(false);
