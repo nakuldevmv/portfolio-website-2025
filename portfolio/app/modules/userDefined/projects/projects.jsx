@@ -40,11 +40,11 @@ export default function Projects() {
             return <Card key={`p_${i}`} i={i} {...project} progress={scrollYProgress} range={[i * .25, 1]} targetScale={targetScale} />
           })
         }
-        <div className={styles.moreProject}>
+        {/* <div className={styles.moreProject}>
          
 
           <Button label='More on Github' onClick={() => { window.open("https://github.com/nakuldevmv?tab=repositories", '_blank') }} />
-        </div>
+        </div> */}
       </main>
     </>
   )
