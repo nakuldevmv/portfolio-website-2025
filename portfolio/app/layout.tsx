@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Nakul Dev",
   },
   description:
-    "Portfolio of Nakul Dev - a creative developer building sleek, minimal, and modern web experiences with Next.js, React, and cutting-edge tools.",
+    "Portfolio of Nakul Dev - a software developer building sleek, minimal, and modern web experiences with Next.js, React, and cutting-edge tools.",
   keywords: [
     "Nakul Dev",
     "Nakul Dev M V",
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Nakul Dev", url: "https://nakuldev.vercel.app" }],
   openGraph: {
-    title: "Nakul Dev | Creative Developer Portfolio",
+    title: "Nakul Dev | Developer Portfolio",
     description:
-      "Discover the portfolio of Nakul Dev - creative developer showcasing modern web projects, design-driven builds, and unique digital experiences.",
+      "Discover the portfolio of Nakul Dev - software developer showcasing modern web projects, design-driven builds, and unique digital experiences.",
     url: "https://nakuldev.vercel.app",
     siteName: "Nakul Dev",
     images: [
