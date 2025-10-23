@@ -161,7 +161,6 @@ export default async function FullBlog() {
 
             })
             const result = await Promise.all(detailedBolgPromise);
-            console.log("API Response:", result);
             return result;
 
         } catch (err) {

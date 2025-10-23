@@ -1,4 +1,4 @@
-"use client"
+
 import { useEffect, useState } from "react";
 import style from "./blogs.module.css";
 import Link from 'next/link';
@@ -22,6 +22,7 @@ export default function Blogs() {
                 }
             );
             const result = await response.json();
+            
             const sortedPosts = result.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
 
             const latestTwoPosts = sortedPosts.slice(0, 2);
@@ -29,7 +30,6 @@ export default function Blogs() {
             if (!response.ok) {
                 throw new Error("Failed to fetch blogs");
             }
-            console.log("API Response:", result);
             setPosts(latestTwoPosts);
 
         } catch (err) {
