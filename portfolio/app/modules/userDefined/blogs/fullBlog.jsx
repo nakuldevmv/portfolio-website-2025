@@ -127,6 +127,7 @@
 // converted this component to SSR instead of client side, the upper part is client side and the lower is server side
 
 
+export const dynamic = "force-dynamic";
 
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
