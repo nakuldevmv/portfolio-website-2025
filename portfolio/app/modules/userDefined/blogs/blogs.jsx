@@ -1,4 +1,4 @@
-
+"use client"
 import { useEffect, useState } from "react";
 import style from "./blogs.module.css";
 import Link from 'next/link';
@@ -14,13 +14,12 @@ export default function Blogs() {
 
     async function fetchBlog() {
         try {
-            const username = "nakuldevmv";
-            const response = await fetch(
-                `https://dev.to/api/articles?username=${username}&state=all`,
-                {
-                    cache: "no-store"
-                }
-            );
+            let test="Not working";
+
+            const response = await fetch("/api/blogs");
+            test=response.status;
+            console.log(test);
+
             const result = await response.json();
             
             const sortedPosts = result.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
@@ -44,6 +43,7 @@ export default function Blogs() {
 
     useEffect(() => {
         fetchBlog();
+        console.log("Fetching blogs...");
 
 
     }, []);
