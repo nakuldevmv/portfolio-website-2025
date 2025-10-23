@@ -1,5 +1,5 @@
 
-# Nakul Dev — Portfolio (2025)
+# Nakul Dev - Portfolio (2025)
 
 A minimal, high-performance personal portfolio built with Next.js 14, Tailwind CSS, and Framer Motion. It showcases projects, skills, and a downloadable resume.
 
