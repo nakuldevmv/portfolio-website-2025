@@ -8,9 +8,8 @@ import { useTheme } from "next-themes";
 
 export default function Wallpaper() {
 
-  let theme = 'dark';
-  console.log("Value of theme initially:", theme);
-  theme = useTheme().theme; // 'light' or 'dark'
+  const { theme: themeFromHook } = useTheme();
+  const theme = themeFromHook || 'dark';
   console.log("Value of theme:", theme);
 
   const darkColorsBase = ["#121212", "#C5B8FF", "#abff2e", "#00D6D3"];
@@ -19,8 +18,8 @@ export default function Wallpaper() {
   const lightColorsBase = ["#e0e0e0", "#9880FF", "#abff2e", "#00A7A4"];
   const lightColorsOverlay = ["#e0e0e0", "#abff2e", "#00A7A4", "#9880FF"];
 
-  const baseColors = theme === "dark" ? darkColorsBase : lightColorsBase;
-  const overlayColors = theme === "dark" ? darkColorsOverlay : lightColorsOverlay;
+  const baseColors = theme === "light" ? lightColorsBase : darkColorsBase;
+  const overlayColors = theme === "light" ? lightColorsOverlay : darkColorsOverlay;
 
   return (
     <div className="absolute inset-0  m-3  overflow-hidden rounded-[29px]">
