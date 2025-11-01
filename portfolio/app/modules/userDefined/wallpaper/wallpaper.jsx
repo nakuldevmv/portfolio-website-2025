@@ -7,7 +7,11 @@ import { useTheme } from "next-themes";
 
 
 export default function Wallpaper() {
-   const { theme } = useTheme(); // 'light' or 'dark'
+
+  let theme = 'dark';
+  console.log("Value of theme initially:", theme);
+  theme = useTheme().theme; // 'light' or 'dark'
+  console.log("Value of theme:", theme);
 
   const darkColorsBase = ["#121212", "#C5B8FF", "#abff2e", "#00D6D3"];
   const darkColorsOverlay = ["#121212", "#abff2e", "#00D6D3", "#C5B8FF"];
