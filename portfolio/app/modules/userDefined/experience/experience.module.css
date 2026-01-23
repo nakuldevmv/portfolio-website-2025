@@ -1,0 +1,158 @@
+.educationSection {
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 95%;
+  margin-bottom: 200px;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1.2;
+  font-weight: 800;
+  margin-bottom: 50px;
+}
+
+.details {
+  width: 100%;
+}
+
+.ed1 {
+  position: relative;
+  margin-left: 40px; /* Keeps space for the timeline dot */
+  margin-bottom: 40px;
+}
+
+.duration {
+  margin-bottom: 8px;
+  line-height: 1.2;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.degree {
+  line-height: 1.3;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.college {
+  line-height: 1.4;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+/* Renamed from .cgpa p to .description for clarity in JS, matching style here */
+.description {
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+.flexBox {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Adds space between columns */
+}
+
+.flexBox11 {
+  flex: 1.8;
+}
+
+.flexBox22 {
+  flex: 2;
+  /* margin-left removed here and handled by gap in parent */
+}
+
+.cgpa {
+  line-height: 1.6; /* Increased for better readability on mobile */
+  font-size: 1rem;
+  padding-left: 20px; /* Indent bullets */
+}
+
+.cgpa span {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.timeline {
+  display: flex;
+  position: relative;
+}
+
+.line {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  /* color: greenyellow; */
+  background: linear-gradient(
+    180deg,
+    var(--accent) 0%,
+    var(--text) 40%,
+    var(--text) 60%,
+
+    /* var(--background) 80%, */ var(--background) 99%
+  );
+}
+
+.ed1 {
+  position: relative;
+  margin-left: 40px;
+  /* push content away from line */
+  margin-bottom: 40px;
+}
+
+.ed1::before {
+  content: "";
+  position: absolute;
+  left: -36px;
+  /* aligns with line */
+  top: 0px;
+  /* adjust to align with duration */
+  width: 14px;
+  height: 14px;
+  border-radius: 20%;
+  transform: rotate(45deg);
+  background: var(--text);
+  /* border: 2px solid white; */
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+
+  background: var(--text-muted);
+}
+
+.ed1:first-child::before {
+  background-color: var(--accent);
+  animation: smoothPulse 2.5s infinite ease;
+
+  transform-origin: center;
+}
+
+@keyframes smoothPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 5px 1px var(--accent);
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px 2px rgba(172, 255, 47, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 5px 1px var(--accent);
+  }
+}

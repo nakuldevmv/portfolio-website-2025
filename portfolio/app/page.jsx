@@ -9,9 +9,8 @@ import AboutMe from "./modules/userDefined/aboutme/aboutme";
 import Tooltip from "./modules/userDefined/toolTip/toolTip";
 import ContactMe from "./modules/userDefined/contactme/contactMe";
 import Education from "./modules/userDefined/education/education";
+import Experience from "./modules/userDefined/experience/experience";
 import Blogs from "./modules/userDefined/blogs/blogs";
-
-
 
 export default function Home() {
   const [showRest, setShowRest] = useState(false);
@@ -27,24 +26,42 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      <div id="home"><Landing /></div>
-        
+      <div id="home">
+        <Landing />
+      </div>
+
       {/* BELOW-FOLD COMPONENTS */}
-      <div className={`transition-opacity duration-300 ease-in ${showRest ? 'opacity-100' : 'opacity-0'}`}>
-       
-        <div id="about"><AboutMe /></div>
-        <div id="skill" style={{ overflow: "hidden" }}><Skills /></div>
-        <div id="project"><Projects /></div>
-        <div id="education"><Education /></div>
-        <div id="blogs"><Blogs /></div>
-        <div id="contact"><ContactMe /></div>
+      <div
+        className={`transition-opacity duration-300 ease-in ${showRest ? "opacity-100" : "opacity-0"}`}
+      >
+        <div id="about">
+          <AboutMe />
+        </div>
+        <div id="skill" style={{ overflow: "hidden" }}>
+          <Skills />
+        </div>
+        <div id="experience">
+          <Experience />
+        </div>
+        <div id="project">
+          <Projects />
+        </div>
+        <div id="education">
+          <Education />
+        </div>
+        <div id="blogs">
+          <Blogs />
+        </div>
+        <div id="contact">
+          <ContactMe />
+        </div>
         <div className="text-center text-[0.8rem] font-bold leading-[1.2rem] text-[#818181] dark:text-[#4f4f4f]">
           <p>
-            &copy; 2025 | Made with ❤︎ by{' '}<span className="font-extrabold [color:#68ad00]">Nakul</span>
+            &copy; 2025 | Made with ❤︎ by{" "}
+            <span className="font-extrabold [color:#68ad00]">Nakul</span>
           </p>
         </div>
       </div>
     </>
   );
 }
-
