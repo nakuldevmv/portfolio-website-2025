@@ -1,57 +1,10 @@
-// import style from "./experience.module.css";
-
-// export default function experience() {
-//   return (
-//     <div className={style.educationSection}>
-//       <h1 className={style.title}>Experience</h1>
-
-//       <div className={style.timeline}>
-//         <div className={style.line}></div>
-
-//         <div className={style.details}>
-//           <div className={style.ed1}>
-//             <p className={style.duration}>Dec 2025 – Present</p>
-//             <div className={style.flexBox}>
-//               <div className={style.flexBox11}>
-//                 <h2 className={style.degree}>Backend Developer Intern</h2>
-
-//                 <p className={style.college}>
-//                   BuildIt3 | Node.js · Express · MongoDB · REST APIs
-//                 </p>
-
-//                 <p className={style.cgpa}>
-//                   Working on backend systems for a SaaS product, building
-//                   scalable APIs and core business logic.
-//                 </p>
-//               </div>
-//               <div className={style.flexBox22}>
-//                 <ul className={style.cgpa}>
-//                   <li>
-//                     Built RESTful APIs for authentication and core features
-//                   </li>
-//                   <li>Optimized MongoDB schemas and queries for performance</li>
-//                   <li>
-//                     Worked with frontend and product teams on feature delivery
-//                   </li>
-//                   <li>
-//                     Contributed to clean architecture and production-ready code
-//                   </li>
-//                 </ul>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
+import Link from "next/link";
 import style from "./experience.module.css";
 
 export default function Experience() {
   return (
     <div className={style.educationSection}>
-      <h1 className={style.title}>Experience</h1>
+      <h1 className={style.title}>Work Experience</h1>
 
       <div className={style.timeline}>
         {/* Vertical Line */}
@@ -67,7 +20,15 @@ export default function Experience() {
                 <h2 className={style.degree}>Backend Developer Intern</h2>
 
                 <p className={style.college}>
-                  BuildIt3 | Node.js · Express · MongoDB · REST APIs
+                  <Link
+                    href="https://buildit3.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#abff2e] transition-colors duration-300"
+                  >
+                    BuildIt3
+                  </Link>{" "}
+                  | Node.js · Express · MongoDB · REST APIs
                 </p>
 
                 <p className={style.description}>

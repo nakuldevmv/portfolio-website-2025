@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
   font-size: clamp(2.5rem, 5vw, 3.5rem);
-  line-height: 1.2;
+  line-height: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: 800;
   margin-bottom: 50px;
 }
@@ -26,22 +26,22 @@
 }
 
 .duration {
-  margin-bottom: 8px;
-  line-height: 1.2;
+  margin-bottom: 5px;
+  line-height: 14.4px;
   font-size: 0.9rem;
   color: var(--text-muted);
   font-style: italic;
 }
 
 .degree {
-  line-height: 1.3;
+  line-height: 20px;
   font-weight: bold;
   font-size: 1.5rem;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
 }
 
 .college {
-  line-height: 1.4;
+  line-height: 1;
   font-weight: 500;
   font-size: 1.1rem;
   color: var(--text-muted);
@@ -50,7 +50,7 @@
 
 /* Renamed from .cgpa p to .description for clarity in JS, matching style here */
 .description {
-  line-height: 1.5;
+  line-height: 1.2;
   font-size: 1rem;
 }
 
@@ -70,7 +70,7 @@
 }
 
 .cgpa {
-  line-height: 1.6; /* Increased for better readability on mobile */
+  line-height: 1.3; /* Increased for better readability on mobile */
   font-size: 1rem;
   padding-left: 20px; /* Indent bullets */
 }
@@ -154,5 +154,30 @@
   100% {
     transform: scale(1);
     box-shadow: 0 0 5px 1px var(--accent);
+  }
+}
+
+@media (max-width: 768px) {
+  .flexBox {
+    flex-direction: column; /* Stack items vertically */
+    gap: 15px;
+  }
+
+  .flexBox22 {
+    margin-left: -15px;
+    padding-left: 0;
+  }
+
+  .degree {
+    font-size: 1.3rem;
+  }
+
+  .college {
+    font-size: 1rem;
+  }
+
+  /* Ensure bullets align properly on small screens */
+  .cgpa {
+    padding-left: 1rem;
   }
 }
