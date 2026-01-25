@@ -17,7 +17,7 @@ export default function Experience() {
             <div className={style.flexBox}>
               {/* Left Side: Role & Company */}
               <div className={style.flexBox11}>
-                <h2 className={style.degree}>Backend Developer Intern</h2>
+                <h2 className={style.degree}>Full Stack Developer Intern</h2>
 
                 <p className={style.college}>
                   <Link
@@ -28,7 +28,7 @@ export default function Experience() {
                   >
                     BuildIt3
                   </Link>{" "}
-                  | Node.js · Express · MongoDB · REST APIs
+                  | Node.js · Express · MongoDB · React
                 </p>
 
                 <p className={style.description}>
