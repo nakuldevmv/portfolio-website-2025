@@ -1,10 +1,12 @@
 "use client";
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import style from "./aboutme.module.css";
 import { Sign } from "../../../customIcon/index"
 import useWindowWidth from "../../helperFunction/getwidth/getWidth";
 import ResumeBtn from "../buttons/resumebtn/resumebtn"
-import Popup from "../../userDefined/popup/popUp";
+
+const Popup = dynamic(() => import("../../userDefined/popup/popUp"), { ssr: false });
 
 export default function AboutMe() {
       const [isOpen, setIsOpen] = useState(false);

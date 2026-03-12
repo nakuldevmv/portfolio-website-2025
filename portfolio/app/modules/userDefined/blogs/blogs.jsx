@@ -12,39 +12,48 @@ export default function Blogs() {
     const [error, setError] = useState(null);
 
 
-    async function fetchBlog() {
-        try {
-            let test="Not working";
+    // Inner helper: tries up to maxAttempts times, throws on final failure
+    async function fetchBlogWithRetry(maxAttempts = 3) {
+        let lastError;
+        for (let attempt = 0; attempt < maxAttempts; attempt++) {
+            try {
+                const response = await fetch("/api/blogs");
 
-            const response = await fetch("/api/blogs");
-            test=response.status;
-            console.log(test);
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.status}`);
+                }
 
-            const result = await response.json();
-            
-            const sortedPosts = result.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+                const result = await response.json();
 
-            const latestTwoPosts = sortedPosts.slice(0, 2);
+                if (!Array.isArray(result)) {
+                    throw new Error("Unexpected response format");
+                }
 
-            if (!response.ok) {
-                throw new Error("Failed to fetch blogs");
+                const sorted = result.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+                return sorted.slice(0, 2);
+
+            } catch (err) {
+                lastError = err;
+                if (attempt < maxAttempts - 1) {
+                    // Wait before retrying (exponential: 600ms, 1200ms)
+                    await new Promise(res => setTimeout(res, 600 * (attempt + 1)));
+                }
             }
-            setPosts(latestTwoPosts);
-
-        } catch (err) {
-            console.error("Error fetching blogs:", err);
-            setError(err.message);
-        } finally {
-            setLoading(false);
         }
+        throw lastError;
     }
 
-
-
     useEffect(() => {
-        fetchBlog();
-        console.log("Fetching blogs...");
+        let cancelled = false;
+        setLoading(true);
+        setError(null);
 
+        fetchBlogWithRetry()
+            .then(posts => { if (!cancelled) setPosts(posts); })
+            .catch(err => { if (!cancelled) { console.error("Error fetching blogs:", err); setError(err.message); } })
+            .finally(() => { if (!cancelled) setLoading(false); });
+
+        return () => { cancelled = true; };
 
     }, []);
 

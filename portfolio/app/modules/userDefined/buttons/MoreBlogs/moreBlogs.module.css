@@ -196,3 +196,73 @@
     -webkit-transition: all 0.35s ease-in-out;
     -moz-transition: all 0.35s ease-in-out;
 }
+
+/* =============================================
+   LOADING STATE
+   Blip: outward pulse of accent shadow around
+   the border, faster & more visible than the
+   idle heartbeat, matching the existing style.
+============================================= */
+.loading {
+    cursor: wait;
+    pointer-events: none; /* prevent double-clicks */
+    animation: blipGlow 0.9s cubic-bezier(0.4, 0, 0.2, 1) infinite !important;
+    -webkit-animation: blipGlow 0.9s cubic-bezier(0.4, 0, 0.2, 1) infinite !important;
+}
+
+/* Suppress hover fill on loading state */
+.loading .circle {
+    opacity: 0 !important;
+    transform: scale(0) !important;
+}
+
+.loading .txt {
+    opacity: 0.6;
+    transform: translateX(0) !important;
+}
+
+@keyframes blipGlow {
+    0% {
+        box-shadow:
+            inset 0 0 4px 0 color-mix(in srgb, var(--accent) 20%, transparent),
+            0 0 0px 0px color-mix(in srgb, var(--accent) 0%, transparent);
+    }
+    40% {
+        box-shadow:
+            inset 0 0 8px 2px color-mix(in srgb, var(--accent) 55%, transparent),
+            0 0 10px 4px color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+    70% {
+        box-shadow:
+            inset 0 0 5px 1px color-mix(in srgb, var(--accent) 30%, transparent),
+            0 0 18px 8px color-mix(in srgb, var(--accent) 10%, transparent);
+    }
+    100% {
+        box-shadow:
+            inset 0 0 4px 0 color-mix(in srgb, var(--accent) 20%, transparent),
+            0 0 0px 0px color-mix(in srgb, var(--accent) 0%, transparent);
+    }
+}
+
+@-webkit-keyframes blipGlow {
+    0% {
+        box-shadow:
+            inset 0 0 4px 0 color-mix(in srgb, var(--accent) 20%, transparent),
+            0 0 0px 0px color-mix(in srgb, var(--accent) 0%, transparent);
+    }
+    40% {
+        box-shadow:
+            inset 0 0 8px 2px color-mix(in srgb, var(--accent) 55%, transparent),
+            0 0 10px 4px color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+    70% {
+        box-shadow:
+            inset 0 0 5px 1px color-mix(in srgb, var(--accent) 30%, transparent),
+            0 0 18px 8px color-mix(in srgb, var(--accent) 10%, transparent);
+    }
+    100% {
+        box-shadow:
+            inset 0 0 4px 0 color-mix(in srgb, var(--accent) 20%, transparent),
+            0 0 0px 0px color-mix(in srgb, var(--accent) 0%, transparent);
+    }
+}
