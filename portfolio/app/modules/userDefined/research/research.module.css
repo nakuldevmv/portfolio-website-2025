@@ -1,0 +1,236 @@
+.researchSection {
+  margin: 0 auto;
+  margin-top: 150px;
+  max-width: 1000px;
+  width: 95%;
+}
+
+/* ── Section heading ── */
+.titleRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.sectionTitle {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin: 0;
+}
+
+/* ── Card ── */
+.card {
+  background-color: #6BC9FF;
+  box-shadow:
+    rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px;
+  border: 3px solid color-mix(in srgb, rgb(46, 46, 46) 20%, black 30%);
+  border-radius: 30px;
+  padding: 32px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: transform 0.15s ease-out;
+  transform-style: preserve-3d;
+  will-change: transform;
+  /* Force dark text regardless of theme */
+  color: #121212;
+}
+
+/* ── Top row ── */
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cardTopLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.publisherBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 100px;
+  padding: 4px 14px 4px 4px;
+  width: fit-content;
+}
+
+.ieeeIcon {
+  background: #121212;
+  color: #6BC9FF;
+  font-weight: 900;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  border-radius: 100px;
+  padding: 3px 8px;
+}
+
+.publisherLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #121212;
+  letter-spacing: 0.04em;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  color: #333333;
+  font-size: 0.82rem;
+}
+
+.metaDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #121212;
+}
+
+.metaSep {
+  opacity: 0.4;
+  font-size: 0.7rem;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cardTopRight {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 2px;
+}
+
+/* ── Paper title ── */
+.paperTitle {
+  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.45;
+  margin: 0;
+  color: #121212;
+}
+
+/* ── Authors ── */
+.authors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  font-size: 0.9rem;
+  color: #444444;
+}
+
+.author strong {
+  color: #121212;
+  font-weight: 700;
+}
+
+.authorSep {
+  opacity: 0.4;
+  margin: 0 2px;
+}
+
+/* ── Abstract ── */
+.abstractBlock {
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.abstractLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #121212;
+}
+
+.abstract {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #333333;
+  line-height: 1.65;
+}
+
+/* ── Keywords ── */
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.keyword {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #121212;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 100px;
+  letter-spacing: 0.03em;
+  transition: background 0.2s ease;
+}
+
+.keyword:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* ── Footer ── */
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.doiLabel {
+  font-size: 0.78rem;
+  color: #444444;
+}
+
+.doiValue {
+  font-family: monospace;
+  color: #444444;
+}
+
+/* ── Responsive ── */
+@media (max-width: 760px) {
+  .card {
+    padding: 22px 20px;
+  }
+
+  .cardFooter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ctaBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .doiLabel {
+    font-size: 0.72rem;
+    word-break: break-all;
+  }
+}

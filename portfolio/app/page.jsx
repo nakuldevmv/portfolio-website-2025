@@ -11,6 +11,7 @@ import ContactMe from "./modules/userDefined/contactme/contactMe";
 import Education from "./modules/userDefined/education/education";
 import Experience from "./modules/userDefined/experience/experience";
 import Blogs from "./modules/userDefined/blogs/blogs";
+import Research from "./modules/userDefined/research/research";
 
 export default function Home() {
   const [showRest, setShowRest] = useState(false);
@@ -48,6 +49,9 @@ export default function Home() {
         </div>
         <div id="education">
           <Education />
+        </div>
+        <div id="research">
+          <Research />
         </div>
         <div id="blogs">
           <Blogs />
