@@ -1,180 +1,297 @@
+/* =============================================
+   OVERLAY
+============================================= */
 .overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    overflow: hidden;
-
+    padding: 16px;
 }
 
+/* =============================================
+   MODAL
+============================================= */
 .modal {
-    border: 1px solid color-mix(in srgb, transparent 80%, var(--text) 20%);
-    background-color: var(--background);
-    border-radius: 30px;
-    width: fit-content;
-    height: fit-content;
-    max-height: 95vh;
-    /* ensures real height for the PDF viewer */
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background: #111418;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    width: min(92vw, 1000px);
+    max-height: 92vh;
     display: flex;
     flex-direction: column;
-    justify-content: end;
-    align-items: flex-end;
-    overflow: auto;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    /* inner PDF handles scrolling */
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 24px 80px rgba(0, 0, 0, 0.7),
+        0 0 40px rgba(var(--accent-rgb, 0, 230, 180), 0.06);
+    overflow: hidden;
 }
 
+/* =============================================
+   HEADER
+============================================= */
 .Btnsheader {
-    width: 97%;
-    gap: 10px;
-    /* background-color: aqua; */
-    margin: 0 auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
     display: flex;
-    align-items: flex-end;
-    justify-content: end;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    flex-shrink: 0;
+}
 
+.headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.resumeLabel {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--accent, #00e6b4);
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.headerRight {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.downloadBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--accent, #00e6b4);
+    color: var(--accent, #00e6b4);
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    overflow: hidden;
+    transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.downloadBtn:hover {
+    background-color: var(--accent, #00e6b4);
+    color: #111418;
+    transform: scale(1.08);
+    box-shadow: 0 0 16px rgba(0, 230, 180, 0.4);
+}
+
+.downloadBtn svg {
+    flex-shrink: 0;
+    pointer-events: none;
 }
 
 .closeBtn {
-    align-self: flex-end;
-    border: 2px solid var(--accent);
-    color: var(--accent);
-    /* padding: 10px; */
-    height: 2rem;
-    width: 2rem;
-    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
     cursor: pointer;
-    font-weight: bold;
-    box-shadow: none;
-    transition: all 0.2s ease-in-out;
-}
-.downloadBtn{
-    align-self: flex-end;
-    border: 2px solid var(--accent);
-    padding: 4px;
-    transform: rotate(180deg);
-    overflow: hidden;
-    
-    color: var(--accent);
-    /* padding: 10px; */
-    height: 2rem;
-    width: 2rem;
-    border-radius: 100px;
-    cursor: pointer;
-    font-weight: bold;
-    box-shadow: none;
-    transition: all 0.2s ease-in-out;
-        transition: all 0.3s ease-in-out;
-
-}
-
- .arr1{
-    transform: translateY(0px);
-    transition: all 0.3s ease-in-out;
-}
-.arr2{
-    transform: translateY(0px); 
-    transition: all 0.3s ease-in-out;
-}
-.downloadBtn:hover .arr1{
-    transform: translateY(-40px);
-    transition: all 0.3s ease-in-out;
-}
-.downloadBtn:hover .arr2{
-    transform: translateY(-28px);
-    transition: all 0.3s ease-in-out;
-}
-.downloadBtn:hover {
-    transform: scale(1.1) rotate(180deg);
-    background-color: var(--accent);
-    color: var(--background);
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-    transition: all 0.3s ease-in-out;
+    background: transparent;
+    transition: border-color 0.25s ease, color 0.25s ease, transform 0.35s ease, box-shadow 0.25s ease;
+    flex-shrink: 0;
 }
 
 .closeBtn:hover {
-    transform: scale(1.1) rotate(360deg);
-    background-color: var(--accent);
-    color: var(--background);
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-    transition: all 0.2s ease-in-out;
+    border-color: #ff5f6d;
+    color: #ff5f6d;
+    transform: rotate(90deg) scale(1.08);
+    box-shadow: 0 0 14px rgba(255, 95, 109, 0.35);
+    background: rgba(255, 95, 109, 0.08);
 }
 
-/* .pdfViewer {
+/* =============================================
+   DIVIDER
+============================================= */
+.headerDivider {
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.08) 20%,
+        rgba(0, 230, 180, 0.15) 50%,
+        rgba(255, 255, 255, 0.08) 80%,
+        transparent
+    );
+    flex-shrink: 0;
+    margin: 0 6px;
+}
+
+/* =============================================
+   PDF VIEWER CONTAINER
+============================================= */
+.pdfViewer {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+    min-height: 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent, #00e6b4) transparent;
+}
+
+.pdfViewer::-webkit-scrollbar {
+    width: 5px;
+}
+.pdfViewer::-webkit-scrollbar-track {
+    background: transparent;
+}
+.pdfViewer::-webkit-scrollbar-thumb {
+    background: var(--accent, #00e6b4);
+    border-radius: 10px;
+}
+
+/* =============================================
+   PDF DOCUMENT & PAGES
+============================================= */
+.pdfDocument {
+    width: 100%;
+}
+
+.pagesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.pageWrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 8px;
     align-items: center;
-    background-color: var(--popupPdfbg);
-    flex: 1;
-    width: 100%;
-    height: max-content;
-    margin: 0 auto;
-    padding-top: 16px;
-    border-radius: 30px;
+}
+
+.pageLabel {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+    align-self: flex-start;
+}
+
+.pdfPage {
+    border-radius: 8px;
     overflow: hidden;
-} */
+    box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.06);
+    width: 100% !important;
+}
 
-.pdfViewer {
+/* Scale the high-res canvas back down to fill the column cleanly */
+.pdfPage canvas {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* =============================================
+   LOADER
+============================================= */
+.loaderContainer {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    background-color: var(--popupPdfbg);
+    justify-content: center;
+    gap: 16px;
+    padding: 60px 20px;
     width: 100%;
-    /* padding: 16px; */
-    border-radius: 25px;
-    /* max-height: 85vh; */
-    min-width: 250px;
-    
-
-    overflow: auto; /* allow scrolling if screen is too small */
 }
 
-.pdfViewer img {
-    max-width: 100%;
-    max-height: 95vh; /* never exceed viewport height */
-    width: auto;
-    height: auto;
-    object-fit: contain; /* maintain aspect ratio, no cropping */
-
-}
 .loader {
-    margin-top: 20px;
-margin-bottom: 20px;
-    /* A fixed, sensible size for the spinner */
-    height: 50px;
-    width: 50px;
-    /* Styling for the spinning circle effect */
-    border: 5px solid var(--accent); /* A lighter, semi-transparent base */
+    height: 40px;
+    width: 40px;
+    border: 3px solid rgba(0, 230, 180, 0.2);
+    border-top-color: var(--accent, #00e6b4);
     border-radius: 50%;
-    transform: scale(1);
-    animation: spin 1.5s ease-in-out infinite;
+    animation: spin 0.9s linear infinite;
+}
+
+.loaderText {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.3);
 }
 
 @keyframes spin {
-    0% {
-        transform: scale(1) rotate(0deg);
-        border-radius: 50%;
-    }
-    50% {
-        transform: scale(0.5) rotate(180deg);
-        border-radius: 20%;
+    to { transform: rotate(360deg); }
+}
 
-    }
-    100%{
-        transform: scale(1) rotate(360deg);
-        border-radius: 50%;
+/* =============================================
+   ERROR STATE
+============================================= */
+.errorContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    width: 100%;
+}
 
+.errorText {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 13px;
+    color: #ff5f6d;
+    opacity: 0.8;
+}
+
+/* =============================================
+   FOOTER
+============================================= */
+.footer {
+    flex-shrink: 0;
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footerText {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+/* =============================================
+   RESPONSIVE — single column on small screens
+============================================= */
+@media (max-width: 640px) {
+    .pagesGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .pdfViewer {
+        padding: 12px;
+    }
+
+    .modal {
+        width: 96vw;
+        max-height: 95vh;
     }
 }
