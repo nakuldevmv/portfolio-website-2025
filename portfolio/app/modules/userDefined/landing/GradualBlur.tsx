@@ -117,6 +117,7 @@ const getGradientDirection = (position: string): string => {
   return directions[position] || 'to bottom';
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const debounce = <T extends (...a: any[]) => void>(fn: T, wait: number) => {
   let t: ReturnType<typeof setTimeout>;
   return (...a: Parameters<T>) => {
@@ -130,16 +131,21 @@ const useResponsiveDimension = (
   config: Partial<GradualBlurProps>,
   key: keyof GradualBlurProps
 ) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [val, setVal] = useState<any>(config[key]);
   useEffect(() => {
     if (!responsive) return;
     const calc = () => {
       const w = window.innerWidth;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let v: any = config[key];
       const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
       const k = cap(key as string);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       if (w <= 480 && (config as any)['mobile' + k]) v = (config as any)['mobile' + k];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       else if (w <= 768 && (config as any)['tablet' + k]) v = (config as any)['tablet' + k];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       else if (w <= 1024 && (config as any)['desktop' + k]) v = (config as any)['desktop' + k];
       setVal(v);
     };
@@ -148,6 +154,7 @@ const useResponsiveDimension = (
     window.addEventListener('resize', deb);
     return () => window.removeEventListener('resize', deb);
   }, [responsive, config, key]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return responsive ? val : (config as any)[key];
 };
 
@@ -258,6 +265,7 @@ const GradualBlur: React.FC<GradualBlurProps> = props => {
     return baseStyle;
   }, [config, responsiveHeight, responsiveWidth, isVisible]);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { hoverIntensity, animated, onAnimationComplete, duration } = config as any;
   useEffect(() => {
     if (isVisible && animated === 'scroll' && onAnimationComplete) {
@@ -282,7 +290,9 @@ const GradualBlur: React.FC<GradualBlurProps> = props => {
 
 const GradualBlurMemo = React.memo(GradualBlur);
 GradualBlurMemo.displayName = 'GradualBlur';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 (GradualBlurMemo as any).PRESETS = PRESETS;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 (GradualBlurMemo as any).CURVE_FUNCTIONS = CURVE_FUNCTIONS;
 export default GradualBlurMemo;
 
