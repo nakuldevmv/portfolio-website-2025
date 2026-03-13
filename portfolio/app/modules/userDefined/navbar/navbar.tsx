@@ -5,7 +5,7 @@ import style from "./navbar.module.css"
 import useWindowWidth from "../../helperFunction/getwidth/getWidth"
 import AnimatedContent from "@/components/Animations/AnimatedContent/AnimatedContent";
 import { smoothScrollTo } from "../../helperFunction/smoothScroll/butterSnap";
-import { CloseIcon, MenuIcon } from "@/app/customIcon"
+import { Menu, X } from "lucide-react"
 import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 
@@ -66,7 +66,12 @@ export default function NavBar() {
 
                             </GlassSurface>
                         </div>
-                        <div className={style.menuBtn} onClick={toggleMenu}>
+                        <button
+                            className={style.menuBtn}
+                            onClick={toggleMenu}
+                            aria-label={isOpen ? "Close menu" : "Open menu"}
+                            style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+                        >
                             <GlassSurface
                                 width={50}
                                 height={50}
@@ -78,9 +83,9 @@ export default function NavBar() {
                                     transition={{ duration: 0.3 }}
                                 >
                                     {isOpen ? (
-                                        <CloseIcon width={20} height={20} />
+                                        <X width={20} height={20} />
                                     ) : (
-                                        <MenuIcon width={20} height={20} />
+                                        <Menu width={20} height={20} />
                                     )}
 
 
@@ -88,7 +93,7 @@ export default function NavBar() {
 
 
                             </GlassSurface>
-                        </div>
+                        </button>
                         <AnimatePresence>
                             {isOpen && (
                                 <motion.div

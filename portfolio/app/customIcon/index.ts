@@ -1,10 +1,6 @@
 export { default as Arrow } from './Arrow.svg'
 export { default as ArrowCurved } from './ArrowCurved.svg'
-export { default as Sign } from './Sign.svg'
-export { default as MenuIcon } from './Menuopen.svg'
-export { default as CloseIcon } from './CloseIcon.svg'
-export { default as MoonIcon } from './Moon.svg'
-export { default as SunIcon } from './Sun.svg'
+export { default as ArrowLine } from './arrowLine.svg'
 
 export { default as CppIcon } from './cpp.svg'
 export { default as JavaScriptIcon } from './javascript.svg'
@@ -23,9 +19,3 @@ export { default as FigmaIcon } from './figma.svg'
 export { default as VercelIcon } from './vercel.svg'
 export { default as RenderIcon } from './render.svg'
 export { default as FlutterIcon } from './flutter.svg'
-
-export { default as ArrowLine } from './arrowLine.svg'
-export { default as EyeIcon } from './eye.svg'
-export { default as CrossIcon } from './cross.svg'
-export { default as DownloadIcon } from './download.svg'
-

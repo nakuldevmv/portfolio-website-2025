@@ -1,7 +1,6 @@
-'use client'
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './popUp.module.css';
-import { CrossIcon, ArrowCurved } from '@/app/customIcon';
+import { X, Download } from 'lucide-react';
 import { useState, useCallback } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
@@ -52,25 +51,13 @@ export default function Popup({ isOpen, onClose }) {
                                     className={styles.downloadBtn}
                                     href='/Nakul_Dev_M_V_Resume.pdf'
                                     download
+                                    aria-label="Download Resume"
                                     title="Download Resume"
                                 >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2.2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    >
-                                        <path d="M12 3v13M7 11l5 5 5-5" />
-                                        <path d="M5 20h14" />
-                                    </svg>
+                                    <Download size={16} strokeWidth={2.2} />
                                 </a>
-                                <button className={styles.closeBtn} onClick={onClose} title="Close">
-                                    <CrossIcon />
+                                <button className={styles.closeBtn} onClick={onClose} aria-label="Close resume" title="Close">
+                                    <X size={16} />
                                 </button>
                             </div>
                         </div>

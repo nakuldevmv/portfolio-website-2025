@@ -1,17 +1,18 @@
 "use client";
 import { useEffect, useState } from "react";
-import ToggleTheme from "./modules/theme/toggleTheme";
 import Projects from "./modules/userDefined/projects/projects";
 import Skills from "./modules/userDefined/skills/skills";
 import NavBar from "./modules/userDefined/navbar/navbar";
 import Landing from "./modules/userDefined/landing/landing";
 import AboutMe from "./modules/userDefined/aboutme/aboutme";
-import Tooltip from "./modules/userDefined/toolTip/toolTip";
-import ContactMe from "./modules/userDefined/contactme/contactMe";
-import Education from "./modules/userDefined/education/education";
-import Experience from "./modules/userDefined/experience/experience";
-import Blogs from "./modules/userDefined/blogs/blogs";
-import Research from "./modules/userDefined/research/research";
+import dynamic from "next/dynamic";
+
+// Below-fold — deferred to keep initial bundle lean
+const ContactMe  = dynamic(() => import("./modules/userDefined/contactme/contactMe"));
+const Education  = dynamic(() => import("./modules/userDefined/education/education"));
+const Experience = dynamic(() => import("./modules/userDefined/experience/experience"));
+const Blogs      = dynamic(() => import("./modules/userDefined/blogs/blogs"));
+const Research   = dynamic(() => import("./modules/userDefined/research/research"));
 
 export default function Home() {
   const [showRest, setShowRest] = useState(false);

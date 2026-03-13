@@ -1,10 +1,14 @@
 'use client';
 import style from "./landing.module.css";
 import useWindowWidth from '../../helperFunction/getwidth/getWidth';
-import Wallpaper from "../wallpaper/wallpaper";
 import { useEffect, useState } from "react";
-import GradualBlur from "./GradualBlur";
+import dynamic from "next/dynamic";
 
+const Wallpaper = dynamic(() => import("../wallpaper/wallpaper"), {
+    ssr: false,
+    loading: () => <div style={{ position: 'absolute', inset: 0, margin: '0.75rem', borderRadius: '29px', background: 'var(--background-color)' }} />,
+});
+const GradualBlur = dynamic(() => import("./GradualBlur"), { ssr: false });
 
 export default function Landing() {
     const [date, setDate] = useState(new Date());
