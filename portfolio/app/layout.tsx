@@ -36,6 +36,7 @@ export const metadata: Metadata = {
     "nakuldevm v",
     "nakul devmv",
     "nakul devm v",
+    "MV Nakul Dev",
     "Software Engineer",
     "Fullstack Developer",
     "Full Stack Engineer",
