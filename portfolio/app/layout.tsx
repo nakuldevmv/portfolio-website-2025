@@ -18,44 +18,75 @@ const degular = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://nakuldev.vercel.app"),
   title: {
-    default: "Nakul Dev",
-    template: "%s | Nakul Dev",
+    default: "Nakul Dev M V | Software Engineer & Creative Developer",
+    template: "%s | Nakul Dev M V",
   },
   description:
-    "Portfolio of Nakul Dev - a software developer building sleek, minimal, and modern web experiences with Next.js, React, and cutting-edge tools.",
+    "Portfolio of Nakul Dev M V, a Software Engineer and Fullstack Developer. Explore my projects, skills, and aesthetic web experiences built with Next.js, React, and modern web tools.",
   keywords: [
+    "Nakul",
     "Nakul Dev",
     "Nakul Dev M V",
-    "Creative Developer",
-    "Developer Portfolio",
+    "Nakul Dev MV",
+    "nakuldevmv",
+    "nakuldevmv@gmail.com",
+    "nakuldev m v",
+    "nakul dev m v",
+    "nakul devmv",
+    "nakuldevm v",
+    "nakul devmv",
+    "nakul devm v",
+    "Software Engineer",
+    "Fullstack Developer",
+    "Full Stack Engineer",
+    "MERN Stack Developer",
+    "React Developer",
     "Next.js Developer",
     "Frontend Engineer",
+    "Creative Developer",
+    "Developer Portfolio",
     "Web Developer Portfolio",
   ],
-  authors: [{ name: "Nakul Dev", url: "https://nakuldev.vercel.app" }],
+  authors: [{ name: "Nakul Dev M V", url: "https://nakuldev.vercel.app" }],
+  creator: "Nakul Dev M V",
+  publisher: "Nakul Dev M V",
+  alternates: {
+    canonical: "https://nakuldev.vercel.app",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Nakul Dev | Developer Portfolio",
-    description:
-      "Discover the portfolio of Nakul Dev - software developer showcasing modern web projects, design-driven builds, and unique digital experiences.",
+    type: "website",
+    locale: "en_US",
     url: "https://nakuldev.vercel.app",
-    siteName: "Nakul Dev",
+    siteName: "Nakul Dev M V - Portfolio",
+    title: "Nakul Dev M V | Software Engineer & Creative Developer",
+    description:
+      "Portfolio of Nakul Dev M V, a Software Engineer and Fullstack Developer. Explore my projects, skills, and aesthetic web experiences built with Next.js and React.",
     images: [
       {
-        url: "/og-image.png", // 1200x630
+        url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Preview of Nakul Dev Portfolio",
+        alt: "Preview of Nakul Dev M V's Portfolio",
       },
     ],
-    locale: "en",
-    type: "website",
   },
-  icons: {
-    icon: [
-      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon.png", sizes: "16x16", type: "image/png" },
-    ],
-    apple: "/favicon.png",
+  twitter: {
+    card: "summary_large_image",
+    title: "Nakul Dev M V | Software Engineer & Creative Developer",
+    description:
+      "Portfolio of Nakul Dev M V, a Software Engineer and Fullstack Developer building modern web experiences.",
+    images: ["/og-image.png"],
   },
   manifest: "/site.webmanifest",
 }
