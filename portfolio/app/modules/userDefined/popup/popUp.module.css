@@ -109,6 +109,12 @@
     flex-shrink: 0;
 }
 
+.closeBtn svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
 .closeBtn:hover {
     border-color: #ff5f6d;
     color: #ff5f6d;

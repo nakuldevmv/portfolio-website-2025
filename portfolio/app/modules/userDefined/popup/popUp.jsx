@@ -114,7 +114,7 @@ export default function Popup({ isOpen, onClose }) {
                                                 <Page
                                                     pageNumber={i + 1}
                                                     width={800}
-                                                    scale={typeof window !== 'undefined' ? (window.devicePixelRatio || 2) : 2}
+                                                    scale={typeof window !== 'undefined' ? (window.innerWidth < 768 ? 1.2 : Math.min(window.devicePixelRatio || 2, 2)) : 2}
                                                     renderAnnotationLayer={true}
                                                     renderTextLayer={true}
                                                     className={styles.pdfPage}
