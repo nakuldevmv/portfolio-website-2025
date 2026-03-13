@@ -114,7 +114,7 @@ export default function ContactMe() {
                 <div>
 
                     <p>Got a project in mind?</p>
-                    <h1>Let's Talk</h1>
+                    <h2>Let's Talk</h2>
                 </div>
                 <div className={style.socialFlex}>
 

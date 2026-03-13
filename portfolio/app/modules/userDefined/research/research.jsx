@@ -38,7 +38,7 @@ export default function Research() {
   return (
     <section className={style.researchSection}>
       <div className={style.titleRow}>
-        <h1 className={style.sectionTitle}>Research &amp; Publications</h1>
+        <h2 className={style.sectionTitle}>Research &amp; Publications</h2>
       </div>
 
       <div
@@ -71,7 +71,7 @@ export default function Research() {
         </div>
 
         {/* Title */}
-        <h2 className={style.paperTitle}>{paper.title}</h2>
+        <h3 className={style.paperTitle}>{paper.title}</h3>
 
         {/* Authors */}
         <div className={style.authors}>

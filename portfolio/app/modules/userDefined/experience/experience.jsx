@@ -4,7 +4,7 @@ import style from "./experience.module.css";
 export default function Experience() {
   return (
     <div className={style.educationSection}>
-      <h1 className={style.title}>Work Experience</h1>
+      <h2 className={style.title}>Work Experience</h2>
 
       <div className={style.timeline}>
         {/* Vertical Line */}
@@ -17,7 +17,7 @@ export default function Experience() {
             <div className={style.flexBox}>
               {/* Left Side: Role & Company */}
               <div className={style.flexBox11}>
-                <h2 className={style.degree}>Full Stack Developer Intern</h2>
+                <h3 className={style.degree}>Full Stack Developer Intern</h3>
 
                 <p className={style.college}>
                   <Link

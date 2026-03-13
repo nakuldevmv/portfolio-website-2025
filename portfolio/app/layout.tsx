@@ -113,7 +113,7 @@ export default function RootLayout({
   "sameAs": [
     "https://www.linkedin.com/in/nakuldevmv/",
     "https://github.com/nakuldevmv",
-    "https://instagram.com/nakuled"
+    "https://instagram.com/nakuled",
     "https://ieeexplore.ieee.org/document/11390111"
   ]
 }

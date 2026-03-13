@@ -130,7 +130,7 @@ export default function Skills() {
             </div>
             <div className={style.techStack}>
 
-                <h1>My Dev Stack</h1> <ArrowLine  width="5.5rem"s  />
+                <h2>My Dev Stack</h2> <ArrowLine width="5.5rem" />
             </div>
         </div>
 

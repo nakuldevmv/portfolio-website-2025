@@ -61,7 +61,7 @@ export default function Blogs() {
     return (
         <div className={style.blogSection}>
             <div className={style.title}>
-                <h1>Blogs</h1>
+                <h2>Blogs</h2>
             </div>
             {(() => {
                 if (loading) return <>
