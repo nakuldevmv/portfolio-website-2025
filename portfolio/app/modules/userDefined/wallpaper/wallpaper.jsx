@@ -22,15 +22,16 @@ export default function Wallpaper() {
   const overlayColors = theme === "light" ? lightColorsOverlay : darkColorsOverlay;
 
   return (
-    <div className="absolute inset-0  m-3  overflow-hidden rounded-[29px]">
+    <div
+      className="absolute inset-0 m-3 overflow-hidden rounded-[29px]"
+      style={{ background: theme === 'dark' ? '#121212' : '#e0e0e0' }}
+    >
       {/* Base gradient layer */}
       <MeshGradient
         className="absolute inset-0 w-full h-full"
         colors={baseColors}
         distortion={0.5}
-
         speed={0.3}
-        backgroundColor={theme === "dark" ? "#121212" : "#e0e0e0"}
       />
 
       {/* Overlay wireframe layer */}
@@ -40,7 +41,6 @@ export default function Wallpaper() {
         distortion={1}
         speed={0.2}
         wireframe="true"
-        backgroundColor="transparent"
       />
     </div>
   );
