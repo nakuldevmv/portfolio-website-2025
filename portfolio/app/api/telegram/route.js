@@ -2,7 +2,7 @@
 
 const REPO_OWNER = "nakuldevmv";
 const REPO_NAME = "Resume";
-const WORKFLOW_FILE = "private-resume.yml";
+const WORKFLOW_FILE = "privateResume.yml";
 const ALLOWED_CHAT_ID = process.env.TELEGRAM_CHAT_ID; // only you can trigger this
 
 export async function POST(req) {
