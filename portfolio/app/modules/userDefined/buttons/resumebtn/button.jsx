@@ -6,13 +6,13 @@ export default function Button({
     label = "Label",
     onClick = () => { },
     type = "button",
-
+    className = "",
 }) {
     return (
         <button
             type={type}
             onClick={onClick}
-            className={styles.btn}
+            className={`${styles.btn} ${className}`}
         >
             <div className={styles.circle}>
             </div>
