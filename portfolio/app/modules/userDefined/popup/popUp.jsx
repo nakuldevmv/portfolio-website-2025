@@ -25,7 +25,8 @@ export default function Popup({ isOpen, onClose }) {
     setLoadError(true);
   }, []);
   const resumeData = {
-    pdf: "/Nakul_Dev_M_V_Resume.pdf",
+    pdf: "https://nakuldevmv.github.io/Resume/Nakul_Dev_M_V_Resume.pdf",
+    download: "https://raw.githubusercontent.com/nakuldevmv/Resume/main/Nakul_Dev_M_V_Resume.pdf",
     template: "https://www.overleaf.com/read/tjkyqztqyctw#de5d03",
   };
   return (
@@ -61,7 +62,7 @@ export default function Popup({ isOpen, onClose }) {
 
                 <a
                   className={styles.downloadBtn}
-                  href={resumeData.pdf}
+                  href={resumeData.download}
                   download
                   aria-label="Download Resume"
                   title="Download Resume"
@@ -98,7 +99,7 @@ export default function Popup({ isOpen, onClose }) {
               )}
 
               <Document
-                file="/Nakul_Dev_M_V_Resume.pdf"
+                file="https://nakuldevmv.github.io/Resume/Nakul_Dev_M_V_Resume.pdf"
                 onLoadSuccess={onDocumentLoadSuccess}
                 onLoadError={onDocumentLoadError}
                 className={styles.pdfDocument}
