@@ -24,8 +24,9 @@ export default function Popup({ isOpen, onClose }) {
     setIsLoading(false);
     setLoadError(true);
   }, []);
+  const cacheBuster = `?t=${Date.now()}`;
   const resumeData = {
-    pdf: "https://nakuldevmv.github.io/Resume/Nakul_Dev_M_V_Resume.pdf",
+    pdf: `https://nakuldevmv.github.io/Resume/Nakul_Dev_M_V_Resume.pdf${cacheBuster}`,
     download: "https://raw.githubusercontent.com/nakuldevmv/Resume/main/Nakul_Dev_M_V_Resume.pdf",
     template: "https://www.overleaf.com/read/tjkyqztqyctw#de5d03",
   };
