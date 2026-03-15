@@ -4,7 +4,7 @@ import style from "./toggleTheme.module.css"
 import { useEffect, useState } from "react";
 
 export default function ToggleTheme() {
-    const { theme, setTheme, resolvedTheme } = useTheme();
+    const { setTheme, resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
