@@ -1,4 +1,4 @@
-const COOLDOWN_HOURS = 6; // only trigger GitHub once every 6 hours
+const COOLDOWN_HOURS = 4; // only trigger GitHub once every 6 hours
 const REPO_OWNER = "nakuldevmv";
 const REPO_NAME = "Resume";
 
