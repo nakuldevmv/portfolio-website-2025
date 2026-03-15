@@ -23,7 +23,14 @@ export default function AboutMe() {
                 <p className={style.para}>Beyond code, I'm inspired by art, music, and everything that sparks creativity in digital spaces.</p>
                 <div className={style.sign}>
                     {/* <Sign /> */}
-                <ResumeBtn onClick={() => setIsOpen(true)} />
+                <ResumeBtn onClick={() => {
+                    // Fire the backend trigger (best-effort; never blocks the popup)
+                    fetch("/api/trigger", { method: "POST" })
+                      .then((res) => res.json())
+                      .then((data) => console.log("[resume trigger]", data))
+                      .catch((err) => console.error("[resume trigger error]", err));
+                    setIsOpen(true);
+                }} />
                 <Popup isOpen={isOpen} onClose={() => setIsOpen(false)} />
                 </div>
                 
