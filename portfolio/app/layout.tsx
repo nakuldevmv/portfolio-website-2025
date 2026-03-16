@@ -16,7 +16,7 @@ const degular = localFont({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nakuldev.vercel.app"),
+  metadataBase: new URL("https://www.nakuldev.me"),
   title: {
     default: "Nakul Dev M V | Software Engineer & Creative Developer",
     template: "%s | Nakul Dev M V",
@@ -48,11 +48,11 @@ export const metadata: Metadata = {
     "Developer Portfolio",
     "Web Developer Portfolio",
   ],
-  authors: [{ name: "Nakul Dev M V", url: "https://nakuldev.vercel.app" }],
+  authors: [{ name: "Nakul Dev M V", url: "https://www.nakuldev.me" }],
   creator: "Nakul Dev M V",
   publisher: "Nakul Dev M V",
   alternates: {
-    canonical: "https://nakuldev.vercel.app",
+    canonical: "https://www.nakuldev.me",
   },
   robots: {
     index: true,
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://nakuldev.vercel.app",
+    url: "https://www.nakuldev.me",
     siteName: "Nakul Dev M V - Portfolio",
     title: "Nakul Dev M V | Software Engineer & Creative Developer",
     description:
@@ -108,7 +108,7 @@ export default function RootLayout({
   "@type": "Person",
   "name": "Nakul Dev",
   "alternateName": "Nakul Dev M V",
-  "url": "https://nakuldev.vercel.app/",
+  "url": "https://www.nakuldev.me/",
   "email": "mailto:nakuldevmv@gmail.com",
   "sameAs": [
     "https://www.linkedin.com/in/nakuldevmv/",
