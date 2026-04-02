@@ -8,13 +8,9 @@
   top: 80px;
   margin-bottom: 20px;
   /* background-color: aqua; */
-
-
-
 }
 
 .card {
-  
   color: black;
   display: flex;
   flex-direction: column;
@@ -40,11 +36,9 @@
   align-items: start;
   height: 100%;
   width: 100%;
-
 }
 
 .cardBody h1 {
-
   line-height: 2.4rem;
   font-weight: bolder;
   font-size: 4rem;
@@ -61,7 +55,6 @@
   flex-direction: column;
   /* background-color: aliceblue; */
   /* margin-bottom: 20px; */
-
 }
 
 .titleContainer h2 {
@@ -104,14 +97,12 @@
   gap: 10px;
   width: 100%;
   height: 100%;
-
 }
 
 .VideoBox,
 .box1,
 .box2 {
   overflow: hidden;
-
 }
 
 .VideoBox {
@@ -145,7 +136,6 @@
   height: 100%;
 }
 
-
 .box1 {
   padding: 10px;
   flex: 3.5;
@@ -165,13 +155,14 @@
   border-radius: 30px;
   height: fit-content;
 
-  background: linear-gradient(to right,
-      hsla(0, 0%, 100%, 0.2), hsla(0, 10%, 90%, 0.48),
-      hsla(0, 10%, 95%, 0.55),
-      hsla(0, 10%, 90%, 0.48),
-      hsla(0, 0%, 100%, 0.2));
-
-
+  background: linear-gradient(
+    to right,
+    hsla(0, 0%, 100%, 0.2),
+    hsla(0, 10%, 90%, 0.48),
+    hsla(0, 10%, 95%, 0.55),
+    hsla(0, 10%, 90%, 0.48),
+    hsla(0, 0%, 100%, 0.2)
+  );
 }
 
 .ldesc {
@@ -180,7 +171,6 @@
   font-weight: 500;
   margin-bottom: 10px;
   /* background-color: hsla(208, 100%, 83%, 0.5); */
-
 }
 
 .marquee {
@@ -190,7 +180,6 @@
   font-size: 2rem;
   word-spacing: 0.1rem;
 }
-
 
 @media (max-width: 760px) {
   .cardBody h1 {
@@ -207,7 +196,6 @@
   }
 
   .card {
-
     height: fit-content;
   }
 
