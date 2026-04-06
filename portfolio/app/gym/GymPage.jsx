@@ -434,7 +434,13 @@ export default function GymPage() {
                 autoFocus
                 type="text"
                 value={logInput}
-                onChange={(e) => setLogInput(e.target.value)}
+                onChange={(e) => {
+                  let val = e.target.value;
+                  if (val.length > logInput.length && val.toLowerCase().endsWith("kg")) {
+                    val += " x ";
+                  }
+                  setLogInput(val);
+                }}
                 placeholder="100kg x 5"
                 onKeyDown={(e) => {
                   if (e.key === "Enter") handleSaveLog();
