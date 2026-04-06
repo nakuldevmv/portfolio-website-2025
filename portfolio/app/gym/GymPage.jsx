@@ -1,17 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { 
+  ArrowUp, 
+  ArrowDown, 
+  Zap, 
+  Activity, 
+  Flame, 
+  Scale, 
+  ShieldCheck, 
+  Bed, 
+  UtensilsCrossed, 
+  Droplet,
+  ExternalLink
+} from "lucide-react";
 import styles from "./gym.module.css";
-
-const splitDays = [
-  { number: "01", label: "Push", sublabel: "Chest · Shoulders · Triceps", tone: "push", id: "push" },
-  { number: "02", label: "Pull", sublabel: "Back · Biceps", tone: "pull", id: "pull" },
-  { number: "03", label: "Legs", sublabel: "Heavy Lower", tone: "legs", id: "legs" },
-  { number: "04", label: "Rest", sublabel: "Recovery", tone: "rest", id: null },
-  { number: "05", label: "Upper", sublabel: "Volume + Pump", tone: "upper", id: "upper" },
-  { number: "06", label: "Lower", sublabel: "Ham + Glute Focus", tone: "lower", id: "lower" },
-  { number: "07", label: "Rest", sublabel: "Recovery", tone: "rest", id: null },
-];
 
 const workoutSections = [
   {
@@ -19,15 +23,14 @@ const workoutSections = [
     day: "Day 01",
     title: "Push Day",
     description: "Chest · Shoulders · Triceps — Heavy compound base, isolation finishers",
-    icon: "PD",
-    tone: "push",
+    icon: <ArrowUp size={28} strokeWidth={1.5} />,
     rows: [
       ["Bench Press", "4", "5–8", "2–3 min", "Main heavy lift"],
       ["Incline DB Press", "3", "8–10", "90 sec", "Upper chest focus"],
       ["DB Shoulder Press", "3", "6–10", "2 min", "Controlled reps"],
       ["Cable/Machine Chest Fly", "3", "12–15", "60 sec", "Stretch + squeeze"],
       ["Lateral Raise", "4", "12–15", "60 sec", "Side delt priority"],
-      ["Overhead Tricep Extension (Rope)", "3", "10–12", "60 sec", "Long head stretch"],
+      ["Overhead Tricep Extension", "3", "10–12", "60 sec", "Long head stretch"],
     ],
   },
   {
@@ -35,8 +38,7 @@ const workoutSections = [
     day: "Day 02",
     title: "Pull Day",
     description: "Back · Biceps — Width, thickness, and rear delt coverage",
-    icon: "PL",
-    tone: "pull",
+    icon: <ArrowDown size={28} strokeWidth={1.5} />,
     rows: [
       ["Lat Pulldown (Wide/Neutral)", "4", "8–12", "90 sec", "Pull to chest"],
       ["Meadows Row", "3", "8–10", "2 min", "Back thickness"],
@@ -51,8 +53,7 @@ const workoutSections = [
     day: "Day 03",
     title: "Leg Day",
     description: "Heavy Lower — Squat-focused, full quad and calf development",
-    icon: "LG",
-    tone: "legs",
+    icon: <Zap size={28} strokeWidth={1.5} />,
     rows: [
       ["Squat / Hack Squat", "4", "5–8", "2–3 min", "Go deep"],
       ["Bulgarian Split Squat", "3", "8–10", "90 sec", "Stability + control"],
@@ -67,12 +68,11 @@ const workoutSections = [
     day: "Day 05",
     title: "Upper Day",
     description: "Volume + Pump — Full upper body, moderate intensity, high output",
-    icon: "UP",
-    tone: "upper",
+    icon: <Activity size={28} strokeWidth={1.5} />,
     rows: [
       ["Flat DB Press", "3", "8–10", "90 sec", "Controlled reps"],
       ["Bent Over Row", "3", "8–10", "2 min", "Tight core"],
-      ["Lat Pulldown (Neutral Grip)", "3", "10–12", "90 sec", "Full stretch"],
+      ["Lat Pulldown (Neutral)", "3", "10–12", "90 sec", "Full stretch"],
       ["Lateral Raise", "4", "12–15", "60 sec", "Constant tension"],
       ["Cable Curl", "3", "10–12", "60 sec", "Strict form"],
       ["Tricep Pushdown", "3", "10–12", "60 sec", "Full lockout"],
@@ -83,8 +83,7 @@ const workoutSections = [
     day: "Day 06",
     title: "Lower Day",
     description: "Hamstring + Glute Focus — RDL-based, posterior chain dominance",
-    icon: "LW",
-    tone: "lower",
+    icon: <Flame size={28} strokeWidth={1.5} />,
     rows: [
       ["Romanian Deadlift", "4", "6–10", "2 min", "Stretch hamstrings"],
       ["Hack Squat", "3", "8–10", "2 min", "Quad focus"],
@@ -98,33 +97,39 @@ const workoutSections = [
 
 const rules = [
   {
-    label: "Rule 01",
+    label: "01",
     title: "Progression",
-    body: "Add weight or reps every single week. Even +1 rep counts as progress — that's the game.",
+    icon: <Scale size={24} strokeWidth={1.5} />,
+    body: "Add weight or reps every single week. Even +1 rep counts as progress.",
   },
   {
-    label: "Rule 02",
+    label: "02",
     title: "Intensity",
+    icon: <Zap size={24} strokeWidth={1.5} />,
     body: "Last set must be close to failure. Leave 1–2 reps in the tank — not 5.",
   },
   {
-    label: "Rule 03",
+    label: "03",
     title: "Tempo",
+    icon: <Activity size={24} strokeWidth={1.5} />,
     body: "2–3 sec controlled negative on every rep. The eccentric builds the muscle.",
   },
   {
-    label: "Rule 04",
+    label: "04",
     title: "Cardio",
+    icon: <Droplet size={24} strokeWidth={1.5} />,
     body: "15–20 min post-workout or a separate session. Keep it consistent, not brutal.",
   },
   {
-    label: "Rule 05",
+    label: "05",
     title: "Sleep",
+    icon: <Bed size={24} strokeWidth={1.5} />,
     body: "7–8 hrs minimum. You don't grow in the gym — you grow while sleeping.",
   },
   {
-    label: "Rule 06",
+    label: "06",
     title: "Protein",
+    icon: <ShieldCheck size={24} strokeWidth={1.5} />,
     body: "140g+ daily. Non-negotiable. Hit this and half the battle is already won.",
   },
 ];
@@ -136,7 +141,6 @@ const dietMeals = [
       ["Whole eggs", "4 eggs (~200g)", "24g", "280 kcal"],
       ["Egg whites", "2 whites (~60g)", "8g", "35 kcal"],
       ["Bread", "2 slices (~60g)", "6g", "160 kcal"],
-      ["Subtotal", "", "~38g", "~475 kcal"],
     ],
   },
   {
@@ -145,7 +149,6 @@ const dietMeals = [
       ["Soya chunks (dry)", "75g", "38–40g", "260 kcal"],
       ["Rice (cooked)", "200g", "4–5g", "260 kcal"],
       ["Vegetables", "100g", "~2g", "~40 kcal"],
-      ["Subtotal", "", "~42–45g", "~560 kcal"],
     ],
   },
   {
@@ -156,9 +159,8 @@ const dietMeals = [
     meal: "Dinner",
     items: [
       ["Chicken (raw)", "200g", "55–60g", "300 kcal"],
-      ["Rice or chapathi", "150g rice / 2 chapathi (~80g)", "3–5g", "180 kcal"],
+      ["Rice/Chapathi", "150g rice / 2 chapathi", "3–5g", "180 kcal"],
       ["Vegetables", "100g", "~2g", "~40 kcal"],
-      ["Subtotal", "", "~60–65g", "~520 kcal"],
     ],
   },
   {
@@ -167,113 +169,99 @@ const dietMeals = [
   },
 ];
 
-const dailyTotals = [
-  ["Protein", "~140–150g"],
-  ["Calories", "~1900–2100 kcal"],
-];
+// Animation Variants
+const fadeIn = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 1, 
+      ease: [0.16, 1, 0.3, 1] 
+    } 
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
 
 export default function GymPage() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 24);
-    };
-
-    onScroll();
-    window.addEventListener("scroll", onScroll);
-
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const elements = document.querySelectorAll("[data-reveal]");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.visible);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-
-    elements.forEach((element) => observer.observe(element));
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <main className={styles.pageShell}>
-      <nav className={`${styles.navbar} ${scrolled ? styles.navbarScrolled : ""}`}>
-        <span className={styles.navLogo}>Final Form</span>
-        <ul className={styles.navLinks}>
-          {workoutSections.map((section) => (
-            <li key={section.id}>
-              <a href={`#${section.id}`}>{section.title.replace(" Day", "")}</a>
-            </li>
-          ))}
-          <li>
-            <a href="#rules">Rules</a>
-          </li>
-          <li>
-            <a href="#diet">Diet</a>
-          </li>
-        </ul>
-      </nav>
+      {/* Dynamic Backgrounds */}
+      <div className={styles.noiseOverlay} />
+      <div className={styles.gradientBg} />
 
+      {/* Hero Section */}
       <section className={styles.hero}>
-        <div className={styles.heroGlow} />
-        <p className={styles.heroEyebrow}>Science-Based · Progressive · Sustainable</p>
-        <h1 className={styles.heroTitle}>
-          Final
-          <span>Form</span>
-        </h1>
-        <p className={styles.heroSubtitle}>
-          Built on progressive overload, 12–16 sets per muscle per week, 2× frequency, and
-          the compound-to-isolation balance that actually works.
-        </p>
-        <div className={styles.heroPills}>
-          <span className={styles.pill}>Progressive Overload</span>
-          <span className={styles.pill}>2× Frequency</span>
-          <span className={styles.pill}>~12–16 Sets/Week</span>
-          <span className={styles.pill}>Brad Schoenfeld Principles</span>
-        </div>
-        <div className={styles.scrollCue}>
-          <span>Scroll</span>
-          <div className={styles.scrollLine} />
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className={styles.heroEyebrow}
+        >
+          Science-Based Insights
+        </motion.div>
+        
+        <motion.h1 
+          className={styles.heroTitle}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+        >
+          Final Form.
+        </motion.h1>
+        
+        <motion.p 
+          className={styles.heroSubtitle}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.3 }}
+        >
+          Built on progressive overload, volume mastery, and the compound-to-isolation balance that actually yields results. Eliminate the noise.
+        </motion.p>
       </section>
 
-      <div className={styles.splitBar} aria-label="Weekly split overview">
-        {splitDays.map((day) => (
-          <div
-            key={`${day.number}-${day.label}`}
-            className={`${styles.splitItem} ${styles[`tone${day.tone}`]}`}
-          >
-            <div className={styles.dayNum}>{day.number}</div>
-            <div className={styles.dayLabel}>{day.label}</div>
-            <div className={styles.daySub}>{day.sublabel}</div>
-            <div className={styles.dayDot} />
-          </div>
-        ))}
-      </div>
+      {/* Quick Nav (Un-boxed, glass) */}
+      <motion.nav 
+        className={styles.nav}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+      >
+        <div className={styles.navInner}>
+          {workoutSections.map((section) => (
+            <a key={section.id} href={`#${section.id}`} className={styles.navLink}>
+              {section.title.replace(" Day", "")}
+            </a>
+          ))}
+          <div className={styles.navSeparator} />
+          <a href="#rules" className={styles.navLink}>Rules</a>
+          <a href="#diet" className={styles.navLink}>Diet</a>
+        </div>
+      </motion.nav>
 
-      <div className={styles.container}>
+      <div className={styles.contentArea}>
+        {/* Workout Sections */}
         {workoutSections.map((section) => (
-          <section
-            key={section.id}
-            id={section.id}
-            data-reveal
-            className={`${styles.section} ${styles.reveal} ${styles[`section${section.tone}`]}`}
+          <motion.section 
+            key={section.id} 
+            id={section.id} 
+            className={styles.section}
+            variants={fadeIn}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
           >
             <div className={styles.sectionHeader}>
-              <div className={styles.sectionIcon}>{section.icon}</div>
-              <div className={styles.sectionMeta}>
-                <div className={styles.sectionTag}>{section.day}</div>
+              <div className={styles.iconWrap}>{section.icon}</div>
+              <div className={styles.headerText}>
+                <span className={styles.sectionTag}>{section.day}</span>
                 <h2 className={styles.sectionTitle}>{section.title}</h2>
                 <p className={styles.sectionDesc}>{section.description}</p>
               </div>
@@ -283,74 +271,100 @@ export default function GymPage() {
               <table className={styles.table}>
                 <thead>
                   <tr>
-                    <th>Exercise</th>
-                    <th>Sets</th>
-                    <th>Reps</th>
-                    <th>Rest</th>
-                    <th>Notes</th>
+                    <th>Exercise / Movement</th>
+                    <th className={styles.tdCenter}>Sets</th>
+                    <th className={styles.tdCenter}>Reps</th>
+                    <th>Execution Notes</th>
                   </tr>
                 </thead>
                 <tbody>
                   {section.rows.map((row) => (
                     <tr key={row[0]}>
-                      <td>{row[0]}</td>
-                      <td>
-                        <span className={styles.setsBadge}>{row[1]}</span>
+                      <td className={styles.exerciseName}>
+                        <a 
+                          href={`https://www.youtube.com/results?search_query=${encodeURIComponent(row[0] + " exercise proper form")}`} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className={styles.ytLink}
+                          title={`Search ${row[0]} form on YouTube`}
+                        >
+                          {row[0]}
+                          <ExternalLink size={14} className={styles.ytIcon} strokeWidth={2} />
+                        </a>
                       </td>
-                      <td className={styles.repsText}>{row[2]}</td>
-                      <td className={styles.restText}>{row[3]}</td>
+                      <td className={styles.tdCenter}>
+                        <span className={styles.setsIndicator}>{row[1]}</span>
+                      </td>
+                      <td className={`${styles.tdCenter} ${styles.repsText}`}>{row[2]}</td>
                       <td className={styles.notesText}>{row[4]}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-          </section>
+          </motion.section>
         ))}
 
-        <section id="rules" data-reveal className={`${styles.section} ${styles.reveal}`}>
+        {/* Rules Section */}
+        <motion.section 
+          id="rules" 
+          className={styles.section}
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           <div className={styles.sectionHeader}>
-            <div className={`${styles.sectionIcon} ${styles.rulesIcon}`}>FX</div>
-            <div className={styles.sectionMeta}>
-              <div className={styles.sectionTag}>Non-Negotiables</div>
-              <h2 className={`${styles.sectionTitle} ${styles.rulesTitle}`}>Final Rules</h2>
+            <div className={styles.headerText}>
+              <span className={styles.sectionTag}>Principles</span>
+              <h2 className={styles.sectionTitle}>Non-Negotiables</h2>
               <p className={styles.sectionDesc}>
-                This is what separates results from wasted time.
+                These aren't recommendations. This is what separates marginal gains from true transformation.
               </p>
             </div>
           </div>
 
-          <div className={styles.rulesGrid}>
+          <motion.div 
+            className={styles.rulesGrid}
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {rules.map((rule) => (
-              <article key={rule.label} className={styles.ruleCard}>
-                <div className={styles.ruleLabel}>{rule.label}</div>
+              <motion.article 
+                key={rule.label} 
+                className={styles.ruleItem}
+                variants={fadeIn}
+              >
+                <div className={styles.ruleTop}>
+                  <div className={styles.ruleIcon}>{rule.icon}</div>
+                  <span className={styles.ruleLabel}>{rule.label}</span>
+                </div>
                 <h3 className={styles.ruleTitle}>{rule.title}</h3>
                 <p className={styles.ruleBody}>{rule.body}</p>
-              </article>
+              </motion.article>
             ))}
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
-        <section id="diet" data-reveal className={`${styles.section} ${styles.reveal}`}>
+        {/* Diet Section */}
+        <motion.section 
+          id="diet" 
+          className={styles.section}
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
           <div className={styles.sectionHeader}>
-            <div className={`${styles.sectionIcon} ${styles.dietIcon}`}>DT</div>
-            <div className={styles.sectionMeta}>
-              <div className={styles.sectionTag}>Cutting Protocol</div>
-              <h2 className={`${styles.sectionTitle} ${styles.dietTitle}`}>Optimal Cutting Diet</h2>
+             <div className={styles.iconWrap}><UtensilsCrossed size={28} strokeWidth={1.5} /></div>
+             <div className={styles.headerText}>
+              <span className={styles.sectionTag}>Nutritionology</span>
+              <h2 className={styles.sectionTitle}>Optimal Cut</h2>
               <p className={styles.sectionDesc}>
-                Calories: ~1900–2100 kcal · Protein: ~135–150g
+                Target: ~2000 kcal · 140g+ Protein. The fuel dictates the outcome.
               </p>
-            </div>
-          </div>
-
-          <div className={styles.dietTargets}>
-            <div className={styles.targetCard}>
-              <span className={styles.targetLabel}>Calories</span>
-              <strong>~1900–2100 kcal</strong>
-            </div>
-            <div className={styles.targetCard}>
-              <span className={styles.targetLabel}>Protein</span>
-              <strong>~135–150g</strong>
             </div>
           </div>
 
@@ -358,58 +372,44 @@ export default function GymPage() {
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th>Meal</th>
-                  <th>Food</th>
-                  <th>Quantity</th>
-                  <th>Protein</th>
-                  <th>Calories</th>
+                  <th>Phase / Time</th>
+                  <th>Source</th>
+                  <th className={styles.tdCenter}>Proto-Load</th>
+                  <th className={styles.tdRight}>Est. Kcal</th>
                 </tr>
               </thead>
               <tbody>
                 {dietMeals.flatMap((meal) =>
                   meal.items.map((item, index) => (
                     <tr key={`${meal.meal}-${item[0]}`}>
-                      <td>{index === 0 ? meal.meal : ""}</td>
-                      <td>{item[0]}</td>
-                      <td>{item[1]}</td>
-                      <td className={styles.repsText}>{item[2]}</td>
-                      <td className={styles.restText}>{item[3]}</td>
+                      <td className={styles.mealPhase}>
+                        {index === 0 ? meal.meal : ""}
+                      </td>
+                      <td>
+                        <div className={styles.foodName}>{item[0]}</div>
+                        <div className={styles.foodQty}>{item[1]}</div>
+                      </td>
+                      <td className={`${styles.tdCenter} ${styles.repsText}`}>{item[2]}</td>
+                      <td className={`${styles.tdRight} ${styles.notesText}`}>{item[3]}</td>
                     </tr>
                   ))
                 )}
               </tbody>
             </table>
           </div>
+        </motion.section>
+        
+        {/* Footer Polish */}
+        <motion.div 
+          className={styles.verdict}
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <h2>Stay Consistent.</h2>
+        </motion.div>
 
-          <div className={styles.totalsCard}>
-            <div className={styles.totalsHeader}>Daily Total</div>
-            <div className={styles.totalsGrid}>
-              {dailyTotals.map((item) => (
-                <div key={item[0]} className={styles.totalRow}>
-                  <span>{item[0]}</span>
-                  <strong>{item[1]}</strong>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section data-reveal className={`${styles.verdict} ${styles.reveal}`}>
-          <div className={styles.verdictGhost}>GO</div>
-          <h2 className={styles.verdictTitle}>
-            Stay Consistent. <em>Get Sharp.</em>
-          </h2>
-          <div className={styles.verdictChecks}>
-            <div className={styles.checkItem}>Progressive Overload</div>
-            <div className={styles.checkItem}>2× Weekly Frequency</div>
-            <div className={styles.checkItem}>High Protein Intake</div>
-            <div className={styles.checkItem}>Recover Hard</div>
-          </div>
-          <p className={styles.verdictCta}>
-            Train with intent, eat with discipline, and let the boring consistency do the
-            work.
-          </p>
-        </section>
       </div>
     </main>
   );
