@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef, Fragment } from "react";
+import ToggleTheme from "../modules/theme/toggleTheme";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   ArrowUp, 
@@ -212,6 +213,7 @@ export default function GymPage() {
   const [timerVisible, setTimerVisible] = useState(false);
   const [timerPlaying, setTimerPlaying] = useState(false);
   const timerRef = useRef(null);
+  const audioRef = useRef(null);
 
   const startTimer = (seconds) => {
     setRestTime(seconds);
@@ -223,6 +225,10 @@ export default function GymPage() {
     setTimerVisible(false);
     setTimerPlaying(false);
     setRestTime(0);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
   };
 
   useEffect(() => {
@@ -233,9 +239,9 @@ export default function GymPage() {
             clearInterval(timerRef.current);
             setTimerPlaying(false);
             // Play a chime when done
-            const audio = new Audio("https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg");
-            audio.volume = 0.5;
-            audio.play().catch(()=>console.log("Audio play blocked by browser"));
+            audioRef.current = new Audio("https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg");
+            audioRef.current.volume = 0.5;
+            audioRef.current.play().catch(()=>console.log("Audio play blocked by browser"));
             return 0;
           }
           return prev - 1;
@@ -445,14 +451,20 @@ export default function GymPage() {
           
           {/* Workout Mode Toggle */}
           <div className={styles.navSeparator} />
-          <button 
-            className={`${styles.navLink} ${styles.workoutToggle} ${isWorkoutMode ? styles.activeMode : ""}`}
+          <div 
+            className={styles.workoutToggleBox}
             onClick={() => setIsWorkoutMode(!isWorkoutMode)}
             title="Keeps screen awake during workout"
           >
-            {isWorkoutMode ? <Sun size={14} /> : <Moon size={14} />}
             <span>Workout Mode</span>
-          </button>
+            <div className={`${styles.switch} ${isWorkoutMode ? styles.switchActive : ""}`}>
+               <div className={styles.switchHandle} />
+            </div>
+          </div>
+          
+          {/* Theme Toggle */}
+          <div className={styles.navSeparator} />
+          <ToggleTheme />
         </div>
       </motion.nav>
 
