@@ -210,6 +210,78 @@ const staggerContainer = {
   },
 };
 
+// --- NEW PREMIUM COMPONENTS ---
+
+const OneRepMaxCalculator = () => {
+  const [w, setW] = useState("");
+  const [r, setR] = useState("");
+  
+  const calc1RM = (weight, reps) => {
+    const fw = parseFloat(weight);
+    const fr = parseFloat(reps);
+    if (!fw || !fr || isNaN(fw) || isNaN(fr) || fr < 1) return null;
+    return Math.round(fw * (36 / (37 - fr)));
+  };
+  
+  const max = calc1RM(w, r);
+  
+  return (
+    <div className={styles.ormWidget}>
+      <div className={styles.ormHeader}>
+        <Activity size={18} />
+        <h4>Inline 1RM</h4>
+      </div>
+      <p style={{ fontSize: "0.85rem", color: "var(--text-muted)", marginBottom: "1rem" }}>
+        Calculate your one-repetition maximum (the heaviest weight you can lift once) based on your recent sets. 
+      </p>
+      <div className={styles.ormInputs}>
+        <input type="number" placeholder="Weight" value={w} onChange={e=>setW(e.target.value)} />
+        <input type="number" placeholder="Reps" value={r} onChange={e=>setR(e.target.value)} />
+      </div>
+      {max && (
+        <div className={styles.ormResults}>
+          <div className={styles.ormMax}>Max: <strong>{max} kg</strong></div>
+          <div className={styles.ormGrid}>
+             <div>95% <span>{Math.round(max * 0.95)}</span></div>
+             <div>90% <span>{Math.round(max * 0.9)}</span></div>
+             <div>85% <span>{Math.round(max * 0.85)}</span></div>
+             <div>80% <span>{Math.round(max * 0.8)}</span></div>
+             <div>75% <span>{Math.round(max * 0.75)}</span></div>
+             <div>70% <span>{Math.round(max * 0.7)}</span></div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const ParticleBurst = ({ trigger }) => {
+  if (!trigger) return null;
+  return (
+    <div className={styles.particleContainer}>
+      {[...Array(24)].map((_, i) => {
+        const angle = (i / 24) * Math.PI * 2;
+        const velocity = 80 + Math.random() * 100;
+        return (
+          <motion.div
+             key={i}
+             initial={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+             animate={{ 
+               opacity: 0, 
+               scale: 0,
+               x: Math.cos(angle) * velocity,
+               y: Math.sin(angle) * velocity
+             }}
+             transition={{ duration: 0.8, ease: "easeOut" }}
+             className={styles.particle}
+             style={{ background: i % 2 === 0 ? "var(--accent)" : "var(--text)" }}
+          />
+        );
+      })}
+    </div>
+  );
+};
+
 export default function GymPage() {
   // === Feature: Rest Timer ===
   const [restTime, setRestTime] = useState(0);
@@ -267,6 +339,10 @@ export default function GymPage() {
             audioRef.current
               .play()
               .catch(() => console.log("Audio play blocked by browser"));
+            // Haptic Feedback
+            if ("vibrate" in navigator) {
+              navigator.vibrate([200, 100, 200]);
+            }
             return 0;
           }
           return prev - 1;
@@ -288,6 +364,14 @@ export default function GymPage() {
   const [logs, setLogs] = useState({});
   const [activeLogItem, setActiveLogItem] = useState(null);
   const [logInput, setLogInput] = useState("");
+  // --- NEW FEATURES STATE ---
+  const [finishTrigger, setFinishTrigger] = useState(false);
+
+  const handleFinishWorkout = () => {
+    if ("vibrate" in navigator) navigator.vibrate([200, 100, 200]);
+    setFinishTrigger(true);
+    setTimeout(() => setFinishTrigger(false), 1000);
+  };
 
   useEffect(() => {
     const saved = localStorage.getItem("gymProgressionLogs");
@@ -360,6 +444,7 @@ export default function GymPage() {
       {/* Dynamic Backgrounds */}
       <div className={styles.noiseOverlay} />
       <div className={styles.gradientBg} />
+      <ParticleBurst trigger={finishTrigger} />
 
       {/* Floating Timer Island */}
       <AnimatePresence>
@@ -404,6 +489,8 @@ export default function GymPage() {
                 className={styles.timerIconBtn}
                 onClick={() => setTimerPlaying((p) => !p)}
                 title="Pause/Play"
+                disabled={restTime === 0}
+                style={{ opacity: restTime === 0 ? 0.3 : 1, cursor: restTime === 0 ? "default" : "pointer" }}
               >
                 {timerPlaying ? <Pause size={18} /> : <Play size={18} />}
               </button>
@@ -487,6 +574,8 @@ export default function GymPage() {
         >
           Science-Based Insights
         </motion.div>
+
+
 
         <motion.h1
           className={styles.heroTitle}
@@ -694,6 +783,15 @@ export default function GymPage() {
           </motion.div>
         </motion.section>
 
+        <motion.section 
+          variants={fadeIn} 
+          initial="hidden" 
+          whileInView="visible" 
+          viewport={{ once: true }}
+        >
+          <OneRepMaxCalculator />
+        </motion.section>
+
         {/* Diet Section */}
         <motion.section
           id="diet"
@@ -786,6 +884,12 @@ export default function GymPage() {
           viewport={{ once: true, margin: "-50px" }}
         >
           <h2>Stay Consistent.</h2>
+          <div className={styles.finishWrap}>
+             <ParticleBurst trigger={finishTrigger} />
+             <button onClick={handleFinishWorkout} className={styles.finishBtn}>
+                <ShieldCheck size={18} /> Complete Session
+             </button>
+          </div>
         </motion.div>
       </div>
     </main>
