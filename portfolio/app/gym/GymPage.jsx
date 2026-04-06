@@ -376,22 +376,28 @@ export default function GymPage() {
                 className={`${styles.timerPulse} ${restTime === 0 ? styles.timerDone : ""}`}
               />
               <div className={styles.timerTextWrap}>
-                {(restTime > 0 ? formatTime(restTime) : "0:00").split("").map((char, index) => (
-                  <div key={index} className={styles.digitBox}>
-                    <AnimatePresence mode="popLayout">
-                      <motion.span
-                        key={char}
-                        initial={{ y: 15, opacity: 0, filter: "blur(4px)" }}
-                        animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-                        exit={{ y: -15, opacity: 0, filter: "blur(4px)" }}
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                        className={styles.timerText}
-                      >
-                        {char}
-                      </motion.span>
-                    </AnimatePresence>
-                  </div>
-                ))}
+                {(restTime > 0 ? formatTime(restTime) : "0:00")
+                  .split("")
+                  .map((char, index) => (
+                    <div key={index} className={styles.digitBox}>
+                      <AnimatePresence mode="popLayout">
+                        <motion.span
+                          key={char}
+                          initial={{ y: 15, opacity: 0, filter: "blur(4px)" }}
+                          animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+                          exit={{ y: -15, opacity: 0, filter: "blur(4px)" }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 300,
+                            damping: 30,
+                          }}
+                          className={styles.timerText}
+                        >
+                          {char}
+                        </motion.span>
+                      </AnimatePresence>
+                    </div>
+                  ))}
               </div>
               <button
                 type="button"
@@ -436,7 +442,10 @@ export default function GymPage() {
                 value={logInput}
                 onChange={(e) => {
                   let val = e.target.value;
-                  if (val.length > logInput.length && val.toLowerCase().endsWith("kg")) {
+                  if (
+                    val.length > logInput.length &&
+                    val.toLowerCase().endsWith("kg")
+                  ) {
                     val += " x ";
                   }
                   setLogInput(val);
@@ -714,7 +723,7 @@ export default function GymPage() {
                 <tr>
                   <th>Phase / Time</th>
                   <th>Source</th>
-                  <th className={styles.tdCenter}>Proto-Load</th>
+                  <th className={styles.tdCenter}>Protein</th>
                   <th className={styles.tdRight}>Est. Kcal</th>
                 </tr>
               </thead>
