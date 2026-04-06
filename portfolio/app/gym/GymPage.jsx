@@ -219,6 +219,18 @@ export default function GymPage() {
     setRestTime(seconds);
     setTimerVisible(true);
     setTimerPlaying(true);
+
+    // Unlock iOS/Android Audio Context on physical user interaction
+    if (!audioRef.current) {
+      audioRef.current = new Audio("https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg");
+    }
+    const playPromise = audioRef.current.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }).catch(err => console.log("Audio unlock failed/ignored:", err));
+    }
   };
 
   const closeTimer = () => {
@@ -239,7 +251,9 @@ export default function GymPage() {
             clearInterval(timerRef.current);
             setTimerPlaying(false);
             // Play a chime when done
-            audioRef.current = new Audio("https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg");
+            if (!audioRef.current) {
+              audioRef.current = new Audio("https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg");
+            }
             audioRef.current.volume = 0.5;
             audioRef.current.play().catch(()=>console.log("Audio play blocked by browser"));
             return 0;

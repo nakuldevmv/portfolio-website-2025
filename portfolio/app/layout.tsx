@@ -90,6 +90,11 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   manifest: "/site.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Nakul Dev M V",
+  },
 }
 export default function RootLayout({
   children,
