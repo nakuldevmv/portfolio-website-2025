@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState, useRef, Fragment } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   ArrowUp, 
   ArrowDown, 
@@ -13,9 +13,20 @@ import {
   Bed, 
   UtensilsCrossed, 
   Droplet,
-  ExternalLink
+  ExternalLink,
+  Timer,
+  Plus,
+  Play,
+  Pause,
+  Moon,
+  Sun,
+  X
 } from "lucide-react";
 import styles from "./gym.module.css";
+
+// ========================
+// DATA DEFINITIONS
+// ========================
 
 const workoutSections = [
   {
@@ -25,12 +36,12 @@ const workoutSections = [
     description: "Chest · Shoulders · Triceps — Heavy compound base, isolation finishers",
     icon: <ArrowUp size={28} strokeWidth={1.5} />,
     rows: [
-      ["Bench Press", "4", "5–8", "2–3 min", "Main heavy lift"],
-      ["Incline DB Press", "3", "8–10", "90 sec", "Upper chest focus"],
-      ["DB Shoulder Press", "3", "6–10", "2 min", "Controlled reps"],
-      ["Cable/Machine Chest Fly", "3", "12–15", "60 sec", "Stretch + squeeze"],
-      ["Lateral Raise", "4", "12–15", "60 sec", "Side delt priority"],
-      ["Overhead Tricep Extension", "3", "10–12", "60 sec", "Long head stretch"],
+      ["Bench Press", "4", "5–8", "120", "Main heavy lift"], // Rest in seconds
+      ["Incline DB Press", "3", "8–10", "90", "Upper chest focus"],
+      ["DB Shoulder Press", "3", "6–10", "120", "Controlled reps"],
+      ["Cable/Machine Chest Fly", "3", "12–15", "60", "Stretch + squeeze"],
+      ["Lateral Raise", "4", "12–15", "60", "Side delt priority"],
+      ["Overhead Tricep Extension", "3", "10–12", "60", "Long head stretch"],
     ],
   },
   {
@@ -40,12 +51,12 @@ const workoutSections = [
     description: "Back · Biceps — Width, thickness, and rear delt coverage",
     icon: <ArrowDown size={28} strokeWidth={1.5} />,
     rows: [
-      ["Lat Pulldown (Wide/Neutral)", "4", "8–12", "90 sec", "Pull to chest"],
-      ["Meadows Row", "3", "8–10", "2 min", "Back thickness"],
-      ["Seated Cable Row", "3", "10–12", "90 sec", "Pause + squeeze"],
-      ["Face Pull", "3", "12–15", "60 sec", "Rear delts + posture"],
-      ["Shrugs", "3", "10–12", "60 sec", "Controlled reps"],
-      ["Supinated Curl", "3", "10–12", "60 sec", "Full stretch"],
+      ["Lat Pulldown (Wide/Neutral)", "4", "8–12", "90", "Pull to chest"],
+      ["Meadows Row", "3", "8–10", "120", "Back thickness"],
+      ["Seated Cable Row", "3", "10–12", "90", "Pause + squeeze"],
+      ["Face Pull", "3", "12–15", "60", "Rear delts + posture"],
+      ["Shrugs", "3", "10–12", "60", "Controlled reps"],
+      ["Supinated Curl", "3", "10–12", "60", "Full stretch"],
     ],
   },
   {
@@ -55,12 +66,12 @@ const workoutSections = [
     description: "Heavy Lower — Squat-focused, full quad and calf development",
     icon: <Zap size={28} strokeWidth={1.5} />,
     rows: [
-      ["Squat / Hack Squat", "4", "5–8", "2–3 min", "Go deep"],
-      ["Bulgarian Split Squat", "3", "8–10", "90 sec", "Stability + control"],
-      ["Leg Press", "3", "10–12", "90 sec", "Don't lock knees"],
-      ["Lying Leg Curl", "3", "10–12", "60 sec", "Slow eccentric"],
-      ["Leg Extension", "3", "12–15", "60 sec", "Quad burnout"],
-      ["Standing Calf Raise", "4", "12–15", "60 sec", "Full stretch"],
+      ["Squat / Hack Squat", "4", "5–8", "180", "Go deep"],
+      ["Bulgarian Split Squat", "3", "8–10", "90", "Stability + control"],
+      ["Leg Press", "3", "10–12", "90", "Don't lock knees"],
+      ["Lying Leg Curl", "3", "10–12", "60", "Slow eccentric"],
+      ["Leg Extension", "3", "12–15", "60", "Quad burnout"],
+      ["Standing Calf Raise", "4", "12–15", "60", "Full stretch"],
     ],
   },
   {
@@ -70,12 +81,12 @@ const workoutSections = [
     description: "Volume + Pump — Full upper body, moderate intensity, high output",
     icon: <Activity size={28} strokeWidth={1.5} />,
     rows: [
-      ["Flat DB Press", "3", "8–10", "90 sec", "Controlled reps"],
-      ["Bent Over Row", "3", "8–10", "2 min", "Tight core"],
-      ["Lat Pulldown (Neutral)", "3", "10–12", "90 sec", "Full stretch"],
-      ["Lateral Raise", "4", "12–15", "60 sec", "Constant tension"],
-      ["Cable Curl", "3", "10–12", "60 sec", "Strict form"],
-      ["Tricep Pushdown", "3", "10–12", "60 sec", "Full lockout"],
+      ["Flat DB Press", "3", "8–10", "90", "Controlled reps"],
+      ["Bent Over Row", "3", "8–10", "120", "Tight core"],
+      ["Lat Pulldown (Neutral)", "3", "10–12", "90", "Full stretch"],
+      ["Lateral Raise", "4", "12–15", "60", "Constant tension"],
+      ["Cable Curl", "3", "10–12", "60", "Strict form"],
+      ["Tricep Pushdown", "3", "10–12", "60", "Full lockout"],
     ],
   },
   {
@@ -85,12 +96,12 @@ const workoutSections = [
     description: "Hamstring + Glute Focus — RDL-based, posterior chain dominance",
     icon: <Flame size={28} strokeWidth={1.5} />,
     rows: [
-      ["Romanian Deadlift", "4", "6–10", "2 min", "Stretch hamstrings"],
-      ["Hack Squat", "3", "8–10", "2 min", "Quad focus"],
-      ["Seated Leg Curl", "3", "10–12", "60 sec", "Controlled"],
-      ["Leg Extension", "3", "12–15", "60 sec", "Burnout"],
-      ["Hip Thrust", "3", "8–12", "90 sec", "Glute power"],
-      ["Calf Raise", "4", "12–15", "60 sec", "Pause reps"],
+      ["Romanian Deadlift", "4", "6–10", "120", "Stretch hamstrings"],
+      ["Hack Squat", "3", "8–10", "120", "Quad focus"],
+      ["Seated Leg Curl", "3", "10–12", "60", "Controlled"],
+      ["Leg Extension", "3", "12–15", "60", "Burnout"],
+      ["Hip Thrust", "3", "8–12", "90", "Glute power"],
+      ["Calf Raise", "4", "12–15", "60", "Pause reps"],
     ],
   },
 ];
@@ -169,6 +180,11 @@ const dietMeals = [
   },
 ];
 
+const dailyTotals = [
+  ["Protein", "~140–150g"],
+  ["Calories", "~1900–2100 kcal"],
+];
+
 // Animation Variants
 const fadeIn = {
   hidden: { opacity: 0, y: 40 },
@@ -191,11 +207,194 @@ const staggerContainer = {
 };
 
 export default function GymPage() {
+  // === Feature: Rest Timer ===
+  const [restTime, setRestTime] = useState(0);
+  const [timerVisible, setTimerVisible] = useState(false);
+  const [timerPlaying, setTimerPlaying] = useState(false);
+  const timerRef = useRef(null);
+
+  const startTimer = (seconds) => {
+    setRestTime(seconds);
+    setTimerVisible(true);
+    setTimerPlaying(true);
+  };
+
+  const closeTimer = () => {
+    setTimerVisible(false);
+    setTimerPlaying(false);
+    setRestTime(0);
+  };
+
+  useEffect(() => {
+    if (timerPlaying && restTime > 0) {
+      timerRef.current = setInterval(() => {
+        setRestTime((prev) => {
+          if (prev <= 1) {
+            clearInterval(timerRef.current);
+            setTimerPlaying(false);
+            // Play a chime when done
+            const audio = new Audio("https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg");
+            audio.volume = 0.5;
+            audio.play().catch(()=>console.log("Audio play blocked by browser"));
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    } else {
+      clearInterval(timerRef.current);
+    }
+    return () => clearInterval(timerRef.current);
+  }, [timerPlaying, restTime]);
+
+  const formatTime = (sec) => {
+    const mins = Math.floor(sec / 60);
+    const secs = sec % 60;
+    return `${mins}:${secs.toString().padStart(2, "0")}`;
+  };
+
+  // === Feature: Logbook LocalStorage ===
+  const [logs, setLogs] = useState({});
+  const [activeLogItem, setActiveLogItem] = useState(null);
+  const [logInput, setLogInput] = useState("");
+
+  useEffect(() => {
+    const saved = localStorage.getItem("gymProgressionLogs");
+    if (saved) {
+      setLogs(JSON.parse(saved));
+    }
+  }, []);
+
+  const openLogPrompt = (exerciseName) => {
+    setActiveLogItem(exerciseName);
+    setLogInput(logs[exerciseName] || "");
+  };
+
+  const handleSaveLog = () => {
+    if (activeLogItem && logInput) {
+      const newLogs = { ...logs, [activeLogItem]: logInput };
+      setLogs(newLogs);
+      localStorage.setItem("gymProgressionLogs", JSON.stringify(newLogs));
+    }
+    setActiveLogItem(null);
+    setLogInput("");
+  };
+
+  // Diet Data reverted to static
+
+  // === Feature: Workout Mode (Wake Lock) ===
+  const [isWorkoutMode, setIsWorkoutMode] = useState(false);
+  const wakeLockRef = useRef(null);
+
+  useEffect(() => {
+    const requestWakeLock = async () => {
+      try {
+        wakeLockRef.current = await navigator.wakeLock.request('screen');
+        wakeLockRef.current.addEventListener('release', () => {
+          console.log('Screen Wake Lock released');
+        });
+        console.log('Screen Wake Lock acquired');
+      } catch (err) {
+        console.error(`${err.name}, ${err.message}`);
+      }
+    };
+
+    if (isWorkoutMode && 'wakeLock' in navigator) {
+      requestWakeLock();
+    } else if (!isWorkoutMode && wakeLockRef.current) {
+      wakeLockRef.current.release();
+      wakeLockRef.current = null;
+    }
+
+    // Re-acquire on visibility change if active
+    const handleVisibilityChange = () => {
+      if (wakeLockRef.current !== null && document.visibilityState === 'visible' && isWorkoutMode) {
+        requestWakeLock();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      if (wakeLockRef.current) wakeLockRef.current.release();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [isWorkoutMode]);
+
   return (
     <main className={styles.pageShell}>
       {/* Dynamic Backgrounds */}
       <div className={styles.noiseOverlay} />
       <div className={styles.gradientBg} />
+
+      {/* Floating Timer Island */}
+      <AnimatePresence>
+        {timerVisible && (
+          <motion.div 
+            className={styles.timerIsland}
+            initial={{ y: 100, opacity: 0, x: "-50%" }}
+            animate={{ y: 0, opacity: 1, x: "-50%" }}
+            exit={{ y: 100, opacity: 0, x: "-50%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+          >
+            <div className={styles.timerContent}>
+              <div className={`${styles.timerPulse} ${restTime === 0 ? styles.timerDone : ""}`} />
+              <span className={styles.timerText}>
+                {restTime > 0 ? formatTime(restTime) : "REST OVER"}
+              </span>
+              <button 
+                type="button"
+                className={styles.timerIconBtn} 
+                onClick={() => setTimerPlaying(p => !p)}
+                title="Pause/Play"
+              >
+                {timerPlaying ? <Pause size={18} /> : <Play size={18} />}
+              </button>
+              <button 
+                type="button"
+                className={styles.timerClose} 
+                onClick={closeTimer}
+                title="Close Timer"
+              >
+                <X size={18} />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {activeLogItem && (
+          <motion.div 
+            className={styles.logModalOverlay}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div 
+              className={styles.logModal}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+            >
+              <h3>Log: {activeLogItem}</h3>
+              <p>Top Set Weight x Reps</p>
+              <input 
+                autoFocus
+                type="text" 
+                value={logInput} 
+                onChange={e => setLogInput(e.target.value)} 
+                placeholder="100kg x 5"
+                onKeyDown={e => { if(e.key === "Enter") handleSaveLog(); }}
+                className={styles.logInput}
+              />
+              <div className={styles.logModalActions}>
+                <button type="button" onClick={() => setActiveLogItem(null)} className={styles.cancelBtn}>Cancel</button>
+                <button type="button" onClick={handleSaveLog} className={styles.saveBtn}>Save Set</button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Hero Section */}
       <section className={styles.hero}>
@@ -243,6 +442,17 @@ export default function GymPage() {
           <div className={styles.navSeparator} />
           <a href="#rules" className={styles.navLink}>Rules</a>
           <a href="#diet" className={styles.navLink}>Diet</a>
+          
+          {/* Workout Mode Toggle */}
+          <div className={styles.navSeparator} />
+          <button 
+            className={`${styles.navLink} ${styles.workoutToggle} ${isWorkoutMode ? styles.activeMode : ""}`}
+            onClick={() => setIsWorkoutMode(!isWorkoutMode)}
+            title="Keeps screen awake during workout"
+          >
+            {isWorkoutMode ? <Sun size={14} /> : <Moon size={14} />}
+            <span>Workout Mode</span>
+          </button>
         </div>
       </motion.nav>
 
@@ -274,28 +484,53 @@ export default function GymPage() {
                     <th>Exercise / Movement</th>
                     <th className={styles.tdCenter}>Sets</th>
                     <th className={styles.tdCenter}>Reps</th>
+                    <th>Rest</th>
                     <th>Execution Notes</th>
                   </tr>
                 </thead>
                 <tbody>
                   {section.rows.map((row) => (
                     <tr key={row[0]}>
-                      <td className={styles.exerciseName}>
-                        <a 
-                          href={`https://www.youtube.com/results?search_query=${encodeURIComponent(row[0] + " exercise proper form")}`} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className={styles.ytLink}
-                          title={`Search ${row[0]} form on YouTube`}
-                        >
-                          {row[0]}
-                          <ExternalLink size={14} className={styles.ytIcon} strokeWidth={2} />
-                        </a>
+                      <td>
+                        <div className={styles.exerciseNameRow}>
+                          <a 
+                            href={`https://www.youtube.com/results?search_query=${encodeURIComponent(row[0] + " exercise proper form")}`} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className={styles.ytLink}
+                            title={`Search ${row[0]} form on YouTube`}
+                          >
+                            {row[0]}
+                            <ExternalLink size={14} className={styles.ytIcon} strokeWidth={2} />
+                          </a>
+                          <button 
+                            type="button"
+                            className={styles.logBtn} 
+                            onClick={() => openLogPrompt(row[0])}
+                            title="Log progression"
+                          >
+                            <Plus size={14} />
+                          </button>
+                        </div>
+                        {logs[row[0]] && (
+                          <div className={styles.logTag}>
+                            Last: {logs[row[0]]}
+                          </div>
+                        )}
                       </td>
                       <td className={styles.tdCenter}>
                         <span className={styles.setsIndicator}>{row[1]}</span>
                       </td>
                       <td className={`${styles.tdCenter} ${styles.repsText}`}>{row[2]}</td>
+                      <td className={styles.tdCenter}>
+                        <button 
+                          className={styles.restBtn}
+                          onClick={() => startTimer(parseInt(row[3]))}
+                        >
+                          <Timer size={14} className={styles.restIcon} />
+                          <span>{parseInt(row[3]) >= 120 ? `${parseInt(row[3])/60}m` : `${row[3]}s`}</span>
+                        </button>
+                      </td>
                       <td className={styles.notesText}>{row[4]}</td>
                     </tr>
                   ))}
@@ -305,7 +540,8 @@ export default function GymPage() {
           </motion.section>
         ))}
 
-        {/* Rules Section */}
+        {/* ... Rules ... */}
+        {/* Same as before */}
         <motion.section 
           id="rules" 
           className={styles.section}
@@ -363,7 +599,7 @@ export default function GymPage() {
               <span className={styles.sectionTag}>Nutritionology</span>
               <h2 className={styles.sectionTitle}>Optimal Cut</h2>
               <p className={styles.sectionDesc}>
-                Target: ~2000 kcal · 140g+ Protein. The fuel dictates the outcome.
+                1900–2100 kcal baseline. High protein, moderate carb, sustained energy.
               </p>
             </div>
           </div>
@@ -379,21 +615,37 @@ export default function GymPage() {
                 </tr>
               </thead>
               <tbody>
-                {dietMeals.flatMap((meal) =>
-                  meal.items.map((item, index) => (
-                    <tr key={`${meal.meal}-${item[0]}`}>
-                      <td className={styles.mealPhase}>
-                        {index === 0 ? meal.meal : ""}
-                      </td>
-                      <td>
-                        <div className={styles.foodName}>{item[0]}</div>
-                        <div className={styles.foodQty}>{item[1]}</div>
-                      </td>
-                      <td className={`${styles.tdCenter} ${styles.repsText}`}>{item[2]}</td>
-                      <td className={`${styles.tdRight} ${styles.notesText}`}>{item[3]}</td>
-                    </tr>
-                  ))
-                )}
+                {dietMeals.map((meal) => (
+                  <Fragment key={meal.meal}>
+                    {meal.items.map((item, index) => (
+                      <tr key={item[0]}>
+                        {index === 0 ? (
+                          <td className={styles.mealPhase} rowSpan={meal.items.length}>
+                            {meal.meal}
+                          </td>
+                        ) : null}
+                        <td>
+                          <div className={styles.foodName}>{item[0]}</div>
+                          <div className={styles.foodQty}>{item[1]}</div>
+                        </td>
+                        <td className={`${styles.tdCenter} ${styles.repsText}`}>{item[2]}</td>
+                        <td className={`${styles.tdRight} ${styles.notesText}`}>{item[3]}</td>
+                      </tr>
+                    ))}
+                  </Fragment>
+                ))}
+                {/* Daily Totals */}
+                <tr>
+                  <td colSpan={2} style={{ paddingTop: '2rem' }}>
+                    <strong>Daily Minimum Targets</strong>
+                  </td>
+                  <td className={`${styles.tdCenter} ${styles.repsText}`} style={{ paddingTop: '2rem' }}>
+                    {dailyTotals[0][1]}
+                  </td>
+                  <td className={`${styles.tdRight} ${styles.notesText}`} style={{ paddingTop: '2rem', fontWeight: "700" }}>
+                    {dailyTotals[1][1]}
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
