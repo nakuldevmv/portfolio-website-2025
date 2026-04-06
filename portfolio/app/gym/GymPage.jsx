@@ -3,16 +3,16 @@
 import React, { useEffect, useState, useRef, Fragment } from "react";
 import ToggleTheme from "../modules/theme/toggleTheme";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  ArrowUp, 
-  ArrowDown, 
-  Zap, 
-  Activity, 
-  Flame, 
-  Scale, 
-  ShieldCheck, 
-  Bed, 
-  UtensilsCrossed, 
+import {
+  ArrowUp,
+  ArrowDown,
+  Zap,
+  Activity,
+  Flame,
+  Scale,
+  ShieldCheck,
+  Bed,
+  UtensilsCrossed,
   Droplet,
   ExternalLink,
   Timer,
@@ -21,7 +21,7 @@ import {
   Pause,
   Moon,
   Sun,
-  X
+  X,
 } from "lucide-react";
 import styles from "./gym.module.css";
 
@@ -34,7 +34,8 @@ const workoutSections = [
     id: "push",
     day: "Day 01",
     title: "Push Day",
-    description: "Chest · Shoulders · Triceps — Heavy compound base, isolation finishers",
+    description:
+      "Chest · Shoulders · Triceps — Heavy compound base, isolation finishers",
     icon: <ArrowUp size={28} strokeWidth={1.5} />,
     rows: [
       ["Bench Press", "4", "5–8", "120", "Main heavy lift"], // Rest in seconds
@@ -79,7 +80,8 @@ const workoutSections = [
     id: "upper",
     day: "Day 05",
     title: "Upper Day",
-    description: "Volume + Pump — Full upper body, moderate intensity, high output",
+    description:
+      "Volume + Pump — Full upper body, moderate intensity, high output",
     icon: <Activity size={28} strokeWidth={1.5} />,
     rows: [
       ["Flat DB Press", "3", "8–10", "90", "Controlled reps"],
@@ -94,7 +96,8 @@ const workoutSections = [
     id: "lower",
     day: "Day 06",
     title: "Lower Day",
-    description: "Hamstring + Glute Focus — RDL-based, posterior chain dominance",
+    description:
+      "Hamstring + Glute Focus — RDL-based, posterior chain dominance",
     icon: <Flame size={28} strokeWidth={1.5} />,
     rows: [
       ["Romanian Deadlift", "4", "6–10", "120", "Stretch hamstrings"],
@@ -189,22 +192,22 @@ const dailyTotals = [
 // Animation Variants
 const fadeIn = {
   hidden: { opacity: 0, y: 40 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 1, 
-      ease: [0.16, 1, 0.3, 1] 
-    } 
-  }
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
 };
 
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 }
-  }
+    transition: { staggerChildren: 0.1 },
+  },
 };
 
 export default function GymPage() {
@@ -222,14 +225,18 @@ export default function GymPage() {
 
     // Unlock iOS/Android Audio Context on physical user interaction
     if (!audioRef.current) {
-      audioRef.current = new Audio("https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg");
+      audioRef.current = new Audio(
+        "https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg",
+      );
     }
     const playPromise = audioRef.current.play();
     if (playPromise !== undefined) {
-      playPromise.then(() => {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-      }).catch(err => console.log("Audio unlock failed/ignored:", err));
+      playPromise
+        .then(() => {
+          audioRef.current.pause();
+          audioRef.current.currentTime = 0;
+        })
+        .catch((err) => console.log("Audio unlock failed/ignored:", err));
     }
   };
 
@@ -252,10 +259,14 @@ export default function GymPage() {
             setTimerPlaying(false);
             // Play a chime when done
             if (!audioRef.current) {
-              audioRef.current = new Audio("https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg");
+              audioRef.current = new Audio(
+                "https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg",
+              );
             }
             audioRef.current.volume = 0.5;
-            audioRef.current.play().catch(()=>console.log("Audio play blocked by browser"));
+            audioRef.current
+              .play()
+              .catch(() => console.log("Audio play blocked by browser"));
             return 0;
           }
           return prev - 1;
@@ -309,17 +320,17 @@ export default function GymPage() {
   useEffect(() => {
     const requestWakeLock = async () => {
       try {
-        wakeLockRef.current = await navigator.wakeLock.request('screen');
-        wakeLockRef.current.addEventListener('release', () => {
-          console.log('Screen Wake Lock released');
+        wakeLockRef.current = await navigator.wakeLock.request("screen");
+        wakeLockRef.current.addEventListener("release", () => {
+          console.log("Screen Wake Lock released");
         });
-        console.log('Screen Wake Lock acquired');
+        console.log("Screen Wake Lock acquired");
       } catch (err) {
         console.error(`${err.name}, ${err.message}`);
       }
     };
 
-    if (isWorkoutMode && 'wakeLock' in navigator) {
+    if (isWorkoutMode && "wakeLock" in navigator) {
       requestWakeLock();
     } else if (!isWorkoutMode && wakeLockRef.current) {
       wakeLockRef.current.release();
@@ -328,7 +339,11 @@ export default function GymPage() {
 
     // Re-acquire on visibility change if active
     const handleVisibilityChange = () => {
-      if (wakeLockRef.current !== null && document.visibilityState === 'visible' && isWorkoutMode) {
+      if (
+        wakeLockRef.current !== null &&
+        document.visibilityState === "visible" &&
+        isWorkoutMode
+      ) {
         requestWakeLock();
       }
     };
@@ -349,7 +364,7 @@ export default function GymPage() {
       {/* Floating Timer Island */}
       <AnimatePresence>
         {timerVisible && (
-          <motion.div 
+          <motion.div
             className={styles.timerIsland}
             initial={{ y: 100, opacity: 0, x: "-50%" }}
             animate={{ y: 0, opacity: 1, x: "-50%" }}
@@ -357,21 +372,38 @@ export default function GymPage() {
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
           >
             <div className={styles.timerContent}>
-              <div className={`${styles.timerPulse} ${restTime === 0 ? styles.timerDone : ""}`} />
-              <span className={styles.timerText}>
-                {restTime > 0 ? formatTime(restTime) : "REST OVER"}
-              </span>
-              <button 
+              <div
+                className={`${styles.timerPulse} ${restTime === 0 ? styles.timerDone : ""}`}
+              />
+              <div className={styles.timerTextWrap}>
+                {(restTime > 0 ? formatTime(restTime) : "0:00").split("").map((char, index) => (
+                  <div key={index} className={styles.digitBox}>
+                    <AnimatePresence mode="popLayout">
+                      <motion.span
+                        key={char}
+                        initial={{ y: 15, opacity: 0, filter: "blur(4px)" }}
+                        animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+                        exit={{ y: -15, opacity: 0, filter: "blur(4px)" }}
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        className={styles.timerText}
+                      >
+                        {char}
+                      </motion.span>
+                    </AnimatePresence>
+                  </div>
+                ))}
+              </div>
+              <button
                 type="button"
-                className={styles.timerIconBtn} 
-                onClick={() => setTimerPlaying(p => !p)}
+                className={styles.timerIconBtn}
+                onClick={() => setTimerPlaying((p) => !p)}
                 title="Pause/Play"
               >
                 {timerPlaying ? <Pause size={18} /> : <Play size={18} />}
               </button>
-              <button 
+              <button
                 type="button"
-                className={styles.timerClose} 
+                className={styles.timerClose}
                 onClick={closeTimer}
                 title="Close Timer"
               >
@@ -384,13 +416,13 @@ export default function GymPage() {
 
       <AnimatePresence>
         {activeLogItem && (
-          <motion.div 
+          <motion.div
             className={styles.logModalOverlay}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <motion.div 
+            <motion.div
               className={styles.logModal}
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -398,18 +430,32 @@ export default function GymPage() {
             >
               <h3>Log: {activeLogItem}</h3>
               <p>Top Set Weight x Reps</p>
-              <input 
+              <input
                 autoFocus
-                type="text" 
-                value={logInput} 
-                onChange={e => setLogInput(e.target.value)} 
+                type="text"
+                value={logInput}
+                onChange={(e) => setLogInput(e.target.value)}
                 placeholder="100kg x 5"
-                onKeyDown={e => { if(e.key === "Enter") handleSaveLog(); }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleSaveLog();
+                }}
                 className={styles.logInput}
               />
               <div className={styles.logModalActions}>
-                <button type="button" onClick={() => setActiveLogItem(null)} className={styles.cancelBtn}>Cancel</button>
-                <button type="button" onClick={handleSaveLog} className={styles.saveBtn}>Save Set</button>
+                <button
+                  type="button"
+                  onClick={() => setActiveLogItem(null)}
+                  className={styles.cancelBtn}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={handleSaveLog}
+                  className={styles.saveBtn}
+                >
+                  Save Set
+                </button>
               </div>
             </motion.div>
           </motion.div>
@@ -426,8 +472,8 @@ export default function GymPage() {
         >
           Science-Based Insights
         </motion.div>
-        
-        <motion.h1 
+
+        <motion.h1
           className={styles.heroTitle}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -435,19 +481,21 @@ export default function GymPage() {
         >
           Final Form.
         </motion.h1>
-        
-        <motion.p 
+
+        <motion.p
           className={styles.heroSubtitle}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          Built on progressive overload, volume mastery, and the compound-to-isolation balance that actually yields results. Eliminate the noise.
+          Built on progressive overload, volume mastery, and the
+          compound-to-isolation balance that actually yields results. Eliminate
+          the noise.
         </motion.p>
       </section>
 
       {/* Quick Nav (Un-boxed, glass) */}
-      <motion.nav 
+      <motion.nav
         className={styles.nav}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -455,27 +503,37 @@ export default function GymPage() {
       >
         <div className={styles.navInner}>
           {workoutSections.map((section) => (
-            <a key={section.id} href={`#${section.id}`} className={styles.navLink}>
+            <a
+              key={section.id}
+              href={`#${section.id}`}
+              className={styles.navLink}
+            >
               {section.title.replace(" Day", "")}
             </a>
           ))}
           <div className={styles.navSeparator} />
-          <a href="#rules" className={styles.navLink}>Rules</a>
-          <a href="#diet" className={styles.navLink}>Diet</a>
-          
+          <a href="#rules" className={styles.navLink}>
+            Rules
+          </a>
+          <a href="#diet" className={styles.navLink}>
+            Diet
+          </a>
+
           {/* Workout Mode Toggle */}
           <div className={styles.navSeparator} />
-          <div 
+          <div
             className={styles.workoutToggleBox}
             onClick={() => setIsWorkoutMode(!isWorkoutMode)}
             title="Keeps screen awake during workout"
           >
             <span>Workout Mode</span>
-            <div className={`${styles.switch} ${isWorkoutMode ? styles.switchActive : ""}`}>
-               <div className={styles.switchHandle} />
+            <div
+              className={`${styles.switch} ${isWorkoutMode ? styles.switchActive : ""}`}
+            >
+              <div className={styles.switchHandle} />
             </div>
           </div>
-          
+
           {/* Theme Toggle */}
           <div className={styles.navSeparator} />
           <ToggleTheme />
@@ -485,9 +543,9 @@ export default function GymPage() {
       <div className={styles.contentArea}>
         {/* Workout Sections */}
         {workoutSections.map((section) => (
-          <motion.section 
-            key={section.id} 
-            id={section.id} 
+          <motion.section
+            key={section.id}
+            id={section.id}
             className={styles.section}
             variants={fadeIn}
             initial="hidden"
@@ -519,19 +577,23 @@ export default function GymPage() {
                     <tr key={row[0]}>
                       <td>
                         <div className={styles.exerciseNameRow}>
-                          <a 
-                            href={`https://www.youtube.com/results?search_query=${encodeURIComponent(row[0] + " exercise proper form")}`} 
-                            target="_blank" 
+                          <a
+                            href={`https://www.youtube.com/results?search_query=${encodeURIComponent(row[0] + " exercise proper form")}`}
+                            target="_blank"
                             rel="noopener noreferrer"
                             className={styles.ytLink}
                             title={`Search ${row[0]} form on YouTube`}
                           >
                             {row[0]}
-                            <ExternalLink size={14} className={styles.ytIcon} strokeWidth={2} />
+                            <ExternalLink
+                              size={14}
+                              className={styles.ytIcon}
+                              strokeWidth={2}
+                            />
                           </a>
-                          <button 
+                          <button
                             type="button"
-                            className={styles.logBtn} 
+                            className={styles.logBtn}
                             onClick={() => openLogPrompt(row[0])}
                             title="Log progression"
                           >
@@ -547,14 +609,20 @@ export default function GymPage() {
                       <td className={styles.tdCenter}>
                         <span className={styles.setsIndicator}>{row[1]}</span>
                       </td>
-                      <td className={`${styles.tdCenter} ${styles.repsText}`}>{row[2]}</td>
+                      <td className={`${styles.tdCenter} ${styles.repsText}`}>
+                        {row[2]}
+                      </td>
                       <td className={styles.tdCenter}>
-                        <button 
+                        <button
                           className={styles.restBtn}
                           onClick={() => startTimer(parseInt(row[3]))}
                         >
                           <Timer size={14} className={styles.restIcon} />
-                          <span>{parseInt(row[3]) >= 120 ? `${parseInt(row[3])/60}m` : `${row[3]}s`}</span>
+                          <span>
+                            {parseInt(row[3]) >= 120
+                              ? `${parseInt(row[3]) / 60}m`
+                              : `${row[3]}s`}
+                          </span>
                         </button>
                       </td>
                       <td className={styles.notesText}>{row[4]}</td>
@@ -568,8 +636,8 @@ export default function GymPage() {
 
         {/* ... Rules ... */}
         {/* Same as before */}
-        <motion.section 
-          id="rules" 
+        <motion.section
+          id="rules"
           className={styles.section}
           variants={fadeIn}
           initial="hidden"
@@ -581,12 +649,13 @@ export default function GymPage() {
               <span className={styles.sectionTag}>Principles</span>
               <h2 className={styles.sectionTitle}>Non-Negotiables</h2>
               <p className={styles.sectionDesc}>
-                These aren't recommendations. This is what separates marginal gains from true transformation.
+                These aren't recommendations. This is what separates marginal
+                gains from true transformation.
               </p>
             </div>
           </div>
 
-          <motion.div 
+          <motion.div
             className={styles.rulesGrid}
             variants={staggerContainer}
             initial="hidden"
@@ -594,8 +663,8 @@ export default function GymPage() {
             viewport={{ once: true }}
           >
             {rules.map((rule) => (
-              <motion.article 
-                key={rule.label} 
+              <motion.article
+                key={rule.label}
                 className={styles.ruleItem}
                 variants={fadeIn}
               >
@@ -611,8 +680,8 @@ export default function GymPage() {
         </motion.section>
 
         {/* Diet Section */}
-        <motion.section 
-          id="diet" 
+        <motion.section
+          id="diet"
           className={styles.section}
           variants={fadeIn}
           initial="hidden"
@@ -620,12 +689,15 @@ export default function GymPage() {
           viewport={{ once: true, margin: "-100px" }}
         >
           <div className={styles.sectionHeader}>
-             <div className={styles.iconWrap}><UtensilsCrossed size={28} strokeWidth={1.5} /></div>
-             <div className={styles.headerText}>
+            <div className={styles.iconWrap}>
+              <UtensilsCrossed size={28} strokeWidth={1.5} />
+            </div>
+            <div className={styles.headerText}>
               <span className={styles.sectionTag}>Nutritionology</span>
               <h2 className={styles.sectionTitle}>Optimal Cut</h2>
               <p className={styles.sectionDesc}>
-                1900–2100 kcal baseline. High protein, moderate carb, sustained energy.
+                1900–2100 kcal baseline. High protein, moderate carb, sustained
+                energy.
               </p>
             </div>
           </div>
@@ -646,7 +718,10 @@ export default function GymPage() {
                     {meal.items.map((item, index) => (
                       <tr key={item[0]}>
                         {index === 0 ? (
-                          <td className={styles.mealPhase} rowSpan={meal.items.length}>
+                          <td
+                            className={styles.mealPhase}
+                            rowSpan={meal.items.length}
+                          >
                             {meal.meal}
                           </td>
                         ) : null}
@@ -654,21 +729,31 @@ export default function GymPage() {
                           <div className={styles.foodName}>{item[0]}</div>
                           <div className={styles.foodQty}>{item[1]}</div>
                         </td>
-                        <td className={`${styles.tdCenter} ${styles.repsText}`}>{item[2]}</td>
-                        <td className={`${styles.tdRight} ${styles.notesText}`}>{item[3]}</td>
+                        <td className={`${styles.tdCenter} ${styles.repsText}`}>
+                          {item[2]}
+                        </td>
+                        <td className={`${styles.tdRight} ${styles.notesText}`}>
+                          {item[3]}
+                        </td>
                       </tr>
                     ))}
                   </Fragment>
                 ))}
                 {/* Daily Totals */}
                 <tr>
-                  <td colSpan={2} style={{ paddingTop: '2rem' }}>
+                  <td colSpan={2} style={{ paddingTop: "2rem" }}>
                     <strong>Daily Minimum Targets</strong>
                   </td>
-                  <td className={`${styles.tdCenter} ${styles.repsText}`} style={{ paddingTop: '2rem' }}>
+                  <td
+                    className={`${styles.tdCenter} ${styles.repsText}`}
+                    style={{ paddingTop: "2rem" }}
+                  >
                     {dailyTotals[0][1]}
                   </td>
-                  <td className={`${styles.tdRight} ${styles.notesText}`} style={{ paddingTop: '2rem', fontWeight: "700" }}>
+                  <td
+                    className={`${styles.tdRight} ${styles.notesText}`}
+                    style={{ paddingTop: "2rem", fontWeight: "700" }}
+                  >
                     {dailyTotals[1][1]}
                   </td>
                 </tr>
@@ -676,9 +761,9 @@ export default function GymPage() {
             </table>
           </div>
         </motion.section>
-        
+
         {/* Footer Polish */}
-        <motion.div 
+        <motion.div
           className={styles.verdict}
           variants={fadeIn}
           initial="hidden"
@@ -687,7 +772,6 @@ export default function GymPage() {
         >
           <h2>Stay Consistent.</h2>
         </motion.div>
-
       </div>
     </main>
   );
