@@ -265,6 +265,7 @@ export default function GymPage() {
   const timerRef = useRef(null);
   const audioRef = useRef(null);
   const canVibrateRef = useRef(false);
+  const alarmActiveRef = useRef(false);
 
   const triggerVibration = (pattern) => {
     if (!canVibrateRef.current) return false;
@@ -298,6 +299,7 @@ export default function GymPage() {
   };
 
   const stopAlarmAudio = () => {
+    alarmActiveRef.current = false;
     if (!audioRef.current) return;
     audioRef.current.pause();
     audioRef.current.currentTime = 0;
@@ -305,7 +307,9 @@ export default function GymPage() {
 
   const playAlarmSound = async () => {
     const audio = ensureAlarmAudio();
-    stopAlarmAudio();
+    alarmActiveRef.current = true;
+    audio.pause();
+    audio.currentTime = 0;
 
     try {
       await audio.play();
@@ -317,6 +321,7 @@ export default function GymPage() {
   const startTimer = (seconds) => {
     triggerTapFeedback();
     ensureAlarmAudio();
+    stopAlarmAudio();
     setRestTime(seconds);
     setTimerVisible(true);
     setTimerPlaying(true);
@@ -333,9 +338,23 @@ export default function GymPage() {
   useEffect(() => {
     canVibrateRef.current =
       typeof navigator !== "undefined" && typeof navigator.vibrate === "function";
-    ensureAlarmAudio();
+    const audio = ensureAlarmAudio();
+    const handleAudioEnded = async () => {
+      if (!alarmActiveRef.current) return;
+
+      audio.currentTime = 0;
+
+      try {
+        await audio.play();
+      } catch (error) {
+        console.log("Alarm replay blocked by browser:", error);
+      }
+    };
+
+    audio.addEventListener("ended", handleAudioEnded);
 
     return () => {
+      audio.removeEventListener("ended", handleAudioEnded);
       stopAlarmAudio();
     };
   }, []);
