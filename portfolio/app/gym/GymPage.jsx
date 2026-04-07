@@ -19,11 +19,13 @@ import {
   Plus,
   Play,
   Pause,
-  Moon,
-  Sun,
   X,
 } from "lucide-react";
 import styles from "./gym.module.css";
+
+const ALARM_SOUND_SRC = "/gym-alarm.mp3";
+const TAP_HAPTIC_PATTERN = 12;
+const COMPLETION_HAPTIC_PATTERN = [240, 80, 280, 80, 360];
 
 // ========================
 // DATA DEFINITIONS
@@ -255,33 +257,6 @@ const OneRepMaxCalculator = () => {
   );
 };
 
-const ParticleBurst = ({ trigger }) => {
-  if (!trigger) return null;
-  return (
-    <div className={styles.particleContainer}>
-      {[...Array(24)].map((_, i) => {
-        const angle = (i / 24) * Math.PI * 2;
-        const velocity = 80 + Math.random() * 100;
-        return (
-          <motion.div
-             key={i}
-             initial={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-             animate={{ 
-               opacity: 0, 
-               scale: 0,
-               x: Math.cos(angle) * velocity,
-               y: Math.sin(angle) * velocity
-             }}
-             transition={{ duration: 0.8, ease: "easeOut" }}
-             className={styles.particle}
-             style={{ background: i % 2 === 0 ? "var(--accent)" : "var(--text)" }}
-          />
-        );
-      })}
-    </div>
-  );
-};
-
 export default function GymPage() {
   // === Feature: Rest Timer ===
   const [restTime, setRestTime] = useState(0);
@@ -289,38 +264,81 @@ export default function GymPage() {
   const [timerPlaying, setTimerPlaying] = useState(false);
   const timerRef = useRef(null);
   const audioRef = useRef(null);
+  const canVibrateRef = useRef(false);
+
+  const triggerVibration = (pattern) => {
+    if (!canVibrateRef.current) return false;
+
+    try {
+      navigator.vibrate(0);
+      return navigator.vibrate(pattern);
+    } catch {
+      return false;
+    }
+  };
+
+  const triggerTapFeedback = () => {
+    triggerVibration(TAP_HAPTIC_PATTERN);
+  };
+
+  const triggerCompletionFeedback = () => {
+    triggerVibration(COMPLETION_HAPTIC_PATTERN);
+  };
+
+  const ensureAlarmAudio = () => {
+    if (audioRef.current) return audioRef.current;
+
+    const audio = new Audio(ALARM_SOUND_SRC);
+    audio.preload = "metadata";
+    audio.playsInline = true;
+    audio.loop = true;
+    audio.volume = 1;
+    audioRef.current = audio;
+    return audio;
+  };
+
+  const stopAlarmAudio = () => {
+    if (!audioRef.current) return;
+    audioRef.current.pause();
+    audioRef.current.currentTime = 0;
+  };
+
+  const playAlarmSound = async () => {
+    const audio = ensureAlarmAudio();
+    stopAlarmAudio();
+
+    try {
+      await audio.play();
+    } catch (error) {
+      console.log("Alarm playback blocked by browser:", error);
+    }
+  };
 
   const startTimer = (seconds) => {
+    triggerTapFeedback();
+    ensureAlarmAudio();
     setRestTime(seconds);
     setTimerVisible(true);
     setTimerPlaying(true);
-
-    // Unlock iOS/Android Audio Context on physical user interaction
-    if (!audioRef.current) {
-      audioRef.current = new Audio(
-        "https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg",
-      );
-    }
-    const playPromise = audioRef.current.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          audioRef.current.pause();
-          audioRef.current.currentTime = 0;
-        })
-        .catch((err) => console.log("Audio unlock failed/ignored:", err));
-    }
   };
 
   const closeTimer = () => {
+    triggerTapFeedback();
     setTimerVisible(false);
     setTimerPlaying(false);
     setRestTime(0);
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-    }
+    stopAlarmAudio();
   };
+
+  useEffect(() => {
+    canVibrateRef.current =
+      typeof navigator !== "undefined" && typeof navigator.vibrate === "function";
+    ensureAlarmAudio();
+
+    return () => {
+      stopAlarmAudio();
+    };
+  }, []);
 
   useEffect(() => {
     if (timerPlaying && restTime > 0) {
@@ -329,20 +347,8 @@ export default function GymPage() {
           if (prev <= 1) {
             clearInterval(timerRef.current);
             setTimerPlaying(false);
-            // Play a chime when done
-            if (!audioRef.current) {
-              audioRef.current = new Audio(
-                "https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg",
-              );
-            }
-            audioRef.current.volume = 0.5;
-            audioRef.current
-              .play()
-              .catch(() => console.log("Audio play blocked by browser"));
-            // Haptic Feedback
-            if ("vibrate" in navigator) {
-              navigator.vibrate([200, 100, 200]);
-            }
+            playAlarmSound();
+            triggerCompletionFeedback();
             return 0;
           }
           return prev - 1;
@@ -364,14 +370,6 @@ export default function GymPage() {
   const [logs, setLogs] = useState({});
   const [activeLogItem, setActiveLogItem] = useState(null);
   const [logInput, setLogInput] = useState("");
-  // --- NEW FEATURES STATE ---
-  const [finishTrigger, setFinishTrigger] = useState(false);
-
-  const handleFinishWorkout = () => {
-    if ("vibrate" in navigator) navigator.vibrate([200, 100, 200]);
-    setFinishTrigger(true);
-    setTimeout(() => setFinishTrigger(false), 1000);
-  };
 
   useEffect(() => {
     const saved = localStorage.getItem("gymProgressionLogs");
@@ -381,11 +379,13 @@ export default function GymPage() {
   }, []);
 
   const openLogPrompt = (exerciseName) => {
+    triggerTapFeedback();
     setActiveLogItem(exerciseName);
     setLogInput(logs[exerciseName] || "");
   };
 
   const handleSaveLog = () => {
+    triggerTapFeedback();
     if (activeLogItem && logInput) {
       const newLogs = { ...logs, [activeLogItem]: logInput };
       setLogs(newLogs);
@@ -444,7 +444,6 @@ export default function GymPage() {
       {/* Dynamic Backgrounds */}
       <div className={styles.noiseOverlay} />
       <div className={styles.gradientBg} />
-      <ParticleBurst trigger={finishTrigger} />
 
       {/* Floating Timer Island */}
       <AnimatePresence>
@@ -487,7 +486,11 @@ export default function GymPage() {
               <button
                 type="button"
                 className={styles.timerIconBtn}
-                onClick={() => setTimerPlaying((p) => !p)}
+                onClick={() => {
+                  if (restTime === 0) return;
+                  triggerTapFeedback();
+                  setTimerPlaying((p) => !p);
+                }}
                 title="Pause/Play"
                 disabled={restTime === 0}
                 style={{ opacity: restTime === 0 ? 0.3 : 1, cursor: restTime === 0 ? "default" : "pointer" }}
@@ -546,7 +549,10 @@ export default function GymPage() {
               <div className={styles.logModalActions}>
                 <button
                   type="button"
-                  onClick={() => setActiveLogItem(null)}
+                  onClick={() => {
+                    triggerTapFeedback();
+                    setActiveLogItem(null);
+                  }}
                   className={styles.cancelBtn}
                 >
                   Cancel
@@ -611,23 +617,28 @@ export default function GymPage() {
               key={section.id}
               href={`#${section.id}`}
               className={styles.navLink}
+              onClick={triggerTapFeedback}
             >
               {section.title.replace(" Day", "")}
             </a>
           ))}
           <div className={styles.navSeparator} />
-          <a href="#rules" className={styles.navLink}>
+          <a href="#rules" className={styles.navLink} onClick={triggerTapFeedback}>
             Rules
           </a>
-          <a href="#diet" className={styles.navLink}>
+          <a href="#diet" className={styles.navLink} onClick={triggerTapFeedback}>
             Diet
           </a>
 
           {/* Workout Mode Toggle */}
           <div className={styles.navSeparator} />
-          <div
+          <button
+            type="button"
             className={styles.workoutToggleBox}
-            onClick={() => setIsWorkoutMode(!isWorkoutMode)}
+            onClick={() => {
+              triggerTapFeedback();
+              setIsWorkoutMode((value) => !value);
+            }}
             title="Keeps screen awake during workout"
           >
             <span>Workout Mode</span>
@@ -636,7 +647,7 @@ export default function GymPage() {
             >
               <div className={styles.switchHandle} />
             </div>
-          </div>
+          </button>
 
           {/* Theme Toggle */}
           <div className={styles.navSeparator} />
@@ -687,6 +698,7 @@ export default function GymPage() {
                             rel="noopener noreferrer"
                             className={styles.ytLink}
                             title={`Search ${row[0]} form on YouTube`}
+                            onClick={triggerTapFeedback}
                           >
                             {row[0]}
                             <ExternalLink
@@ -718,6 +730,7 @@ export default function GymPage() {
                       </td>
                       <td className={styles.tdCenter}>
                         <button
+                          type="button"
                           className={styles.restBtn}
                           onClick={() => startTimer(parseInt(row[3]))}
                         >
@@ -875,7 +888,6 @@ export default function GymPage() {
           </div>
         </motion.section>
 
-        {/* Footer Polish */}
         <motion.div
           className={styles.verdict}
           variants={fadeIn}
@@ -884,12 +896,6 @@ export default function GymPage() {
           viewport={{ once: true, margin: "-50px" }}
         >
           <h2>Stay Consistent.</h2>
-          <div className={styles.finishWrap}>
-             <ParticleBurst trigger={finishTrigger} />
-             <button onClick={handleFinishWorkout} className={styles.finishBtn}>
-                <ShieldCheck size={18} /> Complete Session
-             </button>
-          </div>
         </motion.div>
       </div>
     </main>
