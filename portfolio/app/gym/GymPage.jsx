@@ -217,39 +217,70 @@ const staggerContainer = {
 const OneRepMaxCalculator = () => {
   const [w, setW] = useState("");
   const [r, setR] = useState("");
-  
+
   const calc1RM = (weight, reps) => {
     const fw = parseFloat(weight);
     const fr = parseFloat(reps);
     if (!fw || !fr || isNaN(fw) || isNaN(fr) || fr < 1) return null;
     return Math.round(fw * (36 / (37 - fr)));
   };
-  
+
   const max = calc1RM(w, r);
-  
+
   return (
     <div className={styles.ormWidget}>
       <div className={styles.ormHeader}>
         <Activity size={18} />
         <h4>Inline 1RM</h4>
       </div>
-      <p style={{ fontSize: "0.85rem", color: "var(--text-muted)", marginBottom: "1rem" }}>
-        Calculate your one-repetition maximum (the heaviest weight you can lift once) based on your recent sets. 
+      <p
+        style={{
+          fontSize: "0.85rem",
+          color: "var(--text-muted)",
+          marginBottom: "1rem",
+        }}
+      >
+        Calculate your one-repetition maximum (the heaviest weight you can lift
+        once) based on your recent sets.
       </p>
       <div className={styles.ormInputs}>
-        <input type="number" placeholder="Weight" value={w} onChange={e=>setW(e.target.value)} />
-        <input type="number" placeholder="Reps" value={r} onChange={e=>setR(e.target.value)} />
+        <input
+          type="number"
+          placeholder="Weight"
+          value={w}
+          onChange={(e) => setW(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Reps"
+          value={r}
+          onChange={(e) => setR(e.target.value)}
+        />
       </div>
       {max && (
         <div className={styles.ormResults}>
-          <div className={styles.ormMax}>Max: <strong>{max} kg</strong></div>
+          <div className={styles.ormMax}>
+            Max: <strong>{max} kg</strong>
+          </div>
           <div className={styles.ormGrid}>
-             <div>95% <span>{Math.round(max * 0.95)}</span></div>
-             <div>90% <span>{Math.round(max * 0.9)}</span></div>
-             <div>85% <span>{Math.round(max * 0.85)}</span></div>
-             <div>80% <span>{Math.round(max * 0.8)}</span></div>
-             <div>75% <span>{Math.round(max * 0.75)}</span></div>
-             <div>70% <span>{Math.round(max * 0.7)}</span></div>
+            <div>
+              95% <span>{Math.round(max * 0.95)}</span>
+            </div>
+            <div>
+              90% <span>{Math.round(max * 0.9)}</span>
+            </div>
+            <div>
+              85% <span>{Math.round(max * 0.85)}</span>
+            </div>
+            <div>
+              80% <span>{Math.round(max * 0.8)}</span>
+            </div>
+            <div>
+              75% <span>{Math.round(max * 0.75)}</span>
+            </div>
+            <div>
+              70% <span>{Math.round(max * 0.7)}</span>
+            </div>
           </div>
         </div>
       )}
@@ -308,8 +339,7 @@ export default function GymPage() {
   const ensureAudioContext = () => {
     if (typeof window === "undefined") return null;
 
-    const AudioContextClass =
-      window.AudioContext || window.webkitAudioContext;
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
 
     if (!AudioContextClass) return null;
 
@@ -340,7 +370,10 @@ export default function GymPage() {
       })
       .catch((error) => {
         audioLoadPromiseRef.current = null;
-        console.warn("Web Audio alarm buffer unavailable, using fallback audio.", error);
+        console.warn(
+          "Web Audio alarm buffer unavailable, using fallback audio.",
+          error,
+        );
         return null;
       });
 
@@ -355,7 +388,10 @@ export default function GymPage() {
       try {
         await context.resume();
       } catch (error) {
-        console.warn("Unable to resume audio context on this interaction.", error);
+        console.warn(
+          "Unable to resume audio context on this interaction.",
+          error,
+        );
       }
     }
 
@@ -463,7 +499,8 @@ export default function GymPage() {
 
   useEffect(() => {
     canVibrateRef.current =
-      typeof navigator !== "undefined" && typeof navigator.vibrate === "function";
+      typeof navigator !== "undefined" &&
+      typeof navigator.vibrate === "function";
     const audio = ensureAlarmAudio();
     const handleAudioEnded = async () => {
       if (!alarmActiveRef.current) return;
@@ -625,7 +662,7 @@ export default function GymPage() {
                   ))}
               </div>
               {isAlarmVisualActive && (
-                <div className={styles.timerAlertBadge}>Alarm Active</div>
+                <div className={styles.timerAlertBadge}>Rest Over</div>
               )}
               <button
                 type="button"
@@ -637,7 +674,10 @@ export default function GymPage() {
                 }}
                 title="Pause/Play"
                 disabled={restTime === 0}
-                style={{ opacity: restTime === 0 ? 0.3 : 1, cursor: restTime === 0 ? "default" : "pointer" }}
+                style={{
+                  opacity: restTime === 0 ? 0.3 : 1,
+                  cursor: restTime === 0 ? "default" : "pointer",
+                }}
               >
                 {timerPlaying ? <Pause size={18} /> : <Play size={18} />}
               </button>
@@ -725,8 +765,6 @@ export default function GymPage() {
           Science-Based Insights
         </motion.div>
 
-
-
         <motion.h1
           className={styles.heroTitle}
           initial={{ opacity: 0, y: 20 }}
@@ -767,10 +805,18 @@ export default function GymPage() {
             </a>
           ))}
           <div className={styles.navSeparator} />
-          <a href="#rules" className={styles.navLink} onClick={triggerTapFeedback}>
+          <a
+            href="#rules"
+            className={styles.navLink}
+            onClick={triggerTapFeedback}
+          >
             Rules
           </a>
-          <a href="#diet" className={styles.navLink} onClick={triggerTapFeedback}>
+          <a
+            href="#diet"
+            className={styles.navLink}
+            onClick={triggerTapFeedback}
+          >
             Diet
           </a>
 
@@ -940,10 +986,10 @@ export default function GymPage() {
           </motion.div>
         </motion.section>
 
-        <motion.section 
-          variants={fadeIn} 
-          initial="hidden" 
-          whileInView="visible" 
+        <motion.section
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
         >
           <OneRepMaxCalculator />
