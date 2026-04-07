@@ -262,10 +262,15 @@ export default function GymPage() {
   const [restTime, setRestTime] = useState(0);
   const [timerVisible, setTimerVisible] = useState(false);
   const [timerPlaying, setTimerPlaying] = useState(false);
+  const [isAlarmVisualActive, setIsAlarmVisualActive] = useState(false);
   const timerRef = useRef(null);
   const audioRef = useRef(null);
   const canVibrateRef = useRef(false);
   const alarmActiveRef = useRef(false);
+  const audioContextRef = useRef(null);
+  const audioBufferRef = useRef(null);
+  const audioSourceRef = useRef(null);
+  const audioLoadPromiseRef = useRef(null);
 
   const triggerVibration = (pattern) => {
     if (!canVibrateRef.current) return false;
@@ -279,10 +284,12 @@ export default function GymPage() {
   };
 
   const triggerTapFeedback = () => {
+    void primeAlertPlayback();
     triggerVibration(TAP_HAPTIC_PATTERN);
   };
 
   const triggerCompletionFeedback = () => {
+    setIsAlarmVisualActive(true);
     triggerVibration(COMPLETION_HAPTIC_PATTERN);
   };
 
@@ -290,7 +297,7 @@ export default function GymPage() {
     if (audioRef.current) return audioRef.current;
 
     const audio = new Audio(ALARM_SOUND_SRC);
-    audio.preload = "metadata";
+    audio.preload = "auto";
     audio.playsInline = true;
     audio.loop = true;
     audio.volume = 1;
@@ -298,30 +305,149 @@ export default function GymPage() {
     return audio;
   };
 
+  const ensureAudioContext = () => {
+    if (typeof window === "undefined") return null;
+
+    const AudioContextClass =
+      window.AudioContext || window.webkitAudioContext;
+
+    if (!AudioContextClass) return null;
+
+    if (!audioContextRef.current) {
+      audioContextRef.current = new AudioContextClass();
+    }
+
+    return audioContextRef.current;
+  };
+
+  const loadAlarmBuffer = async () => {
+    if (audioBufferRef.current) return audioBufferRef.current;
+    if (audioLoadPromiseRef.current) return audioLoadPromiseRef.current;
+
+    const context = ensureAudioContext();
+    if (!context) return null;
+
+    audioLoadPromiseRef.current = fetch(ALARM_SOUND_SRC)
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`Failed to load alarm audio: ${response.status}`);
+        }
+
+        const arrayBuffer = await response.arrayBuffer();
+        const decoded = await context.decodeAudioData(arrayBuffer.slice(0));
+        audioBufferRef.current = decoded;
+        return decoded;
+      })
+      .catch((error) => {
+        audioLoadPromiseRef.current = null;
+        console.warn("Web Audio alarm buffer unavailable, using fallback audio.", error);
+        return null;
+      });
+
+    return audioLoadPromiseRef.current;
+  };
+
+  const primeAlertPlayback = async () => {
+    const context = ensureAudioContext();
+    ensureAlarmAudio();
+
+    if (context && context.state !== "running") {
+      try {
+        await context.resume();
+      } catch (error) {
+        console.warn("Unable to resume audio context on this interaction.", error);
+      }
+    }
+
+    await loadAlarmBuffer();
+    return context;
+  };
+
+  const stopWebAudioAlarm = () => {
+    if (!audioSourceRef.current) return;
+
+    const source = audioSourceRef.current;
+    audioSourceRef.current = null;
+    source.onended = null;
+
+    try {
+      source.stop(0);
+    } catch {}
+
+    try {
+      source.disconnect();
+    } catch {}
+  };
+
   const stopAlarmAudio = () => {
     alarmActiveRef.current = false;
+    setIsAlarmVisualActive(false);
+    stopWebAudioAlarm();
     if (!audioRef.current) return;
     audioRef.current.pause();
     audioRef.current.currentTime = 0;
   };
 
-  const playAlarmSound = async () => {
+  const playFallbackAlarm = async () => {
     const audio = ensureAlarmAudio();
     alarmActiveRef.current = true;
-    audio.pause();
-    audio.currentTime = 0;
 
     try {
+      audio.pause();
+      audio.currentTime = 0;
       await audio.play();
-    } catch (error) {
-      console.log("Alarm playback blocked by browser:", error);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  const playWebAudioAlarm = async () => {
+    const context = await primeAlertPlayback();
+    const buffer = await loadAlarmBuffer();
+
+    if (!context || !buffer || context.state !== "running") {
+      return false;
+    }
+
+    stopWebAudioAlarm();
+
+    const source = context.createBufferSource();
+    source.buffer = buffer;
+    source.connect(context.destination);
+    source.onended = () => {
+      if (!alarmActiveRef.current) return;
+      if (audioSourceRef.current !== source) return;
+      audioSourceRef.current = null;
+      void playWebAudioAlarm();
+    };
+
+    audioSourceRef.current = source;
+
+    try {
+      source.start(0);
+      return true;
+    } catch {
+      source.onended = null;
+      audioSourceRef.current = null;
+      return false;
+    }
+  };
+
+  const playAlarmSound = async () => {
+    alarmActiveRef.current = true;
+    setIsAlarmVisualActive(true);
+
+    const playedWithWebAudio = await playWebAudioAlarm();
+    if (!playedWithWebAudio) {
+      await playFallbackAlarm();
     }
   };
 
   const startTimer = (seconds) => {
     triggerTapFeedback();
-    ensureAlarmAudio();
     stopAlarmAudio();
+    void primeAlertPlayback();
     setRestTime(seconds);
     setTimerVisible(true);
     setTimerPlaying(true);
@@ -341,17 +467,11 @@ export default function GymPage() {
     const audio = ensureAlarmAudio();
     const handleAudioEnded = async () => {
       if (!alarmActiveRef.current) return;
-
-      audio.currentTime = 0;
-
-      try {
-        await audio.play();
-      } catch (error) {
-        console.log("Alarm replay blocked by browser:", error);
-      }
+      await playFallbackAlarm();
     };
 
     audio.addEventListener("ended", handleAudioEnded);
+    void loadAlarmBuffer();
 
     return () => {
       audio.removeEventListener("ended", handleAudioEnded);
@@ -474,7 +594,9 @@ export default function GymPage() {
             exit={{ y: 100, opacity: 0, x: "-50%" }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
           >
-            <div className={styles.timerContent}>
+            <div
+              className={`${styles.timerContent} ${isAlarmVisualActive ? styles.timerAlerting : ""}`}
+            >
               <div
                 className={`${styles.timerPulse} ${restTime === 0 ? styles.timerDone : ""}`}
               />
@@ -502,6 +624,9 @@ export default function GymPage() {
                     </div>
                   ))}
               </div>
+              {isAlarmVisualActive && (
+                <div className={styles.timerAlertBadge}>Alarm Active</div>
+              )}
               <button
                 type="button"
                 className={styles.timerIconBtn}
