@@ -113,6 +113,9 @@
 .cardTopRight {
   display: flex;
   align-items: flex-start;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
   padding-top: 2px;
 }
 
@@ -224,9 +227,9 @@
     align-items: flex-start;
   }
 
-  .ctaBtn {
+  .cardTopRight {
     width: 100%;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .doiLabel {

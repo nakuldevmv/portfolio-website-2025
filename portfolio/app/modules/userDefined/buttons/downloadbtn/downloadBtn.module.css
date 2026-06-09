@@ -1,0 +1,83 @@
+.downloadBtn {
+  background-color: #121212;
+  color: #e0e0e0;
+  text-decoration: none;
+  border: 2px solid #000000;
+  border-radius: 30px;
+  width: fit-content;
+  padding: 5px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  box-shadow:
+    rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+
+.icon {
+  position: absolute;
+  color: #121212;
+  transform: translateY(-30px) scale(0.5);
+  transition: all 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.circle {
+  position: absolute;
+  transform: translateY(-40px);
+  z-index: 0;
+  background: #abff2e;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  border: 2px solid #121212;
+  box-shadow: 0 0 0 2px #abff2e;
+  transition: all 0.3s ease-in-out;
+}
+
+.button {
+  display: block;
+  font-weight: bold;
+  z-index: 1;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  white-space: nowrap;
+}
+
+.downloadBtn:hover .button {
+  transform: translateY(40px) scale(0.5);
+}
+
+.downloadBtn:hover .circle {
+  height: 15px;
+  width: 15px;
+  transform: translateY(-10px) scale(10);
+  transition: all 0.4s ease-in-out;
+}
+
+.downloadBtn:hover .button {
+  color: #121212;
+  transition: all 0.4s ease-in-out;
+}
+
+.downloadBtn:hover .icon {
+  transform: translateY(0px) scale(1.1);
+  transition: all 0.4s ease-in-out;
+}
+
+.downloadBtn:hover {
+  border: 2px solid #121212;
+  transition: all 0.4s ease-in-out;
+}
+
+.downloadBtn:active {
+  transform: scale(0.9);
+  transition: all 0.2s ease-in-out;
+}

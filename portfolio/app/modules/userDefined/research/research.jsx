@@ -2,6 +2,10 @@
 import { useRef } from 'react';
 import style from './research.module.css';
 import Button from '../buttons/projectbtn/button';
+import DownloadBtn from '../buttons/downloadbtn/downloadBtn';
+
+const PAPER_PDF_FILENAME = "Design_and_Deployment_of_a_Decentralized_Blockchain-as-a-Service_Framework_for_Tamper-Resistant_Electronic_Voting_Systems.pdf";
+const PAPER_PDF_PATH = `/doc/${PAPER_PDF_FILENAME}`;
 
 const paper = {
   title: "Design and Deployment of a Decentralized Blockchain-as-a-Service Framework for Tamper-Resistant Electronic Voting Systems",
@@ -67,6 +71,12 @@ export default function Research() {
           </div>
           <div className={style.cardTopRight}>
             <Button label="IEEE Xplore" onClick={() => { window.open(paper.link, '_blank') }} />
+            <DownloadBtn
+              label="Download"
+              ariaLabel="Download IEEE paper PDF"
+              href={PAPER_PDF_PATH}
+              download={PAPER_PDF_FILENAME}
+            />
           </div>
         </div>
 
