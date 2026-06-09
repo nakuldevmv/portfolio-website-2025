@@ -113,7 +113,7 @@
 /* --- TYPOGRAPHY --- */
 
 /* Common styles for all headings */
-.markdownContent h1,
+.markdownContent .markdownH1,
 .markdownContent h2,
 .markdownContent h3,
 .markdownContent h4,
@@ -128,7 +128,7 @@
 }
 
 /* Fluid font sizes for headings */
-.markdownContent h1 {
+.markdownContent .markdownH1 {
   font-size: clamp(2rem, 1.5rem + 2.5vw, 3rem);
   /* Scales from 32px to 48px */
   border-bottom: 1px solid var(--text-muted);

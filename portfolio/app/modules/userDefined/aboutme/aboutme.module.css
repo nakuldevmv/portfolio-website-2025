@@ -1,52 +1,56 @@
 @reference "tailwindcss";
 
 .aboutMeBox {
-    display: flex;
-    justify-content: space-between;
-    /* left item to left, right item to right */
-    align-items: flex-start;
-    /* background-color: rgb(102, 73, 37); */
-    padding-top: 30px;
-    width: 95%;
-    max-width: 1000px;
-    min-height: 100vh;
-    min-height: 100svh;
-    margin: 0 auto;
-
-
+  display: flex;
+  justify-content: space-between;
+  /* left item to left, right item to right */
+  align-items: flex-start;
+  /* background-color: rgb(102, 73, 37); */
+  padding-top: 30px;
+  width: 95%;
+  max-width: 1000px;
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0 auto;
 }
 
 .title {
-    font-size: 32px;
-    font-weight: bolder;
-    color: var(--text);
-    line-height: 32px;
+  font-size: 32px;
+  font-weight: bolder;
+  color: var(--text);
+  line-height: 32px;
 }
 
 .title2 {
-    font-size: 32px;
-    line-height: 16px;
-    font-weight: bolder;
-    color: var(--text-muted);
+  font-size: 32px;
+  line-height: 22px;
+  font-weight: bolder;
+  color: var(--accent);
+  /* padding-left: 10px; */
 }
-
+.title3 {
+  font-size: 32px;
+  line-height: 22px;
+  font-weight: bolder;
+  /* padding-left: 10px; */
+  color: var(--text-muted);
+}
 .para {
-    /* background-color: antiquewhite; */
-    font-size: 16px;
-    max-width: 280px;
-    min-height: 5px;
-    color: var(--text-muted);
-    margin-top: 0.75rem;
-    line-height: 1.5rem;
-
+  /* background-color: antiquewhite; */
+  font-size: 16px;
+  max-width: 280px;
+  min-height: 5px;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  line-height: 1.5rem;
 }
 
 .sign {
-    /* background-color: rgb(126, 89, 40); */
-    margin-top: 0.75rem;
-    margin-bottom: 0.75rem;
-    height: 2.6875rem;
-    width: 3.875rem;
+  /* background-color: rgb(126, 89, 40); */
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  height: 2.6875rem;
+  width: 3.875rem;
 }
 
 /* .copyright {

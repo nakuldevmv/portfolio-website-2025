@@ -2,39 +2,53 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import style from "./aboutme.module.css";
-import { Sign } from "../../../customIcon/index"
+import { Sign } from "../../../customIcon/index";
 import useWindowWidth from "../../helperFunction/getwidth/getWidth";
-import ResumeBtn from "../buttons/resumebtn/resumebtn"
+import ResumeBtn from "../buttons/resumebtn/resumebtn";
 
-const Popup = dynamic(() => import("../../userDefined/popup/popUp"), { ssr: false });
+const Popup = dynamic(() => import("../../userDefined/popup/popUp"), {
+  ssr: false,
+});
 
 export default function AboutMe() {
-      const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-    // const Width = useWindowWidth();
+  // const Width = useWindowWidth();
 
-    return (
-        <div className={style.aboutMeBox}>
-            <div>
-                <h2 className={style.title}>Nakul Dev</h2>
-                <h2 className={style.title2}>Developer</h2>
-                <p className={style.para}>I craft sleek, user-focused digital experiences with a passion for minimalism and creative design.</p>
-                <p className={style.para}>With a strong foundation in modern web technologies, I specialize in building fast, responsive, and elegant web apps.</p>
-                <p className={style.para}>Beyond code, I'm inspired by art, music, and everything that sparks creativity in digital spaces.</p>
-                <div className={style.sign}>
-                    {/* <Sign /> */}
-                <ResumeBtn onClick={() => {
-                    // Fire the backend trigger (best-effort; never blocks the popup)
-                    fetch("/api/trigger", { method: "POST" })
-                      .then((res) => res.json())
-                      .then((data) => console.log("[resume trigger]", data))
-                      .catch((err) => console.error("[resume trigger error]", err));
-                    setIsOpen(true);
-                }} />
-                <Popup isOpen={isOpen} onClose={() => setIsOpen(false)} />
-                </div>
-                
-            </div>
+  return (
+    <div className={style.aboutMeBox}>
+      <div>
+        <h2 className={style.title}>Nakul Dev</h2>
+        <h2 className={style.title2}>FULL STACK</h2>
+        <h2 className={style.title3}>DEVELOPER</h2>
+
+        <p className={style.para}>
+          I craft sleek, user-focused digital experiences with a passion for
+          minimalism and creative design.
+        </p>
+        <p className={style.para}>
+          With a strong foundation in modern web technologies, I specialize in
+          building fast, responsive, and elegant web apps.
+        </p>
+        <p className={style.para}>
+          Beyond code, I'm inspired by art, music, and everything that sparks
+          creativity in digital spaces.
+        </p>
+        <div className={style.sign}>
+          {/* <Sign /> */}
+          <ResumeBtn
+            onClick={() => {
+              // Fire the backend trigger (best-effort; never blocks the popup)
+              fetch("/api/trigger", { method: "POST" })
+                .then((res) => res.json())
+                .then((data) => console.log("[resume trigger]", data))
+                .catch((err) => console.error("[resume trigger error]", err));
+              setIsOpen(true);
+            }}
+          />
+          <Popup isOpen={isOpen} onClose={() => setIsOpen(false)} />
         </div>
-    );
+      </div>
+    </div>
+  );
 }

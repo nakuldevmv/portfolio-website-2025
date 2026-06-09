@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Nakul Dev M V",
   },
   description:
-    "Portfolio of Nakul Dev M V, a Software Engineer and Fullstack Developer. Explore my projects, skills, and aesthetic web experiences built with Next.js, React, and modern web tools.",
+    "Nakul Dev M V is a software engineer and creative developer building full-stack apps, automation tools, and modern web experiences.",
   keywords: [
     "Nakul",
     "Nakul Dev",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     siteName: "Nakul Dev M V - Portfolio",
     title: "Nakul Dev M V | Software Engineer & Creative Developer",
     description:
-      "Portfolio of Nakul Dev M V, a Software Engineer and Fullstack Developer. Explore my projects, skills, and aesthetic web experiences built with Next.js and React.",
+      "Nakul Dev M V is a software engineer and creative developer building full-stack apps, automation tools, and modern web experiences.",
     images: [
       {
         url: "/og-image.png",
@@ -110,22 +110,53 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: `
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Nakul Dev",
-  "alternateName": "Nakul Dev M V",
-  "url": "https://www.nakuldev.me/",
-  "email": "mailto:nakuldevmv@gmail.com",
-  "sameAs": [
-    "https://www.linkedin.com/in/nakuldevmv/",
-    "https://github.com/nakuldevmv",
-    "https://instagram.com/nakuled",
-    "https://ieeexplore.ieee.org/document/11390111"
-  ]
-}
-` }}
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Person",
+                  "@id": "https://www.nakuldev.me/#person",
+                  name: "Nakul Dev M V",
+                  alternateName: ["Nakul Dev", "Nakul Dev MV", "nakuldevmv"],
+                  jobTitle: "Software Engineer and Creative Developer",
+                  url: "https://www.nakuldev.me/",
+                  image: "https://www.nakuldev.me/og-image.png",
+                  email: "mailto:nakuldevmv@gmail.com",
+                  description:
+                    "Nakul Dev M V is a software engineer and creative developer building full-stack apps, automation tools, and modern web experiences.",
+                  knowsAbout: [
+                    "Full-stack development",
+                    "React",
+                    "Next.js",
+                    "Node.js",
+                    "Automation tools",
+                    "Software engineering",
+                    "Creative development",
+                    "Modern web experiences",
+                  ],
+                  mainEntityOfPage: {
+                    "@type": "WebPage",
+                    "@id": "https://www.nakuldev.me/",
+                  },
+                  sameAs: [
+                    "https://www.linkedin.com/in/nakuldevmv/",
+                    "https://github.com/nakuldevmv",
+                    "https://instagram.com/nakuled",
+                    "https://ieeexplore.ieee.org/document/11390111",
+                  ],
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.nakuldev.me/#website",
+                  url: "https://www.nakuldev.me/",
+                  name: "Nakul Dev M V",
+                  alternateName: ["Nakul Dev MV", "nakuldevmv"],
+                  publisher: {
+                    "@id": "https://www.nakuldev.me/#person",
+                  },
+                },
+              ],
+            }) }}
         />
 
       </head>

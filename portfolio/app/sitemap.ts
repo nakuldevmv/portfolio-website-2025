@@ -29,7 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: getArticleLastModified(article),
     changeFrequency: 'monthly',
     priority: 0.75,
-    images: article.cover_image ? [article.cover_image] : [OG_IMAGE_URL],
+    images: [OG_IMAGE_URL],
   }))
 
   return [...corePages, ...blogPages]

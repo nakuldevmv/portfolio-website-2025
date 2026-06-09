@@ -5,6 +5,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import {
   getArticleLastModified,
+  getArticleDescription,
   getArticleTags,
   getDevToArticleBySlug,
 } from "@/app/lib/devto";
@@ -29,9 +30,7 @@ export async function generateMetadata({ params }) {
 
   const url = `${SITE_URL}/blog/${post.slug}`;
   const image = post.cover_image || DEFAULT_IMAGE;
-  const description =
-    post.description ||
-    `Read ${post.title} by Nakul Dev M V on software engineering and web development.`;
+  const description = getArticleDescription(post);
 
   return {
     title: post.title,
@@ -72,9 +71,7 @@ export default async function BlogPost({ params }) {
   const url = `${SITE_URL}/blog/${post.slug}`;
   const image = post.cover_image || DEFAULT_IMAGE;
   const tags = getArticleTags(post);
-  const description =
-    post.description ||
-    `Read ${post.title} by Nakul Dev M V on software engineering and web development.`;
+  const description = getArticleDescription(post);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -136,6 +133,13 @@ export default async function BlogPost({ params }) {
                     <code className={className} {...props}>
                       {children}
                     </code>
+                  );
+                },
+                h1({ node, children, ...props }) {
+                  return (
+                    <h2 className={style.markdownH1} {...props}>
+                      {children}
+                    </h2>
                   );
                 },
               }}

@@ -82,3 +82,26 @@ export function getArticleLastModified(article: DevToArticle): Date {
     article.edited_at ?? article.published_at ?? "2025-01-01T00:00:00.000Z"
   );
 }
+
+function clampMetaDescription(description: string): string {
+  if (description.length <= 160) {
+    return description;
+  }
+
+  const trimmed = description.slice(0, 157);
+  const lastSpace = trimmed.lastIndexOf(" ");
+  const safeDescription = lastSpace > 25 ? trimmed.slice(0, lastSpace) : trimmed;
+
+  return `${safeDescription.replace(/[.,;:!?-]+$/, "")}...`;
+}
+
+export function getArticleDescription(article: DevToArticle): string {
+  const fallback = `Read ${article.title} by Nakul Dev M V on software engineering and web development.`;
+  const description = (article.description || "").replace(/\s+/g, " ").trim();
+
+  if (description.length >= 25) {
+    return clampMetaDescription(description);
+  }
+
+  return clampMetaDescription(fallback);
+}

@@ -12,7 +12,7 @@ export default async function FullBlog() {
   return (
     <div className={style.blogSection}>
       <div className={style.Btitle}>
-        <h1>Blogs</h1>
+        <h2>Blogs</h2>
       </div>
 
       {posts.map((post) => (

@@ -34,7 +34,7 @@ const Card = ({ i, title, description, video, ldesc, marquee1, marquee2, num, li
 
           <div className={styles.titlebtnContainer}>
             <div className='flex'>
-              <h1>{num}</h1>
+              <span className={styles.projectNumber}>{num}</span>
               <div className={styles.titleContainer}>
                 <h2>{title}</h2>
                 <h3>{description}</h3>

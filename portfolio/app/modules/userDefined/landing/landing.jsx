@@ -1,6 +1,5 @@
 'use client';
 import style from "./landing.module.css";
-import useWindowWidth from '../../helperFunction/getwidth/getWidth';
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
@@ -54,8 +53,6 @@ export default function Landing() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    let width = useWindowWidth();
-        if (width === null) return null;
     return (
         <div className={style.landing}>
            <Wallpaper/>
