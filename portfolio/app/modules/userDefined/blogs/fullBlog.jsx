@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getArticleTags, getDevToArticles } from "@/app/lib/devto";
 import style from "./fullBlog.module.css";
 
@@ -18,7 +19,14 @@ export default async function FullBlog() {
       {posts.map((post) => (
         <Link href={`/blog/${post.slug}`} className={style.blog} key={post.id}>
           {post.cover_image && (
-            <img src={post.cover_image} className={style.blogimg} alt={post.title} />
+            <Image
+              src={post.cover_image}
+              className={style.blogimg}
+              alt={post.title}
+              width={1000}
+              height={420}
+              sizes="(max-width: 760px) 95vw, 1000px"
+            />
           )}
           <div className={style.blogBox}>
             <div className={style.blogTitle}>{post.title}</div>

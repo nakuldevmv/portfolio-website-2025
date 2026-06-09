@@ -3,9 +3,7 @@ import styles from './projects.module.css'
 import { projects } from './data';
 import Card from './Card/card';
 import { useScroll } from 'framer-motion';
-import { useEffect, useRef } from 'react';
-import Lenis from 'lenis'
-import Button from '../buttons/projectbtn/button2';
+import { useRef } from 'react';
 
 
 export default function Projects() {
@@ -13,17 +11,6 @@ export default function Projects() {
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ['start start', 'end end']
-  })
-
-  useEffect(() => {
-    const lenis = new Lenis()
-
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-
-    requestAnimationFrame(raf)
   })
 
   return (

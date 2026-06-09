@@ -1,6 +1,6 @@
 'use client'
 import styles from './card.module.css';
-import { useTransform, motion, useScroll, number } from 'framer-motion';
+import { useTransform, motion, useScroll } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Button from '../../buttons/projectbtn/button';
 import Label from '../../buttons/labels/label';
@@ -11,6 +11,7 @@ import useWindowWidth from '../../../helperFunction/getwidth/getWidth';
 const Card = ({ i, title, description, video, ldesc, marquee1, marquee2, num, liveLink, github, tech1, tech2, tech3, tech4, tech5, itech1, itech2, itech3, itech4, itech5, color, progress, range, targetScale }) => {
   const windowWidth = useWindowWidth();
   const container = useRef(null);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ['start end', 'start start']
@@ -19,7 +20,22 @@ const Card = ({ i, title, description, video, ldesc, marquee1, marquee2, num, li
   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1])
   const scale = useTransform(progress, range, [1, targetScale]);
 
- 
+  useEffect(() => {
+    if (!container.current || shouldLoadVideo) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoadVideo(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '500px 0px' }
+    );
+
+    observer.observe(container.current);
+    return () => observer.disconnect();
+  }, [shouldLoadVideo]);
 
   return (
     <div ref={container} className={styles.cardContainer}>
@@ -60,12 +76,12 @@ const Card = ({ i, title, description, video, ldesc, marquee1, marquee2, num, li
                 style={{ scale: imageScale }}
               >
                 <video
-                  src={video}
-                  autoPlay
+                  src={shouldLoadVideo ? video : undefined}
+                  autoPlay={shouldLoadVideo}
                   muted
                   loop
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                   className={styles.videoPlay}
 
                 />

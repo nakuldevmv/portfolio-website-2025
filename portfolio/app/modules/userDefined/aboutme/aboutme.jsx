@@ -2,8 +2,7 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import style from "./aboutme.module.css";
-import { Sign } from "../../../customIcon/index";
-import useWindowWidth from "../../helperFunction/getwidth/getWidth";
+// import { Sign } from "../../../customIcon/index";
 import ResumeBtn from "../buttons/resumebtn/resumebtn";
 
 const Popup = dynamic(() => import("../../userDefined/popup/popUp"), {
@@ -46,7 +45,7 @@ export default function AboutMe() {
               setIsOpen(true);
             }}
           />
-          <Popup isOpen={isOpen} onClose={() => setIsOpen(false)} />
+          {isOpen && <Popup isOpen={isOpen} onClose={() => setIsOpen(false)} />}
         </div>
       </div>
     </div>

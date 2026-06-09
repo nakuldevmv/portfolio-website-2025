@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
 import style from "./blogs.module.css";
+import Image from "next/image";
 import Link from 'next/link';
 import LinkButton from "../buttons/MoreBlogs/moreBlogs"
 
@@ -92,7 +93,15 @@ export default function Blogs() {
                                 className={style.blog}
                                 key={post.id}
                             >
-                                {post.cover_image && <img src={post.cover_image} alt={post.title} />}
+                                {post.cover_image && (
+                                    <Image
+                                        src={post.cover_image}
+                                        alt={post.title}
+                                        width={1000}
+                                        height={420}
+                                        sizes="(max-width: 760px) 95vw, 480px"
+                                    />
+                                )}
                                 <div className={style.blogBox}>
                                     <div className={style.blogTitle}>{post.title}</div>
                                     <div className={style.date}>

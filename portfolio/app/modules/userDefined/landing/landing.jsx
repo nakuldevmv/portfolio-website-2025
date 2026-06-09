@@ -10,15 +10,7 @@ const Wallpaper = dynamic(() => import("../wallpaper/wallpaper"), {
 const GradualBlur = dynamic(() => import("./GradualBlur"), { ssr: false });
 
 export default function Landing() {
-    const [date, setDate] = useState(new Date());
     const [blurOpacity, setBlurOpacity] = useState(1);
-
-     useEffect(() => {
-        const interval = setInterval(() => {
-            setDate(new Date());
-        }, 1000); // update every second
-        return () => clearInterval(interval); // cleanup
-    }, []);
 
     useEffect(() => {
         // Ease-in-out cubic — soft start and soft end
@@ -61,7 +53,6 @@ export default function Landing() {
                         In a world of digital noise, <br />
                         clarity is a story worth telling.
                     </h1>
-                {/* {date.toLocaleTimeString()} */}
                 </div>
             <GradualBlur
                 target="page"

@@ -10,7 +10,6 @@ export default function Wallpaper() {
 
   const { theme: themeFromHook } = useTheme();
   const theme = themeFromHook || 'dark';
-  console.log("Value of theme:", theme);
 
   const darkColorsBase = ["#121212", "#C5B8FF", "#abff2e", "#00D6D3"];
   const darkColorsOverlay = ["#121212", "#abff2e", "#00D6D3", "#C5B8FF"];
