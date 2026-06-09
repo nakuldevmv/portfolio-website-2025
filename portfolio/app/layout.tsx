@@ -131,6 +131,7 @@ export default function RootLayout({
       </head>
       <body
         className={`${degular.variable} antialiased`}
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"

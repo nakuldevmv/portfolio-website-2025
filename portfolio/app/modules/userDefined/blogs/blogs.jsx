@@ -88,11 +88,11 @@ export default function Blogs() {
                         {posts.map((post, index) => (
 
                             <Link
-                                href={`/blog#${post.slug}`}
+                                href={`/blog/${post.slug}`}
                                 className={style.blog}
                                 key={post.id}
                             >
-                                <img src={post.cover_image} alt={post.title} />
+                                {post.cover_image && <img src={post.cover_image} alt={post.title} />}
                                 <div className={style.blogBox}>
                                     <div className={style.blogTitle}>{post.title}</div>
                                     <div className={style.date}>
