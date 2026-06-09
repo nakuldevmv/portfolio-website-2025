@@ -90,6 +90,9 @@ export const metadata: Metadata = {
     images: ["/og-image.png"],
   },
   manifest: "/site.webmanifest",
+  other: {
+    "msvalidate.01": "F968BC149921D5C0972252A9697BD590",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
