@@ -1,5 +1,5 @@
 "use client"
-import GlassSurface from "@/components/Components/GlassSurface/GlassSurface"
+import dynamic from "next/dynamic"
 import ToggleTheme from "../../theme/toggleTheme"
 import style from "./navbar.module.css"
 import useWindowWidth from "../../helperFunction/getwidth/getWidth"
@@ -8,6 +8,10 @@ import { smoothScrollTo } from "../../helperFunction/smoothScroll/butterSnap";
 import { Menu, X } from "lucide-react"
 import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
+
+const GlassSurface = dynamic(() => import("@/components/Components/GlassSurface/GlassSurface"), {
+    ssr: false,
+});
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +24,7 @@ export default function NavBar() {
         e.preventDefault()
         smoothScrollTo(id, -50) // offset to account for sticky header or vibe adjustment
     }
-    if (Width === null) { return null };
+    const navWidth = Width ?? 1024;
     function toggleMenu() {
         setIsOpen(!isOpen);
     }
@@ -33,7 +37,7 @@ export default function NavBar() {
 
     return (
         <>
-            {Width < 760 ? (
+            {navWidth < 760 ? (
                 <div className={style.mobileNav}>
                     <AnimatedContent
                         direction="horizontal"
@@ -112,10 +116,10 @@ export default function NavBar() {
                                     >
                                         <nav className={style.navbarMob}>
                                             {/* <a href="#home" className={style.buttonMob} onClick={(e) => handleClick(e, '#home')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;Home</button></a> */}
-                                            <a href="#about" className={style.buttonMob} onClick={(e) => handleClick(e, '#about')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;About</button></a>
-                                            <a href="#project" className={style.buttonMob} onClick={(e) => handleClick(e, '#project')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;Project</button></a>
-                                            <a href="#blogs" className={style.buttonMob} onClick={(e) => handleClick(e, '#blogs')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;Blogs</button></a>
-                                            <a href="#contact" className={style.buttonMob} onClick={(e) => handleClick(e, '#contact')}><button onClick={close}><div className={style.circleAnimate}>✦︎</div> &nbsp;Contact</button></a>
+                                            <a href="#about" className={style.buttonMob} onClick={(e) => { handleClick(e, '#about'); close(); }}><div className={style.circleAnimate}>✦︎</div> &nbsp;About</a>
+                                            <a href="#project" className={style.buttonMob} onClick={(e) => { handleClick(e, '#project'); close(); }}><div className={style.circleAnimate}>✦︎</div> &nbsp;Project</a>
+                                            <a href="#blogs" className={style.buttonMob} onClick={(e) => { handleClick(e, '#blogs'); close(); }}><div className={style.circleAnimate}>✦︎</div> &nbsp;Blogs</a>
+                                            <a href="#contact" className={style.buttonMob} onClick={(e) => { handleClick(e, '#contact'); close(); }}><div className={style.circleAnimate}>✦︎</div> &nbsp;Contact</a>
                                         </nav>
                                     </GlassSurface>
                                 </motion.div>
@@ -140,7 +144,7 @@ export default function NavBar() {
                         <div style={{ pointerEvents: "auto" }}>
                             <div className="flex gap-2">
                                 <GlassSurface
-                                    width={Width > 450 ? 480 : (Width - 100)}
+                                    width={navWidth > 450 ? 480 : (navWidth - 100)}
                                     height={50}
                                     borderRadius={24}
                                     displace={3}

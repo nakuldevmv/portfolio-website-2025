@@ -1,6 +1,7 @@
 import NavBar from "./modules/userDefined/navbar/navbar";
 import Landing from "./modules/userDefined/landing/landing";
 import dynamic from "next/dynamic";
+import LenisProvider from "./modules/helperFunction/smoothScroll/scroll";
 
 // Below-fold — deferred to keep initial bundle lean
 const AboutMe = dynamic(() => import("./modules/userDefined/aboutme/aboutme"));
@@ -14,7 +15,7 @@ const Research   = dynamic(() => import("./modules/userDefined/research/research
 
 export default function Home() {
   return (
-    <>
+    <LenisProvider>
       <NavBar />
       <div id="home">
         <Landing />
@@ -53,6 +54,6 @@ export default function Home() {
           </p>
         </div>
       </div>
-    </>
+    </LenisProvider>
   );
 }

@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -106,7 +107,16 @@ export default async function BlogPost({ params }) {
       />
       <article className={style.blog}>
         {post.cover_image && (
-          <img src={post.cover_image} className={style.blogimg} alt={post.title} />
+          <Image
+            src={post.cover_image}
+            className={style.blogimg}
+            alt={post.title}
+            width={1200}
+            height={630}
+            sizes="(max-width: 760px) 95vw, 1000px"
+            priority
+            fetchPriority="high"
+          />
         )}
         <div className={style.blogBox}>
           <h1 className={style.blogTitle}>{post.title}</h1>
@@ -140,6 +150,31 @@ export default async function BlogPost({ params }) {
                     <h2 className={style.markdownH1} {...props}>
                       {children}
                     </h2>
+                  );
+                },
+                img({ node, alt, ...props }) {
+                  return (
+                    <img
+                      {...props}
+                      alt={alt || ""}
+                      className={style.markdownImage}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  );
+                },
+                a({ node, children, href, ...props }) {
+                  const isExternal = href?.startsWith("http");
+
+                  return (
+                    <a
+                      href={href}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      {...props}
+                    >
+                      {children}
+                    </a>
                   );
                 },
               }}

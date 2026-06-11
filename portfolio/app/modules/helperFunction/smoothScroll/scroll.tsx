@@ -6,19 +6,32 @@ import { getLenis } from './lenisInstance'
 
 export default function LenisProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    const lenis = getLenis()
-
+    let cancelled = false
     let rafId: number
-    const raf = (time: number) => {
-      lenis.raf(time)
+
+    const start = async () => {
+      const lenis = await getLenis()
+      if (!lenis || cancelled) return
+
+      const raf = (time: number) => {
+        lenis.raf(time)
+        rafId = requestAnimationFrame(raf)
+      }
+
       rafId = requestAnimationFrame(raf)
     }
 
-    rafId = requestAnimationFrame(raf)
+    start()
 
     return () => {
-      cancelAnimationFrame(rafId)
-      lenis.destroy()
+      cancelled = true
+      if (rafId) {
+        cancelAnimationFrame(rafId)
+      }
+
+      getLenis().then((lenis) => {
+        lenis?.destroy()
+      })
     }
   }, [])
 

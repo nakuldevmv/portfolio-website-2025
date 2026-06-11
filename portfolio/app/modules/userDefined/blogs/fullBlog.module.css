@@ -80,6 +80,11 @@
 
 .blogimg {
   border-radius: 20px;
+  aspect-ratio: 1200 / 630;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
 }
 
 
@@ -161,6 +166,15 @@
 .markdownContent a:hover {
   text-decoration: underline;
   opacity: 0.8;
+}
+
+.markdownImage {
+  border-radius: 12px;
+  display: block;
+  height: auto;
+  margin: 1.5em auto;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 /* --- CODE BLOCKS --- */
