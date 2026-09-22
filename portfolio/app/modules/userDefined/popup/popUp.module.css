@@ -50,7 +50,7 @@
 }
 
 .resumeLabel {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: system-ui, sans-serif;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.18em;
@@ -76,10 +76,20 @@
     border-radius: 50%;
     cursor: pointer;
     font-weight: bold;
-    overflow: hidden;
+    position: relative;
     transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
     text-decoration: none;
     flex-shrink: 0;
+}
+
+/* Invisible tap-target extension: keeps the visible circle at 32px
+   (unchanged design) while giving touch users the ~44px hit area
+   recommended for accessible touch targets. */
+.downloadBtn::before,
+.closeBtn::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
 }
 
 .downloadBtn:hover {
@@ -105,6 +115,7 @@
     border-radius: 50%;
     cursor: pointer;
     background: transparent;
+    position: relative;
     transition: border-color 0.25s ease, color 0.25s ease, transform 0.35s ease, box-shadow 0.25s ease;
     flex-shrink: 0;
 }
@@ -186,7 +197,7 @@
 }
 
 .pageLabel {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: system-ui, sans-serif;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.12em;
@@ -236,7 +247,7 @@
 }
 
 .loaderText {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: system-ui, sans-serif;
     font-size: 12px;
     letter-spacing: 0.08em;
     color: var(--text-muted);
@@ -258,7 +269,7 @@
 }
 
 .errorText {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: system-ui, sans-serif;
     font-size: 13px;
     color: #ff5f6d;
     opacity: 0.8;
@@ -277,7 +288,7 @@
 }
 
 .footerText {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: system-ui, sans-serif;
     font-size: 10px;
     letter-spacing: 0.1em;
     text-transform: uppercase;

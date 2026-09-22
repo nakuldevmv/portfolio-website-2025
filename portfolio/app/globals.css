@@ -1,9 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* @custom-variant dark (&:is(.dark *)); */
-
-
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --animate-aurora: aurora 60s linear infinite;
@@ -26,7 +24,7 @@
   --accent: var(--accent);
   --text-muted: var(--text-muted);
   --border: var(--border);
-  --radious: var(--radious);
+  --radius: var(--radius);
   --navBtn-shadow: var(--navBtn-shadow);
   --gradient1: var(--gradient1);
   --gradient2: var(--gradient2);
@@ -46,7 +44,7 @@
   --accent: #68ad00;
   --text-muted: #666666;
   --border: hsla(269, 48%, 15%, 0.6);
-  --radious: 12px;
+  --radius: 12px;
   --navBtn-shadow: rgba(50, 50, 93, 0.25) 0px 15px 30px -12px inset, rgba(0, 0, 0, 0.3) 0px 5px 30px -18px inset;
   --moreProjectBtn:#533193;
   --blogbg:hsla(0, 0%, 100%, 0.5);
@@ -247,16 +245,17 @@ body {
   display: none;
 }
 
-
-/* a{
-  color: #121212;
-  color: #121212;
-  color: #121212;
-  color: #9880FF;
-  color: #abff2e;
-  color: #00A7A4;
-} */
-
- /* const darkColors = ["#121212", "#1e1e1e", "#2a2a2a", "#abff2e"];
-  // Light mode palette
-  const lightColors = ["#e0e0e0", "#f5f5f5", "#ffffff", "#abff2e"]; */
+/* Respect the OS-level "reduce motion" accessibility setting: freeze
+   marquees, the timeline pulse, hover transitions and smooth-scroll
+   for anyone who has asked for less motion, without touching anyone
+   else's experience. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
